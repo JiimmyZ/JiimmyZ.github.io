@@ -1,0 +1,81 @@
+baseURL = 'https://JiimmyZ.github.io/'
+languageCode = 'zh-TW'
+title = 'JZ隨筆'
+theme = 'PaperMod'
+
+defaultContentLanguage = "zh-tw"
+hasCJKLanguage = true # 啟用 CJK (中、日、韓) 字型優化
+[pagination]
+  pagerSize = 10 # 每頁顯示幾篇文章，這裡設定 10 篇
+
+[params]
+  author = 'JZ'
+  defaultTheme = 'auto' # dark, light, auto
+  ShowReadingTime = true 
+  ShowToc = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true # 顯示麵包層級導覽列
+  ShowCodeCopyButtons = true # 程式碼區塊出現「複製按鈕」
+
+  # 以下是首頁logo設置方式
+  # profileMode = true
+  # profileMode.mode = "simple"
+  # profileMode.title = "網站標題"
+  # profileMode.subtitle = "副標題"
+  # profileMode.imageUrl = "images/logo.png"
+  # 
+
+  # 下面為SEO優化，告訴搜尋引擎這個網站跟哪些關鍵字有關
+  description = "文學創作者、生活雜感網站"
+  keywords = ["部落格","中文","詩詞","詩歌","絕句","律詩","宋詞","唐詩","歌曲填詞",
+  "歌曲創作","寫詩","創作","文學","小說","blog","poetry","lyric","novel","essay",
+  "雜感","辯論","哲學","人生","意境","新詩","散文"]
+  
+  # 下面是社群網站串聯(未完成)
+  [[params.socialIcons]]
+    name = "<youtube>"
+    url = "<https://www.youtube.com/channel/@G-yo7sk>"
+  [[params.socialIcons]]
+    name = "instagram"
+    url = "https://www.instagram.com/where_gonna_be"
+
+  #googleAnalytics
+  googleAnalytics = "G-362706482"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "首頁"
+    url = "/" # 導向的路徑
+    weight = 1 # 排序權重，數字越小越靠前
+
+  [[menu.main]]
+    identifier = "about"
+    name = "關於"
+    url = "/about/"
+    weight = 999 #設定在最右
+
+  [[menu.main]]
+    identifier = "poetry"
+    name = "詩詞"
+    url = "/poetry/"
+    weight = 3
+
+  [[menu.main]]
+    identifier = "novel"
+    name = "小說"
+    url = "/novel/"
+    weight = 4
+
+  [[menu.main]]
+    identifier = "essay"
+    name = "雜感"
+    url = "/essay/"
+    weight = 5
+
+  [[menu.main]]
+    identifier = "review"
+    name = "賞析"
+    url = "/review/"
+    weight = 6
