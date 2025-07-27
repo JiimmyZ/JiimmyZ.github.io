@@ -1,10 +1,10 @@
 # 忽略 public 資料夾內的部署內容，避免當成此 repo 的一部分
-/public/
+#/public/
 
 # 忽略 Hugo 的 build lock 檔案
-.hugo_build.lock
+#.hugo_build.lock
 
 # 忽略 macOS / VSCode / Windows 暫存檔（選擇性）
-.DS_Store
-Thumbs.db
-*.swp
+#.DS_Store
+#Thumbs.db
+#*.swp
