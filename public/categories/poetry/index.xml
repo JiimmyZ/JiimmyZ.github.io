@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>JZ隨筆</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on JZ隨筆</description>
+    <title>Poetry on JZ隨筆</title>
+    <link>http://localhost:1313/categories/poetry/</link>
+    <description>Recent content in Poetry on JZ隨筆</description>
     <generator>Hugo -- 0.148.1</generator>
     <language>zh-TW</language>
     <lastBuildDate>Sun, 27 Jul 2025 15:18:25 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/poetry/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>反戰</title>
       <link>http://localhost:1313/poetry/%E5%8F%8D%E6%88%B0/</link>
@@ -126,19 +126,6 @@
       <pubDate>Sat, 26 Jul 2025 19:25:01 +0800</pubDate>
       <guid>http://localhost:1313/poetry/%E9%81%A0%E6%B8%A1/</guid>
       <description>遠渡重洋壯志狂 頃刻須臾白髮蒼 街巷再無兒時景 家鄉早已成異鄉</description>
-    </item>
-    <item>
-      <title>About</title>
-      <link>http://localhost:1313/about/</link>
-      <pubDate>Sat, 26 Jul 2025 08:35:16 +0800</pubDate>
-      <guid>http://localhost:1313/about/</guid>
-      <description>&lt;p&gt;虛擲光陰求名利&lt;br&gt;
-空度少年忘本心&lt;br&gt;
-韶華殘輝方知悔&lt;br&gt;
-餘生莫再負知音&lt;/p&gt;
-&lt;p&gt;詩詞寫作、小說連載&lt;/p&gt;
-&lt;p&gt;歡迎歌曲填詞邀約&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;mailto:oceanjimmy2023@gmail.com&#34;&gt;oceanjimmy2023@gmail.com&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

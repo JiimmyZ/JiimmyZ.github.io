@@ -24,7 +24,7 @@ hasCJKLanguage = true # 啟用 CJK (中、日、韓) 字型優化
   # profileMode.title = "網站標題"
   # profileMode.subtitle = "副標題"
   # profileMode.imageUrl = "images/logo.png"
-  # 
+  
 
   # 下面為SEO優化，告訴搜尋引擎這個網站跟哪些關鍵字有關
   description = "文學創作者、生活雜感網站"
