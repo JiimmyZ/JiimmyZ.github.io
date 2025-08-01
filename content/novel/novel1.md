@@ -4,5 +4,5 @@ draft = false
 title = 'Novel1'
 layout = "single" 
 categories = ["novel"]
-summary = ""
+summary = "這裡預計用來寫小說"
 +++
