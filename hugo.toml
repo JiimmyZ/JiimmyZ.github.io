@@ -43,6 +43,7 @@ hasCJKLanguage = true # 啟用 CJK (中、日、韓) 字型優化
   #googleAnalytics
   googleAnalytics = "G-362706482"
 
+# 以下是右上角版面排版
 [menu]
   [[menu.main]]
     identifier = "home"
@@ -81,7 +82,7 @@ hasCJKLanguage = true # 啟用 CJK (中、日、韓) 字型優化
     weight = 6
 
   [[menu.main]]
-    identifier = "review"
+    identifier = "travelogue"
     name = "遊記"
-    url = "/review/"
+    url = "/travelogue/"
     weight = 7
