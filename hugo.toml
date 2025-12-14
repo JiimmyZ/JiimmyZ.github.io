@@ -79,3 +79,9 @@ hasCJKLanguage = true # 啟用 CJK (中、日、韓) 字型優化
     name = "賞析"
     url = "/review/"
     weight = 6
+
+  [[menu.main]]
+    identifier = "review"
+    name = "遊記"
+    url = "/review/"
+    weight = 7
