@@ -31,4 +31,4 @@ summary = ""
 我不想說什麼風景壯麗不枉此行、聖靈感召永生難忘、你會洗清一切罪孽，諸如此類的blablabla。
 我分享所經歷到的，願對你會有所幫助。
 
-![聖地牙哥大教堂](/travelogue/Camino/IMG_20250715_154442.jpg)
+![聖地牙哥大教堂](C:\Users\JZ\Desktop\myblog\static\travelogue\Camino\ch1\IMG_20250616_132941.jpg)
