@@ -3,6 +3,10 @@ languageCode = 'zh-TW'
 title = 'JZ隨筆'
 theme = 'PaperMod'
 
+# 路徑一致性
+relativeURLs = true
+canonifyURLs = true
+
 defaultContentLanguage = "zh-tw"
 hasCJKLanguage = true # 啟用 CJK (中、日、韓) 字型優化
 [pagination]
