@@ -45,4 +45,4 @@ Camino有多條路線，列舉較為著名者如下表
 | 銀之路    | 西班牙Sevilla             | Santiago de Compostela | **最長**的 Camino 路線之一。沿用古羅馬道路，穿過西班牙的內陸荒野，人煙稀少。             | 1000 |
 | 世界盡頭之路 | Santiago de Compostela | Finisterre             | **延伸路線**，通常是抵達聖地牙哥後的**額外旅程**。終點 Finisterre 意為「世界盡頭」。     | 90   |
 
-![日出與路](\static\travelogue\Camino\ch2\IMG_20250620_063536.jpg)
+![日出與路](/static/travelogue/Camino/ch2/IMG_20250620_063536.jpg)
