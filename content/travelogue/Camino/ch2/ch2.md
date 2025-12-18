@@ -37,12 +37,5 @@ summary = ""
 Camino有多條路線，列舉較為著名者如下表
 另外也有「當你踏出家門，目標聖地牙哥大教堂」時你就在camino路上的說法
 
-| 路線名稱|起點|終點|特色| 距離km |
-|---|---|---|---|---|
-| 法國之路   | 法西邊境SJPP               | Santiago de Compostela | **最經典、熱門路線。設施完善、熱鬧，但旺季人潮眾多。經由 Pamplona、Burgos 和 León 等大城市。 | 780  |
-| 葡萄牙之路  | 葡萄牙Lisbon              | Santiago de Compostela | 第二熱門路線。沿途景緻多變，有內陸線和沿海線可選。從 Porto 出發較為常見。                   | 620  |
-| 北方之路   | 西班牙**Irún**            | Santiago de Compostela | 沿著**西班牙北部海岸線**行走。風景優美，經過巴斯克和坎塔布里亞地區，相對較少人走。                | 820  |
-| 銀之路    | 西班牙Sevilla             | Santiago de Compostela | **最長**的 Camino 路線之一。沿用古羅馬道路，穿過西班牙的內陸荒野，人煙稀少。               | 1000 |
-| 世界盡頭之路 | Santiago de Compostela | Finisterre             | **延伸路線**，通常是抵達聖地牙哥後的**額外旅程**。終點 Finisterre 意為「世界盡頭」。       | 90   |
 
-![夕陽與路](IMG_20250620_063536.jpg)
+![日出與路](IMG_20250620_063536.jpg)
