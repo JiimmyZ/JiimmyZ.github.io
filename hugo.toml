@@ -45,8 +45,9 @@ googleAnalytics = "G-Z28G5RG1VS"
   #googleAnalytics
   googleAnalytics = "G-Z28G5RG1VS"
 
-[permalinks]
 
+[permalinks]
+  travelogue = "/:section/::contentbasename/"
 
 # 以下是右上角版面排版
 [menu]
