@@ -43,6 +43,10 @@ hasCJKLanguage = true # 啟用 CJK (中、日、韓) 字型優化
   #googleAnalytics
   googleAnalytics = "G-362706482"
 
+[permalinks]
+  # 針對 travelogue 這個 section (資料夾) 進行網址重定向
+  travelogue = "/:section/:title/"
+
 # 以下是右上角版面排版
 [menu]
   [[menu.main]]
