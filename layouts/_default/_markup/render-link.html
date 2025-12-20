@@ -1,7 +1,8 @@
+<!-- 這段用來將外部連結以新分頁的方式開啟，不然預設會是取代既有分頁 -->
+
 <a href="{{ .Destination | safeURL }}"
-   {{ with .Title }} title="{{ . }}" {{ end }}
    {{ if strings.HasPrefix .Destination "http" }} 
      target="_blank" rel="noopener noreferrer" 
    {{ end }}>
-   {{ .Text | safeHTML }}
+   {{ .Text | safeHTML }}{{ if strings.HasPrefix .Destination "http" }} <small>↗</small>{{ end }}
 </a>
