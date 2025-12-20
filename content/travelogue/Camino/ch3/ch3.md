@@ -1,17 +1,20 @@
 +++
 date = '2025-12-19T21:40:48+08:00'
 draft = false
-title = 'Ch3 通勤、住宿、網站與app'
+title = 'Camino Ch3 通勤、住宿、網站與app'
 layout = "single" 
 categories = ["travelogue"]
 summary = ""
 +++
+![機場](../IMG_20250613_145504.jpg)
+
 # 通勤
 - 這邊以抵達法國之路起點[SJPP](https://maps.app.goo.gl/qXZS35vMmcgzHVvr8)為目標，介紹通勤方式
 - SJPP最近的車站是[Bayonne車站](https://share.google/HLDcMv3TQjTk8VtMO)，這是一個必經之路，而在Bayonne車站之前會有不同的方式
 - SJPP出發後第一天的能住宿的目的地是[Roncesvalles](https://maps.app.goo.gl/zndd4rtVu6Hqyzkk8)
 	- SJPP到Roncesvalles是法國路線最陡峭的一段，大約需7-8小時路程
 	- 所以如果不能把SJPP出發時間訂在9點前，可以考慮直接在SJPP住一晚，避免時間太過緊繃
+![SJPP](../IMG_20250615_194330.jpg)
 ## CDG>SJPP
 - 說明:這是網路上最熱門的方式，下機後搭高鐵前往Bayonne，再搭TER列車至SJPP
 - 優點:如果飛機時間和高鐵時間對得起來，可以避開BIQ機場(離SJPP最近的機場)，直接抵達Bayonne車站再至SJPP
@@ -32,6 +35,7 @@ summary = ""
 - 缺點:
 	- BIQ是個小機場，航班相對很少，需要在特定的日期搭乘選擇較少
 	- 且因BIQ是小機場，台灣無直達當以軟體設定目的地為BIQ時，必須先至歐洲某機場再轉機
+![BIQ機場取行李](../IMG_20250615_110648.jpg)
 ## 返程
 - 終點處最近的機場是SCQ機場，做法和去程大同小異
 	- SCQ先飛至歐洲某機場，轉機飛回台灣
@@ -57,7 +61,7 @@ summary = ""
 		- 例如有些機票也許更快或更便宜，但下機後，要等到隔天才有車子也沒有意義，除非當晚就當額外旅遊
 ## 通勤大略花費
 - 直達機票:以2024年12月訂票的經驗，台灣直達歐洲來回，大概都是13-14萬
-- 轉機機票:轉機兩次最便宜大概有3.1萬；我買3,4萬，內容如下
+- 轉機機票:轉機兩次最便宜大概有3.1萬；我買3.4萬，內容如下
 	- 桃園TPE>上海PVG>德國FRA>法國BIQ
 		- 6/13於TPE機場17:30起飛，6/14的18:05落地BIQ
 	- 西班牙SCQ>德國FRA>上海PVG>桃園TPE
@@ -84,6 +88,10 @@ summary = ""
 - 所以我們要提早訂住宿
 ## 其他天
 - 前述是各種需要提前的狀況，在此之外，一般時候中午訂即可、甚至更晚都可以的，可以看當天自己想走幾公里
+
+![Roncesvalles](../IMG_20250616_143116.jpg)
+Roncesvalles庇護所
+
 # 網站與App
 ## 旅遊通用型
 - [Skyscanner](https://www.skyscanner.com.tw/)
@@ -101,4 +109,10 @@ summary = ""
 	- 看住所最棒的app!清楚顯示那間旅店的床位、設備，評分也相當清準。
 	- 也很適合看自己的進度
 - [Camino Ninja](https://play.google.com/store/apps/details?id=ninja.camino.app)
-	- 看海拔最便捷的軟體，我走38公里時傻傻挑戰了最陡峭的路段，發現不對勁才找到這個app
+	- 看海拔最便捷的軟體，我走37公里時傻傻挑戰了最陡峭的路段，發現不對勁才找到這個app
+- [西班牙官方觀光網站](https://www.spain.info/en/top/camino-santiago-alternative-routes/)
+	- 主要介紹路線與景點
+	- 可閱覽非必須
+- [朝聖者辦公室官方網站](https://oficinadelperegrino.com/)
+	- 主要介紹其宗教與文化典故、如何獲得證書等等
+	- 可閱覽非必須
