@@ -6,7 +6,7 @@ layout = "single"
 categories = ["travelogue"]
 summary = ""
 +++
-![庇里牛斯山](../IMG_20250616_132941.jpg)
+![庇里牛斯山](..\IMG_20250616_132941.jpg)
 
 我真的走的完嗎?  
 那裡治安好不好?  
