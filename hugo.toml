@@ -46,9 +46,24 @@ googleAnalytics = "G-Z28G5RG1V"
   [params.analytics.google]
     measurementID = "G-Z28G5RG1V"
 
+  # Giscus 評論設定
+  [params.comments]
+    enabled = true
+    provider = "giscus"
+    giscus.repo = "JiimmyZ/JiimmyZ.github.io"  # 替換為你的 GitHub 用戶名/repo 名
+    giscus.repoId = ""  # 從 giscus.app 複製
+    giscus.category = "General"  # 從 giscus.app 複製
+    giscus.categoryId = ""  # 從 giscus.app 複製
+    giscus.mapping = "pathname"
+    giscus.reactionsEnabled = "1"
+    giscus.emitMetadata = "0"
+    giscus.inputPosition = "bottom"
+    giscus.theme = "light"
+    giscus.lang = "zh-TW"
+
 [permalinks]
   travelogue = "/:section/::contentbasename/"
-  
+
 # 以下是評論區
 [params.comments]
   enabled = true
