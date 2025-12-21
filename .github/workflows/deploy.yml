@@ -1,3 +1,4 @@
+# 自動部署流程，在vs這邊commit&sync後就可以操控github actions自動部署網站
 # .github/workflows/deploy.yml
 
 name: Deploy Hugo site to Pages
