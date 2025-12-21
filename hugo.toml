@@ -20,6 +20,9 @@ googleAnalytics = "G-Z28G5RG1V"
   ShowBreadCrumbs = true # 顯示麵包層級導覽列
   ShowCodeCopyButtons = true # 程式碼區塊出現「複製按鈕」
 
+  # Giscus 評論設定要先設定好，然這邊設true
+  comments = true
+
   # 以下是首頁logo設置方式
   # profileMode = true
   # profileMode.mode = "simple"
@@ -46,21 +49,9 @@ googleAnalytics = "G-Z28G5RG1V"
   [params.analytics.google]
     measurementID = "G-Z28G5RG1V"
 
-  # Giscus 評論設定
-  [params.comments]
-    enabled = true
-    provider = "giscus"
-    giscus.repo = "JiimmyZ/JiimmyZ.github.io"  # 替換為你的 GitHub 用戶名/repo 名
-    giscus.repoId = ""  # 從 giscus.app 複製
-    giscus.category = "General"  # 從 giscus.app 複製
-    giscus.categoryId = ""  # 從 giscus.app 複製
-    giscus.mapping = "pathname"
-    giscus.reactionsEnabled = "1"
-    giscus.emitMetadata = "0"
-    giscus.inputPosition = "bottom"
-    giscus.theme = "light"
-    giscus.lang = "zh-TW"
+  
 
+    
 [permalinks]
   travelogue = "/:section/::contentbasename/"
 
