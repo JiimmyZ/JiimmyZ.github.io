@@ -1,16 +1,21 @@
+{{- /* Comments area start */ -}}
+{{- /* Giscus integration */ -}}
+{{- if (and (site.Params.comments.enabled) (eq site.Params.comments.provider "giscus")) }}
 <script src="https://giscus.app/client.js"
-        data-repo="JiimmyZ/JiimmyZ.github.io"
-        data-repo-id="R_kgDOPTd04Q"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOPTd04c4C0EQR"
-        data-mapping="pathname"
+        data-repo="{{ site.Params.comments.giscus.repo }}"
+        data-repo-id="{{ site.Params.comments.giscus.repoId }}"
+        data-category="{{ site.Params.comments.giscus.category }}"
+        data-category-id="{{ site.Params.comments.giscus.categoryId }}"
+        data-mapping="{{ site.Params.comments.giscus.mapping }}"
         data-strict="1"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="dark"
-        data-lang="en"
+        data-reactions-enabled="{{ site.Params.comments.giscus.reactionsEnabled }}"
+        data-emit-metadata="{{ site.Params.comments.giscus.emitMetadata }}"
+        data-input-position="{{ site.Params.comments.giscus.inputPosition }}"
+        data-theme="{{ site.Params.comments.giscus.theme }}"
+        data-lang="{{ site.Params.comments.giscus.lang }}"
         data-loading="lazy"
         crossorigin="anonymous"
         async>
 </script>
+{{- end }}
+{{- /* Comments area end */ -}}
