@@ -25,7 +25,7 @@ summary = ""
 		- 或是有一個很長的等候高鐵時間，導致抵達SJPP超過check in時間
 - 另外如果馬德里機場(MAD)抵達，也是可以火車抵達SJPP，車程最快9小時
 - 網路上另有巴塞隆納機場(BCN)前往SJPP的方式，車程更久就不列舉了，僅適合真的想去巴塞隆納的人
-![CDG到SJPP車程](/travelogue/Camino/ch3/1.png)
+![CDG到SJPP車程](/travelogue/Camino/ch3/1.jpg)
 ## BIQ>至SJPP
 - 說明:
 	- [BIQ機場](https://share.google/pMQ0v5PeASX6rDG0j)是離出發點SJPP最近的機場
@@ -93,8 +93,7 @@ summary = ""
 ## 其他天
 - 前述是各種需要提前的狀況，在此之外，一般時候中午訂即可、甚至更晚都可以的，可以看當天自己想走幾公里
 
-![Roncesvalles](/travelogue/Camino/ch3/IMG_20250616_143116.jpg)
-Roncesvalles庇護所
+![Roncesvalles庇護所](/travelogue/Camino/ch3/IMG_20250616_143116.jpg)
 
 # 網站與App
 ## 旅遊通用型
