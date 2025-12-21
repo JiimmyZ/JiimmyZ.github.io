@@ -29,7 +29,7 @@ summary = ""
 - Cathedral:英語，主教堂、大教堂。
 	- 沿路有許多僻靜或各具特色的教堂。
 	- 有一個共通的優點是巧妙地運用光線的營造神聖的感覺，讓人覺得渺小、讓人覺得自己的人生走錯了方向好久，讓人恍然領悟「啊!難怪以前人都是教徒啊」
-![Meseta](../IMG_20250620_120806.jpg)
+![Meseta](/travelogue/Camino/ch2/IMG_20250620_120806.jpg)
 ## 物
 - Certificate:朝聖者證書，徒步至少最後100 公里或自行車最後200 公里可取得
 - Pilgrim Passport:朝聖者護照
@@ -40,8 +40,8 @@ summary = ""
 - Milestone:里程碑，上面會有扇貝與里程數
 - Yellow arrow:醒目的黃色箭頭，Camino的道路標示，岔路處最想看到的東西
 	- 據說是一個[熱愛Camino的神父](https://www.wikiwand.com/es/articles/El%C3%ADas_Vali%C3%B1a)一個人親手塗完，後面的人再持續修補、新增
-![印有扇貝的里程碑](../IMG_20250625_133149.jpg)
-![荒煙漫草中的黃色箭頭](../IMG_20250616_121609.jpg)
+![印有扇貝的里程碑](/travelogue/Camino/ch2/IMG_20250625_133149.jpg)
+![荒煙漫草中的黃色箭頭](/travelogue/Camino/ch2/IMG_20250616_121609.jpg)
 
 # 路線說明
 Camino有多條路線，列舉較為著名者如下表
