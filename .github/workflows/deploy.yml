@@ -41,7 +41,9 @@ jobs:
           # extended: true # Uncomment if you use SCSS/SASS in your theme
 
       - name: Build
-        run: hugo --minify # Builds the site and minifies the output
+        run: hugo --minify
+        env:
+          HUGO_ENV: production # Builds the site and minifies the output
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
