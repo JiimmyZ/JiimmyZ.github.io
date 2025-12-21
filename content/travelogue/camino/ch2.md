@@ -37,6 +37,7 @@ summary = ""
 	- 需在SJPP的[Pilgrim information office](https://maps.app.goo.gl/6agcbdt35QiQNzqN9)取得
 - Pilgrim's Menu:直譯是朝聖者特餐，類似台灣的「每日特餐」的概念，都常較為划算，不過對我來說有時份量不夠多
 - Scallop Shell:扇貝，camino的代表物
+![印有扇貝的大石](/travelogue/Camino/ch2/IMG_20250616_121207.jpg)
 - Milestone:里程碑，上面會有扇貝與里程數
 - Yellow arrow:醒目的黃色箭頭，Camino的道路標示，岔路處最想看到的東西
 	- 據說是一個[熱愛Camino的神父](https://www.wikiwand.com/es/articles/El%C3%ADas_Vali%C3%B1a)一個人親手塗完，後面的人再持續修補、新增
