@@ -1,0 +1,37 @@
+{{- /*
+  google_analytics.html
+  Insert Google Analytics (GA4) gtag.js when a Measurement ID is provided.
+
+  Supports these config locations (in order):
+  1) params.analytics.google.measurementID
+  2) params.analytics.google.MeasurementID
+  3) top-level googleAnalytics (legacy Hugo var)
+
+  This partial is called by the theme only in production, as configured in
+  themes/PaperMod/layouts/partials/head.html.
+*/ -}}
+
+{{- $scratch := newScratch -}}
+
+{{- with $.Site.Params.analytics.google -}}
+  {{- with .measurementID -}} {{ $scratch.Set "ga_id" . }}{{- end -}}
+  {{- with .MeasurementID -}}{{ if not ($scratch.Get "ga_id") }}{{ $scratch.Set "ga_id" . }}{{- end -}}{{- end -}}
+{{- end -}}
+
+{{- if not ($scratch.Get "ga_id") -}}
+  {{- with $.Site.Params.googleAnalytics -}}{{ $scratch.Set "ga_id" . }}{{- end -}}
+  {{- with $.Site.Params.GoogleAnalytics -}}{{ if not ($scratch.Get "ga_id") }}{{ $scratch.Set "ga_id" . }}{{- end -}}{{- end -}}
+{{- end -}}
+
+{{- $id := $scratch.Get "ga_id" -}}
+
+{{- if $id }}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ $id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);} 
+  gtag('js', new Date());
+  gtag('config', '{{ $id }}');
+</script>
+{{- end -}}
