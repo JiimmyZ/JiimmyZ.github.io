@@ -8,7 +8,7 @@ hasCJKLanguage = true # 啟用 CJK (中、日、韓) 字型優化
 [pagination]
   pagerSize = 10 # 每頁顯示幾篇文章，這裡設定 10 篇
 
-googleAnalytics = "G-Z28G5RG1VS"
+googleAnalytics = "G-Z28G5RG1V"
 
 [params]
   author = 'JZ'
@@ -42,9 +42,9 @@ googleAnalytics = "G-Z28G5RG1VS"
     name = "instagram"
     url = "https://www.instagram.com/where_gonna_be"
 
-  #googleAnalytics
-  googleAnalytics = "G-Z28G5RG1VS"
-
+  # Google Analytics (GA4) 設定 - 被 site partial 使用
+  [params.analytics.google]
+    measurementID = "G-Z28G5RG1V"
 
 [permalinks]
   travelogue = "/:section/::contentbasename/"
