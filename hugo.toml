@@ -48,6 +48,22 @@ googleAnalytics = "G-Z28G5RG1V"
 
 [permalinks]
   travelogue = "/:section/::contentbasename/"
+  
+# 以下是評論區
+[params.comments]
+  enabled = true
+  provider = "giscus"
+  giscus.repo = "你的GitHub用戶名/你的repo名"
+  giscus.repoId = "從giscus.app複製"
+  giscus.category = "從giscus.app複製"
+  giscus.categoryId = "從giscus.app複製"
+  giscus.mapping = "pathname"
+  giscus.reactionsEnabled = "1"
+  giscus.emitMetadata = "0"
+  giscus.inputPosition = "bottom"
+  giscus.theme = "light"
+  giscus.lang = "zh-TW"
+
 
 # 以下是右上角版面排版
 [menu]
