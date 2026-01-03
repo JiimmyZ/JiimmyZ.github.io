@@ -50,6 +50,7 @@ googleAnalytics = "G-Z28G5RG1V"
   # Google Analytics (GA4) 設定 - 被 site partial 使用
   [params.analytics.google]
     measurementID = "G-Z28G5RG1V"
+    siteVerificationTag = "DB3k134ACKJpU4P_-y8AETrjqREoR50qA5mNakd0UHU"
 
   
 
