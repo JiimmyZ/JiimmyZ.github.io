@@ -21,7 +21,9 @@ googleAnalytics = "G-Z28G5RG1V"
   ShowCodeCopyButtons = true # 程式碼區塊出現「複製按鈕」
 
   # Giscus 評論設定要先設定好，然這邊設true
-  comments = true
+
+  [params.comments]
+    enabled = true
 
   # 以下是首頁logo設置方式
   # profileMode = true
