@@ -1,13 +1,16 @@
 <!-- 這段用來設定圖片的說明會自動顯示，並且可以設定字體、顏色、置中等等 -->
 
-<figure style="margin: 1.5rem auto; text-align: center;">
-  <img src="{{ .Destination | safeURL }}" 
-       alt="{{ .Text }}" 
-       {{ with .Title }} title="{{ . }}" {{ end }}
-       loading="lazy"
-       style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 100%; height: auto;">
+<figure style="margin: 2rem auto; text-align: center;">
+  <a href="{{ .Destination | safeURL }}" target="_blank"> {{/* 點擊圖片可看大圖 */}}
+    <img src="{{ .Destination | safeURL }}" 
+         alt="{{ .Text }}" 
+         {{ with .Title }} title="{{ . }}" {{ end }}
+         loading="lazy"
+         decoding="async" {{/* 異步解碼，進一步提升滑動流暢度 */}}
+         style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 100%; height: auto; transition: transform 0.3s ease;">
+  </a>
   {{ with .Text }}
-    <figcaption style="margin-top: 0.8rem; font-size: 0.85em; color: #666; font-style: italic;">
+    <figcaption style="margin-top: 0.8rem; font-size: 0.9em; color: #888; line-height: 1.5;">
       {{ . }}
     </figcaption>
   {{ end }}

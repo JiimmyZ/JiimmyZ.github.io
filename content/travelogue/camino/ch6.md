@@ -241,6 +241,7 @@ summary = ""
 ![濃霧中的Orisson餐館](/travelogue/Camino/ch6/IMG_20250616_090837.jpg)
 ![Orisson餐館](/travelogue/Camino/ch6/IMG_20250616_090933.jpg)
 ![雲](/travelogue/Camino/ch6/VID_20250616_093706.mp4)
+![牛](/travelogue/Camino/ch6/IMG_20250616_094533.jpg)
 
 # 6/17,Larrasoana
 - 早上我起來時昨晚借我1歐元的女生已經離開了，我可能永遠錯過還她一歐元的機會了
