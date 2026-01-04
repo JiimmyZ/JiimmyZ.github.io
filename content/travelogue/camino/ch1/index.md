@@ -8,6 +8,9 @@ summary = ""
 +++
 ![庇里牛斯山](/travelogue/Camino/ch1/IMG_20250616_132941.jpg)
 
+{{< figure src="IMG_20250616_132941.jpg" alt="庇里牛斯山" >}}
+
+
 我走的完嗎?  
 那裡治安好不好?  
 起點好偏僻，名字還挺難念  
