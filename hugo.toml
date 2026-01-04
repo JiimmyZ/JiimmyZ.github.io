@@ -10,6 +10,10 @@ hasCJKLanguage = true # 啟用 CJK (中、日、韓) 字型優化
 
 googleAnalytics = "G-Z28G5RG1V"
 
+[imaging]
+  quality = 80
+  resampleFilter = "Box"
+
 [params]
   author = 'JZ'
   defaultTheme = 'auto' # dark, light, auto
