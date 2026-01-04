@@ -179,8 +179,8 @@ summary = ""
 	- 因為以上種種delay，camino開始會變成晴天，內心頗有感觸，人生禍福相依，一切都是上帝最好的安排
 	- 如果我沒有在行李托盤那邊等久一點也許我就錯過了那位善心引導我的女士
 	- 順利拿到行李了
-![開心地等行李](/travelogue/Camino/ch6/IMG_20250615_110648.jpg)
-![不開心了](/travelogue/Camino/ch6/IMG_20250615_110733.jpg)
+![開心等行李](/travelogue/Camino/ch6/IMG_20250615_110648.jpg)
+![不開心](/travelogue/Camino/ch6/IMG_20250615_110733.jpg)
 
 - 前往SJPP
 	- 順利搭上公車，車上很熱好像沒開冷氣，司機開很晃，我竟然會暈車？
@@ -242,6 +242,22 @@ summary = ""
 ![Orisson餐館](/travelogue/Camino/ch6/IMG_20250616_090933.jpg)
 ![雲](/travelogue/Camino/ch6/VID_20250616_093706.mp4)
 ![牛](/travelogue/Camino/ch6/IMG_20250616_094533.jpg)
+![石丘](/travelogue/Camino/ch6/IMG_20250616_095226.jpg)
+![高山草原](/travelogue/Camino/ch6/IMG_20250616_100936.jpg)
+![羊](/travelogue/Camino/ch6/IMG_20250616_102248.jpg)
+![餐車](/travelogue/Camino/ch6/IMG_20250616_111755.jpg)
+![雨過天青](/travelogue/Camino/ch6/IMG_20250616_132250.jpg)
+![沒青多久](/travelogue/Camino/ch6/IMG_20250616_133546.jpg)
+![白牛](/travelogue/Camino/ch6/VID_20250616_133703.mp4)
+![林間黃箭頭](/travelogue/Camino/ch6/IMG_20250616_141626.jpg)
+![抵達!](/travelogue/Camino/ch6/IMG_20250616_143109.jpg)
+![整潔的宿舍](/travelogue/Camino/ch6/IMG_20250616_151353.jpg)
+![前一晚的室友也平安抵達](/travelogue/Camino/ch6/IMG_20250616_163528.jpg)
+![Roncesvalles室外餐酒館](/travelogue/Camino/ch6/IMG_20250616_164212.jpg)
+![Roncesvalles真的很美](/travelogue/Camino/ch6/IMG_20250616_182253.jpg)
+![遙遠異鄉曬衣服](/travelogue/Camino/ch6/IMG_20250616_202346.jpg)
+![建模潦草的晚餐魚排](/travelogue/Camino/ch6/IMG_20250616_210617.jpg)
+![稍微好點的雞排](/travelogue/Camino/ch6/IMG_20250616_210749.jpg)
 
 # 6/17,Larrasoana
 - 早上我起來時昨晚借我1歐元的女生已經離開了，我可能永遠錯過還她一歐元的機會了
@@ -262,6 +278,19 @@ summary = ""
 - Alex的英文我只聽的懂三成，我聽其他英國人的英文並不會這樣，他感覺不是英國口音，還是根本不是英國人!?也許我不該太常回答他yes，這會讓他以為我知道他在說什麼
 - 今晚睡前再次檢討早餐跟picnic ，目前想法是絕對不要有picnic ，重量實在不划算，且picnic的內容有可能太乾燥，會需要我喝更多的水浪費我的水，只要有高熱量小點心就好，12-13點吃第一餐，17-19點吃第二餐，然後買高熱量小點心早上吃
 	- 這個節奏回頭看非常棒，我一路到終點都是這進食節奏，有時12-13點這餐會省略
+![Roncesvalles早餐](/travelogue/Camino/ch6/IMG_20250617_070044.jpg)
+![建築就沒有不好看的](/travelogue/Camino/ch6/IMG_20250617_075713.jpg)
+![這裡的牛馬可比都市裡的舒服許多](/travelogue/Camino/ch6/IMG_20250617_082705.jpg)
+![漫漫長路](/travelogue/Camino/ch6/IMG_20250617_084617.jpg)
+![林徑](/travelogue/Camino/ch6/IMG_20250617_093723.jpg)
+![Zubiri小鎮](/travelogue/Camino/ch6/IMG_20250617_124403.jpg)
+![pin太重了](/travelogue/Camino/ch6/IMG_20250617_160708.jpg)
+![非常舒適的Nicos民宿](/travelogue/Camino/ch6/IMG_20250617_162827.jpg)
+![晚餐](/travelogue/Camino/ch6/IMG_20250617_175336.jpg)
+![電池爐打不開](/travelogue/Camino/ch6/IMG_20250617_180812.jpg)
+![打開了](/travelogue/Camino/ch6/IMG_20250617_182226.jpg)
+![暖氣?](/travelogue/Camino/ch6/IMG_20250617_184917.jpg)
+
 # 6/18, Pamplona
 - 進入城市人多很多開始有點怕被偷被搶之類的，也許是亞洲面孔，也許是自己心理作用，總覺得許多目光在自己身上，在台灣的外國人可能也是這種感覺嗎?
 - SIS發泡錠幫助很大一天兩個，可能要找找哪邊有賣了
@@ -277,13 +306,29 @@ summary = ""
 - 以為會早到餐廳，結果逛教堂還晚了半小時
 - 去了名店Asador Olaverri
 	- 沙朗非常非常棒，解鎖我吃過最棒的牛排，不虛此行
-	- 而且只要22歐，有夠便宜，若這份牛排當100分，台灣2000左右的牛排我認為只有70分吧
+	- 而且只要24歐，有夠便宜，若這份牛排當100分，台灣2000台幣左右的牛排我認為只有70分吧
 	- 牛肉丸吃起來有點噁心，太油了
 	- 沒賣小牛排ternera ，可惜
 	- 點了一份生菜有夠大盤，這是給一桌的人去分的那個份量，而這盤生菜第一個上，我一個人對著那盤生菜在那啃感覺引起一些注目，生菜上撒的橄欖油香氣四溢，好吃!
 	- 所有料理我還是全部吃完了，很棒，好吃也好，新奇也好，都很棒
 	- 服務態度極佳
 - 明天的a計畫，Albergue Padres Reparadores；b計畫，Albergue La Bodega del Camino aka Albergue_on_the_Left
+![林徑](/travelogue/Camino/ch6/IMG_20250618_083255.jpg)
+![磚屋](/travelogue/Camino/ch6/IMG_20250618_083505.jpg)
+![公路](/travelogue/Camino/ch6/IMG_20250618_084112.jpg)
+![黑貓求蹭](/travelogue/Camino/ch6/IMG_20250618_085523.jpg)
+![從這天開始都是好天氣](/travelogue/Camino/ch6/IMG_20250618_085850.jpg)
+![令人心醉的廣場](/travelogue/Camino/ch6/IMG_20250618_102927.jpg)
+![市容整潔 差在招牌嗎?](/travelogue/Camino/ch6/IMG_20250618_111418.jpg)
+![抵達Pampolona](/travelogue/Camino/ch6/IMG_20250618_114440.jpg)
+![Pampolona教堂](/travelogue/Camino/ch6/IMG_20250618_120229.jpg)
+![Pampolona廣場](/travelogue/Camino/ch6/IMG_20250618_131552.jpg)
+![第一次路邊點餐](/travelogue/Camino/ch6/IMG_20250618_132746.jpg)
+![也許沒有機車也是市容差異的一環](/travelogue/Camino/ch6/IMG_20250618_135350.jpg)
+![我永遠吃到一半才想到拍照](/travelogue/Camino/ch6/IMG_20250618_142504.jpg)
+![超棒的Asador Olaverri牛排](/travelogue/Camino/ch6/IMG_20250618_144920.jpg)
+![弄老半天才知道他是電燈兼具吊扇](/travelogue/Camino/ch6/IMG_20250618_203811.jpg)
+
 # 6/19,Lorca
 - 成功走到Lorca，快累死我了，結束時的可樂終生難忘
 - 我水帶太少，我一天需要的大概是3-4瓶；剛剛看37.22公里，真的太猛了
@@ -302,6 +347,18 @@ summary = ""
 	- 中間沒城市的地方就沒有補水點，要小心過長一段距離沒水，沿路雖然可能有餐車但可遇不可求
 	- 前後一天可能25公里就好，不能連續
 - Marissa臨別前給我一個什麼best choice的小卡片，看不太懂什麼意思，有點像是勸我入教？
+![起床出發 再見 Pampolona](/travelogue/Camino/ch6/IMG_20250619_075438.jpg)
+![金黃麥浪](/travelogue/Camino/ch6/IMG_20250619_090057.jpg)
+![綿延無際](/travelogue/Camino/ch6/IMG_20250619_092650.jpg)
+![這裡有個陡坡快把我累死](/travelogue/Camino/ch6/IMG_20250619_102237.jpg)
+![石橋](/travelogue/Camino/ch6/IMG_20250619_130136.jpg)
+![葡萄](/travelogue/Camino/ch6/IMG_20250619_144709.jpg)
+![37公里後難忘的可樂](/travelogue/Camino/ch6/IMG_20250619_162923.jpg)
+![馬拉松到底都什麼人在跑的 我用走的快不行了](/travelogue/Camino/ch6/IMG_20250619_165045.jpg)
+![可以用大頭釘釘選自己的家鄉的世界地圖](/travelogue/Camino/ch6/IMG_20250619_180556.jpg)
+![美味的西班牙燉飯](/travelogue/Camino/ch6/IMG_20250619_184408.jpg)
+![普通的豆子湯](/travelogue/Camino/ch6/IMG_20250619_185121.jpg)
+
 # 6/20,Los Aros
 - 今天約29公里，碎石路太多腳底有點痠
 - 這邊似乎會有一些台灣很少見的石板路，石板上有細沙，有些下坡走起來很滑
@@ -325,3 +382,13 @@ summary = ""
 - 也遇到了昨天的Paul、Ian、George，他們三位一桌，我和美國老先生一桌
 - 今天吃飯忘記我到底有沒有付過一次錢了，我付錢時美國76歲老人還跟我說「我給小費真大方」，我到底是付了15.5還是總共給了兩次變成31歐
 - 今天經過的地方種植著整片的葡萄，讓我寫想起一款巫師3血與酒DLC的場景，那陽光、那綠色的葡萄葉，覺得製作團隊真的可能是取景於南歐或法國
+
+![自助早餐 好吃的鮪魚抹醬](/travelogue/Camino/ch6/IMG_20250620_061159.jpg)
+![室友起的很早 我也六點半就出發了](/travelogue/Camino/ch6/IMG_20250620_063536.jpg)
+![塗鴉](/travelogue/Camino/ch6/IMG_20250620_075207.jpg)
+![特別的取水口](/travelogue/Camino/ch6/IMG_20250620_082127.jpg)
+![始終優雅的市容 不論大城小鎮](/travelogue/Camino/ch6/IMG_20250620_082840.jpg)
+![公園玩一下](/travelogue/Camino/ch6/IMG_20250620_092954.jpg)
+![彷若無盡](/travelogue/Camino/ch6/IMG_20250620_120806.jpg)
+![面生的洗衣機](/travelogue/Camino/ch6/IMG_20250620_165228.jpg)
+![燉飯、瑪格麗特pizza與美國老先生](/travelogue/Camino/ch6/IMG_20250620_171741.jpg)
