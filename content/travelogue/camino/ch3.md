@@ -11,7 +11,7 @@ summary = ""
 # 通勤
 - 這邊以抵達法國之路起點[SJPP](https://maps.app.goo.gl/qXZS35vMmcgzHVvr8)為目標，介紹通勤方式
 - SJPP最近的車站是[Bayonne車站](https://share.google/HLDcMv3TQjTk8VtMO)，這是一個必經之路，而在Bayonne車站之前會有不同的方式
-- SJPP出發後第一天的能住宿的目的地是[Roncesvalles](https://maps.app.goo.gl/zndd4rtVu6Hqyzkk8)
+- SJPP出發後第一天的能住宿的目的地是[Roncesvalles](https://maps.app.goo.gl/zndd4rtVu6Hqyzkk8)，必須再發前就先列入考慮、訂房
 	- SJPP到Roncesvalles是法國路線最陡峭的一段，大約需7-8小時路程
 	- 所以如果不能把SJPP出發時間訂在9點前，可以考慮直接在SJPP住一晚，避免時間太過緊繃
 ![SJPP](/travelogue/Camino/ch3/IMG_20250615_194330.jpg)
