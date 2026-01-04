@@ -12,8 +12,6 @@ summary = ""
 - https://docs.google.com/spreadsheets/d/1C821e4_p4h9hHy66esopZbppEliif-w3l6MjvUO8Y0U/copy
 - 使用方式:點擊連結後會跳出詢問是否要製作副本，按下「製作副本」即可擁有自己的試算表
 
-![Camino試算表截圖](/travelogue/Camino/ch4/2025_12_19_220000.jpg)
-
 # 裝備
 這邊提一些試算表上沒提到的跟大家分享
 ## 重量
