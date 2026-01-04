@@ -6,8 +6,6 @@ layout = "single"
 categories = ["travelogue"]                                 
 summary = ""
 +++
-![庇里牛斯山](/travelogue/Camino/ch1/IMG_20250616_132941.jpg)
-
 {{< figure src="IMG_20250616_132941.jpg" alt="庇里牛斯山" >}}
 
 

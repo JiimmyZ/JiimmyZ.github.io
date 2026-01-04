@@ -59,8 +59,8 @@ googleAnalytics = "G-Z28G5RG1V"
   
 
     
-[permalinks]
-  travelogue = "/:section/::contentbasename/"
+# [permalinks]
+#   travelogue = "/:section/:contentbasename/"
 
 # 以下是評論區 - 已移到 params 下
 
