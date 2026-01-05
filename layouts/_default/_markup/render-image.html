@@ -1,17 +1,125 @@
 <!-- 這段用來設定圖片的說明會自動顯示，並且可以設定字體、顏色、置中等等 -->
+{{- $u := urls.Parse .Destination -}}
+{{- $img := false -}}
+{{- $src := $u.String -}}
+{{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
+{{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
+{{- if hugo.IsExtended -}}
+  {{- $processableFormats = $processableFormats | append "webp" -}}
+{{- end -}}
+
+{{- /* 嘗試查找資源（支援 page bundle 和全局資源） */ -}}
+{{- if not $u.IsAbs -}}
+  {{- $path := strings.TrimPrefix "./" $u.Path }}
+  {{- /* 先嘗試從 page bundle 中獲取 */ -}}
+  {{- $img = .PageInner.Resources.Get $path -}}
+  {{- /* 如果找不到，嘗試使用文件名查找（適用於絕對路徑但圖片在同目錄） */ -}}
+  {{- if not $img -}}
+    {{- $filename := path.Base $path -}}
+    {{- $img = .PageInner.Resources.Get $filename -}}
+  {{- end -}}
+  {{- /* 如果還是找不到，嘗試全局資源 */ -}}
+  {{- if not $img -}}
+    {{- $img = resources.Get $path -}}
+  {{- end -}}
+  {{- /* 如果使用文件名也找不到，再試一次 */ -}}
+  {{- if not $img -}}
+    {{- $filename := path.Base $path -}}
+    {{- $img = resources.Get $filename -}}
+  {{- end -}}
+  
+  {{- if $img -}}
+    {{- /* 找到資源，可以使用 Hugo 的圖片處理功能 */ -}}
+    {{- $src = $img.RelPermalink -}}
+    {{- with $u.RawQuery -}}
+      {{- $src = printf "%s?%s" $src . -}}
+    {{- end -}}
+    {{- with $u.Fragment -}}
+      {{- $src = printf "%s#%s" $src . -}}
+    {{- end -}}
+  {{- else -}}
+    {{- /* 如果找不到資源，嘗試作為 static 文件 */}}
+    {{- $src = .Destination | safeURL -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 檢測是否為視頻文件 */ -}}
+{{- $ext := strings.ToLower (path.Ext $src) -}}
+{{- $isVideo := in (slice ".mp4" ".webm" ".ogg" ".mov" ".avi") $ext -}}
 
 <figure style="margin: 2rem auto; text-align: center;">
-  <a href="{{ .Destination | safeURL }}" target="_blank"> {{/* 點擊圖片可看大圖 */}}
-    <img src="{{ .Destination | safeURL }}" 
-         alt="{{ .Text }}" 
-         {{ with .Title }} title="{{ . }}" {{ end }}
-         loading="lazy"
-         decoding="async" {{/* 異步解碼，進一步提升滑動流暢度 */}}
-         style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 100%; height: auto; transition: transform 0.3s ease;">
-  </a>
-  {{ with .Text }}
+  {{- if $isVideo -}}
+    {{- /* 渲染視頻 */ -}}
+    <video controls 
+           style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 100%; height: auto; display: block; margin: 0 auto;"
+           {{- with .Text }} title="{{ . }}" {{ end }}>
+      <source src="{{ $src }}" type="video/{{ if eq $ext ".mp4" }}mp4{{ else if eq $ext ".webm" }}webm{{ else if eq $ext ".ogg" }}ogg{{ else }}mp4{{ end }}">
+      您的瀏覽器不支援視頻播放。
+    </video>
+  {{- else -}}
+    {{- /* 渲染圖片 */ -}}
+    {{- $originalSrc := $src -}}
+    {{- $fullSizeSrc := $src -}}
+    {{- $responsiveImages := true -}}
+    
+    {{- /* 如果找到了資源且可以處理，則優化圖片 */ -}}
+    {{- if and $img (in $processableFormats $img.MediaType.SubType) -}}
+      {{- /* 生成響應式圖片（srcset） */ -}}
+      {{- $sizes := (slice "480" "720" "1080" "1500") -}}
+      {{- $maxWidth := 1200 -}}
+      {{- /* 調整最大寬度不超過原圖大小和設定的最大值 */ -}}
+      {{- if $img.Width -}}
+        {{- $maxWidth = (min $img.Width $maxWidth) -}}
+      {{- end -}}
+      {{- /* 生成縮略圖用於顯示（默認 1200px 寬） */ -}}
+      {{- $resized := $img.Resize (printf "%dx" $maxWidth) -}}
+      {{- $src = $resized.RelPermalink -}}
+      {{- $fullSizeSrc = $img.RelPermalink -}}
+      
+      {{- /* 生成響應式 srcset */ -}}
+      {{- $srcset := slice -}}
+      {{- range $size := $sizes -}}
+        {{- if and $img.Width (ge $img.Width (int $size)) -}}
+          {{- $resized := $img.Resize (printf "%sx" $size) -}}
+          {{- $srcset = $srcset | append (printf "%s %sw" $resized.RelPermalink $size) -}}
+        {{- end -}}
+      {{- end -}}
+      {{- /* 添加原圖大小（不超過最大寬度） */ -}}
+      {{- if and $img.Width (gt $img.Width $maxWidth) -}}
+        {{- $srcset = $srcset | append (printf "%s %dw" $resized.RelPermalink $maxWidth) -}}
+      {{- else if $img.Width -}}
+        {{- $srcset = $srcset | append (printf "%s %dw" $img.RelPermalink $img.Width) -}}
+      {{- end -}}
+      
+      <a href="{{ $fullSizeSrc }}" target="_blank"> {{/* 點擊圖片可看大圖 */}}
+        <img src="{{ $src }}" 
+             {{- if gt (len $srcset) 0 }} 
+             srcset="{{ delimit $srcset ", " }}"
+             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+             {{- end }}
+             alt="{{ .Text }}" 
+             {{ with .Title }} title="{{ . }}" {{ end }}
+             {{- if $img.Width }} width="{{ $resized.Width }}" {{ end }}
+             {{- if $img.Height }} height="{{ $resized.Height }}" {{ end }}
+             loading="lazy"
+             decoding="async" {{/* 異步解碼，進一步提升滑動流暢度 */}}
+             style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 100%; height: auto; transition: transform 0.3s ease;">
+      </a>
+    {{- else -}}
+      {{- /* 無法處理的圖片（static 文件或外部鏈接），使用原圖 */ -}}
+      <a href="{{ $src }}" target="_blank"> {{/* 點擊圖片可看大圖 */}}
+        <img src="{{ $src }}" 
+             alt="{{ .Text }}" 
+             {{ with .Title }} title="{{ . }}" {{ end }}
+             loading="lazy"
+             decoding="async" {{/* 異步解碼，進一步提升滑動流暢度 */}}
+             style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 100%; height: auto; transition: transform 0.3s ease;">
+      </a>
+    {{- end -}}
+  {{- end -}}
+  {{- with .Text }}
     <figcaption style="margin-top: 0.8rem; font-size: 0.9em; color: #888; line-height: 1.5;">
       {{ . }}
     </figcaption>
-  {{ end }}
+  {{- end }}
 </figure>
