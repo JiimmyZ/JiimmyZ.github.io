@@ -1,3 +1,9 @@
 User-agent: *
 Allow: /
+
+# Disallow draft pages and private directories
+Disallow: /drafts/
+Disallow: /*.backup$
+
+# Sitemap location
 Sitemap: https://jiimmyz.github.io/sitemap.xml

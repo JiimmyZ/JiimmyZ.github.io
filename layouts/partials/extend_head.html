@@ -3,3 +3,11 @@
   The theme's extend_head.html contained a demo GA ID; keep this empty
   so analytics are injected only via `layouts/partials/google_analytics.html`.
 */ -}}
+
+{{- /* Enhanced SEO meta tags */ -}}
+{{- partial "seo_meta.html" . -}}
+
+{{- /* Enhanced Article schema for pages */ -}}
+{{- if and .IsPage (site.Params.seo.enableSchema | default true) -}}
+{{- partial "schema_article.html" . -}}
+{{- end -}}

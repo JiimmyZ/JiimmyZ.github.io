@@ -14,6 +14,12 @@ googleAnalytics = "G-Z28G5RG1V"
   quality = 80
   resampleFilter = "Box"
 
+# Sitemap 設定
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
 [params]
   author = 'JZ'
   defaultTheme = 'auto' # dark, light, auto
@@ -55,6 +61,12 @@ googleAnalytics = "G-Z28G5RG1V"
   [params.analytics.google]
     measurementID = "G-Z28G5RG1V"
     SiteVerificationTag = "DB3k134ACKJpU4P_-y8AETrjqREoR50qA5mNakd0UHU"
+
+  # SEO 優化設定
+  [params.seo]
+    enableSchema = true
+    # Default image for social sharing (Open Graph, Twitter Cards)
+    # Can be overridden per page with cover.image frontmatter
 
   
 

@@ -127,14 +127,30 @@
         {{- $srcset = $srcset | append (printf "%s %dw" $img.RelPermalink $img.Width) -}}
       {{- end -}}
       
+      {{- /* Enhanced alt text handling for SEO */ -}}
+      {{- $altText := .Text -}}
+      {{- if not $altText -}}
+        {{- /* Fallback: Generate alt text from filename */ -}}
+        {{- $filename := path.Base $src -}}
+        {{- $filenameWithoutExt := strings.TrimSuffix (path.Ext $filename) $filename -}}
+        {{- /* Remove common prefixes and clean up */ -}}
+        {{- $filenameWithoutExt = replace $filenameWithoutExt "IMG_" "" -}}
+        {{- $filenameWithoutExt = replace $filenameWithoutExt "VID_" "" -}}
+        {{- $filenameWithoutExt = replace $filenameWithoutExt "_" " " -}}
+        {{- $altText = $filenameWithoutExt -}}
+      {{- end -}}
+      {{- $titleText := .Title -}}
+      {{- if not $titleText -}}
+        {{- $titleText = $altText -}}
+      {{- end -}}
       <a href="{{ $fullSizeSrc }}" target="_blank"> {{/* 點擊圖片可看大圖 */}}
         <img src="{{ $src }}" 
              {{- if gt (len $srcset) 0 }} 
              srcset="{{ delimit $srcset ", " }}"
              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
              {{- end }}
-             alt="{{ .Text }}" 
-             {{ with .Title }} title="{{ . }}" {{ end }}
+             alt="{{ $altText }}" 
+             {{- if $titleText }} title="{{ $titleText }}" {{ end }}
              {{- if $img.Width }} width="{{ $resized.Width }}" {{ end }}
              {{- if $img.Height }} height="{{ $resized.Height }}" {{ end }}
              loading="lazy"
@@ -142,11 +158,33 @@
              style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 100%; height: auto; transition: transform 0.3s ease;">
       </a>
     {{- else -}}
-      {{- /* 無法處理的圖片（static 文件或外部鏈接），使用原圖 */ -}}
+      {{- /* 無法處理的圖片（static 文件或外部鏈接，如 Cloudinary），使用原圖 */ -}}
+      {{- /* Enhanced alt text handling for SEO */ -}}
+      {{- $altText := .Text -}}
+      {{- if not $altText -}}
+        {{- /* Fallback: Generate alt text from filename or URL path */ -}}
+        {{- $filename := "" -}}
+        {{- if $u.IsAbs -}}
+          {{- /* For absolute URLs (Cloudinary), extract filename from path */ -}}
+          {{- $filename = path.Base $u.Path -}}
+        {{- else -}}
+          {{- $filename = path.Base $src -}}
+        {{- end -}}
+        {{- $filenameWithoutExt := strings.TrimSuffix (path.Ext $filename) $filename -}}
+        {{- /* Remove common prefixes and clean up */ -}}
+        {{- $filenameWithoutExt = replace $filenameWithoutExt "IMG_" "" -}}
+        {{- $filenameWithoutExt = replace $filenameWithoutExt "VID_" "" -}}
+        {{- $filenameWithoutExt = replace $filenameWithoutExt "_" " " -}}
+        {{- $altText = $filenameWithoutExt -}}
+      {{- end -}}
+      {{- $titleText := .Title -}}
+      {{- if not $titleText -}}
+        {{- $titleText = $altText -}}
+      {{- end -}}
       <a href="{{ $src }}" target="_blank"> {{/* 點擊圖片可看大圖 */}}
         <img src="{{ $src }}" 
-             alt="{{ .Text }}" 
-             {{ with .Title }} title="{{ . }}" {{ end }}
+             alt="{{ $altText }}" 
+             {{- if $titleText }} title="{{ $titleText }}" {{ end }}
              loading="lazy"
              decoding="async" {{/* 異步解碼，進一步提升滑動流暢度 */}}
              style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 100%; height: auto; transition: transform 0.3s ease;">

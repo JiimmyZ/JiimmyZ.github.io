@@ -280,6 +280,49 @@ python check_status.py
 }
 ```
 
+## SEO 優化
+
+本專案已實作完整的 SEO 優化設定，包括：
+
+### 已實作的 SEO 功能
+
+- ✅ **Meta 標籤優化**: 自動生成 title、description、keywords
+- ✅ **結構化資料**: Article schema、BreadcrumbList schema
+- ✅ **Open Graph 標籤**: 社群媒體分享優化
+- ✅ **Twitter Cards**: Twitter 分享卡片支援
+- ✅ **圖片 SEO**: 自動 alt 文字生成、響應式圖片
+- ✅ **Sitemap**: 自動生成 sitemap.xml
+- ✅ **robots.txt**: 搜尋引擎爬蟲指引
+- ✅ **效能優化**: 圖片懶加載、CDN 加速
+
+### SEO 最佳實踐
+
+詳細的 SEO 指南請參考 [SEO_GUIDELINES.md](SEO_GUIDELINES.md)，包含：
+
+- 標題優化建議（50-60 字元）
+- Meta 描述撰寫（150-160 字元）
+- 標題層級結構（H1-H4）
+- 圖片 alt 文字最佳實踐
+- 內部連結策略
+- 關鍵字使用指南
+
+### 內容建立檢查清單
+
+建立新內容時，請確保：
+
+1. **標題**: 獨特且描述性（50-60 字元）
+2. **描述**: 在 frontmatter 中添加 `description` 欄位
+3. **圖片**: 為所有圖片提供描述性 alt 文字
+4. **標籤**: 添加適當的 tags 和 categories
+5. **內部連結**: 連結到相關內容
+
+### SEO 工具與驗證
+
+- **Google Search Console**: 提交 sitemap 並監控搜尋表現
+- **Google Analytics**: 追蹤流量和用戶行為
+- **PageSpeed Insights**: 檢查頁面載入效能
+- **Schema Markup Validator**: 驗證結構化資料
+
 ## 常見問題
 
 ### 圖片/影片無法顯示
@@ -303,6 +346,7 @@ python check_status.py
 
 ## 相關文件
 
+- [SEO 優化指南](SEO_GUIDELINES.md) - 內容建立與 SEO 最佳實踐
 - [Cloudinary 設定指南](CLOUDINARY_SETUP.md)
 - [專案上下文與決策記錄](context.md)
 - [Hugo 官方文件](https://gohugo.io/documentation/)
