@@ -49,13 +49,34 @@ googleAnalytics = "G-Z28G5RG1V"
   "歌曲創作","寫詩","創作","文學","小說","blog","poetry","lyric","novel","essay",
   "雜感","辯論","哲學","人生","意境","新詩","散文"]
   
-  # 下面是社群網站串聯(未完成)
+  # 社群網站連結設定
+  # 支援的平台: twitter, x, facebook, linkedin, reddit, whatsapp, telegram, youtube, instagram
+  # 移除不需要的平台，或添加其他支援的平台
   [[params.socialIcons]]
-    name = "<youtube>"
-    url = "<https://www.youtube.com/channel/@G-yo7sk>"
+    name = "youtube"
+    url = "https://www.youtube.com/@G-yo7sk"
   [[params.socialIcons]]
     name = "instagram"
-    url = "https://www.instagram.com/where_gonna_be"
+    url = "https://www.instagram.com/where_gonna_be/"
+  # 範例：其他可用的社交平台（取消註解以啟用）
+  # [[params.socialIcons]]
+  #   name = "twitter"  # 或使用 "x" 作為 X (Twitter) 的圖示
+  #   url = "https://twitter.com/your_username"
+  # [[params.socialIcons]]
+  #   name = "facebook"
+  #   url = "https://www.facebook.com/your_page"
+  # [[params.socialIcons]]
+  #   name = "linkedin"
+  #   url = "https://www.linkedin.com/in/your_profile"
+  # [[params.socialIcons]]
+  #   name = "reddit"
+  #   url = "https://www.reddit.com/user/your_username"
+  # [[params.socialIcons]]
+  #   name = "whatsapp"
+  #   url = "https://wa.me/your_phone_number"
+  # [[params.socialIcons]]
+  #   name = "telegram"
+  #   url = "https://t.me/your_username"
 
   # Google Analytics (GA4) 設定 - 被 site partial 使用
   [params.analytics.google]
