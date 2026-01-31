@@ -77,10 +77,11 @@ def upload_file(
             print(f"Uploading {file_path.name}...", end=" ", flush=True)
 
         # Upload with optimization
+        # Note: Don't set 'folder' when public_id already contains full path
+        # Setting both causes Cloudinary to duplicate the path
         upload_options = {
             "public_id": public_id,
             "resource_type": resource_type,
-            "folder": f"{folder}/{folder_path}",
             "use_filename": True,
             "unique_filename": False,
         }
