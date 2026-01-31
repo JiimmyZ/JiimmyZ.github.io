@@ -29,6 +29,7 @@ googleAnalytics = "G-Z28G5RG1V"
   ShowPostNavLinks = true
   ShowBreadCrumbs = true # 顯示麵包層級導覽列
   ShowCodeCopyButtons = true # 程式碼區塊出現「複製按鈕」
+  mainSections = ["poetry", "novel", "essay", "review", "travelogue"] # 首頁顯示的內容區塊
 
   # Giscus 評論設定
   # 請先完成以下步驟：
