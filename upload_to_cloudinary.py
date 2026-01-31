@@ -10,6 +10,7 @@ This script:
 
 import json
 import os
+import re
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -47,6 +48,44 @@ def find_media_files(content_dir: str = "content") -> List[Path]:
     return sorted(media_files)  # Convert set to sorted list
 
 
+def normalize_url(url: str) -> str:
+    """
+    Normalize Cloudinary URL to ensure correct format.
+    
+    Removes any duplicate path segments and ensures proper structure:
+    https://res.cloudinary.com/{cloud_name}/{resource_type}/upload/{version}/{public_id}.{ext}
+    
+    Fixes issues like:
+    - Duplicate paths: /myblog/path/myblog/path/file.jpg -> /myblog/path/file.jpg
+    - Missing slashes: /ch1IMG_xxx.jpg -> /ch1/IMG_xxx.jpg
+    """
+    # Find all /myblog/ occurrences
+    myblog_indices = [m.start() for m in re.finditer(r'/myblog/', url)]
+    
+    if len(myblog_indices) >= 2:
+        # Get the path segment after first /myblog/
+        first_start = myblog_indices[0]
+        second_start = myblog_indices[1]
+        
+        # Extract path segments
+        first_path = url[first_start:second_start]  # /myblog/travelogue/camino/ch1
+        first_path_suffix = first_path.replace('/myblog/', '')  # travelogue/camino/ch1
+        
+        # Get everything after second /myblog/
+        remaining = url[second_start + len('/myblog/'):]  # travelogue/camino/ch1/IMG_xxx.jpg
+        
+        # Check if remaining starts with first_path_suffix followed by /
+        if remaining.startswith(first_path_suffix + '/'):
+            # Found duplicate! Remove the second /myblog/... segment
+            filename_part = remaining[len(first_path_suffix) + 1:]  # IMG_xxx.jpg
+            url = url[:second_start] + '/' + filename_part
+    
+    # Fix missing slashes before filenames (e.g., /ch1IMG_xxx.jpg -> /ch1/IMG_xxx.jpg)
+    url = re.sub(r'(/ch\d+)(IMG_|VID_)', r'\1/\2', url)
+    
+    return url
+
+
 def upload_file(
     file_path: Path, folder: str = "myblog", current: int = 0, total: int = 0
 ) -> Optional[Dict]:
@@ -54,13 +93,19 @@ def upload_file(
     Upload a file to Cloudinary.
 
     Returns dict with 'url' and 'public_id' on success, None on failure.
+    
+    The public_id is constructed as: {folder}/{relative_path_without_extension}
+    Example: content/travelogue/camino/ch1/IMG_xxx.jpg -> myblog/travelogue/camino/ch1/IMG_xxx
     """
     try:
         # Create folder path based on file location
         # e.g., content/travelogue/camino/ch8/IMG_xxx.jpg -> myblog/travelogue/camino/ch8/IMG_xxx
         relative_path = file_path.relative_to(Path("content"))
+        # Convert Windows path separators to forward slashes
         folder_path = str(relative_path.parent).replace("\\", "/")
-        public_id = f"{folder}/{folder_path}/{file_path.stem}"
+        # public_id should NOT include file extension
+        # Format: {folder}/{folder_path}/{filename_without_ext}
+        public_id = f"{folder}/{folder_path}/{file_path.stem}".replace("\\", "/")
 
         # Determine resource type
         ext = file_path.suffix.lower()
@@ -77,13 +122,14 @@ def upload_file(
             print(f"Uploading {file_path.name}...", end=" ", flush=True)
 
         # Upload with optimization
-        # Note: Don't set 'folder' when public_id already contains full path
-        # Setting both causes Cloudinary to duplicate the path
+        # IMPORTANT: public_id already contains full path (folder + subfolder + filename)
+        # Do NOT set 'folder' parameter, as it will cause path duplication
+        # Cloudinary will construct the URL from public_id automatically
         upload_options = {
             "public_id": public_id,
             "resource_type": resource_type,
-            "use_filename": True,
-            "unique_filename": False,
+            # Don't use use_filename=True as it may interfere with our custom public_id
+            "overwrite": True,  # Allow overwriting if file exists
         }
 
         # Add image-specific optimizations
@@ -129,12 +175,17 @@ def upload_file(
         else:
             result = cloudinary.uploader.upload(str(file_path), **upload_options)
 
+        # Get URL from result and normalize it
         url = result.get("secure_url") or result.get("url")
+        if url:
+            # Normalize URL to remove any potential duplicate paths and fix missing slashes
+            url = normalize_url(url)
+        
         print(f"[OK] ({result.get('bytes', 0) // 1024}KB)")
 
         return {
             "local_path": str(file_path),
-            "relative_path": str(relative_path),
+            "relative_path": str(relative_path).replace("\\", "/"),  # Normalize path separators
             "public_id": public_id,
             "url": url,
             "resource_type": resource_type,
@@ -156,8 +207,18 @@ def load_existing_mapping(mapping_file: str = "cloudinary_mapping.json") -> Dict
 
 def save_mapping(mapping: Dict, mapping_file: str = "cloudinary_mapping.json"):
     """Save URL mapping to JSON file."""
+    # Normalize all URLs in mapping before saving
+    normalized_mapping = {}
+    for key, value in mapping.items():
+        if isinstance(value, dict) and "url" in value:
+            value["url"] = normalize_url(value["url"])
+            # Also normalize relative_path
+            if "relative_path" in value:
+                value["relative_path"] = value["relative_path"].replace("\\", "/")
+        normalized_mapping[key] = value
+    
     with open(mapping_file, "w", encoding="utf-8") as f:
-        json.dump(mapping, f, indent=2, ensure_ascii=False)
+        json.dump(normalized_mapping, f, indent=2, ensure_ascii=False)
     print(f"\nMapping saved to {mapping_file}")
 
 
