@@ -45,7 +45,40 @@
 {{- end -}}
 
 {{- /* 檢測是否為視頻文件 */ -}}
-{{- $ext := strings.ToLower (path.Ext $src) -}}
+{{- /* 對於絕對 URL，從 URL 路徑中提取擴展名；對於相對路徑，直接使用 path.Ext */ -}}
+{{- $ext := "" -}}
+{{- if $u.IsAbs -}}
+  {{- /* 絕對 URL：從 URL 路徑中提取擴展名 */ -}}
+  {{- $ext = strings.ToLower (path.Ext $u.Path) -}}
+  {{- /* 如果從路徑中無法提取，嘗試從完整 URL 中查找常見擴展名 */ -}}
+  {{- if eq $ext "" -}}
+    {{- $urlLower := strings.ToLower $src -}}
+    {{- if strings.Contains $urlLower ".mp4" -}}
+      {{- $ext = ".mp4" -}}
+    {{- else if strings.Contains $urlLower ".webm" -}}
+      {{- $ext = ".webm" -}}
+    {{- else if strings.Contains $urlLower ".ogg" -}}
+      {{- $ext = ".ogg" -}}
+    {{- else if strings.Contains $urlLower ".mov" -}}
+      {{- $ext = ".mov" -}}
+    {{- else if strings.Contains $urlLower ".avi" -}}
+      {{- $ext = ".avi" -}}
+    {{- else if strings.Contains $urlLower ".jpg" -}}
+      {{- $ext = ".jpg" -}}
+    {{- else if strings.Contains $urlLower ".jpeg" -}}
+      {{- $ext = ".jpeg" -}}
+    {{- else if strings.Contains $urlLower ".png" -}}
+      {{- $ext = ".png" -}}
+    {{- else if strings.Contains $urlLower ".gif" -}}
+      {{- $ext = ".gif" -}}
+    {{- else if strings.Contains $urlLower ".webp" -}}
+      {{- $ext = ".webp" -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- /* 相對路徑：直接使用 path.Ext */ -}}
+  {{- $ext = strings.ToLower (path.Ext $src) -}}
+{{- end -}}
 {{- $isVideo := in (slice ".mp4" ".webm" ".ogg" ".mov" ".avi") $ext -}}
 
 <figure style="margin: 2rem auto; text-align: center;">
