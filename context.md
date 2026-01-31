@@ -2,7 +2,76 @@
 
 ## Session Log
 
-### Session Log 2026-02-01
+### Session Log 2026-02-01 (Afternoon)
+
+**Timestamp**: Session start ~afternoon
+
+**Activities**:
+1. **Critical Bug Discovery: Duplicate Path Segments in Cloudinary URLs** (~30 minutes)
+   - **Problem Identified**: All 634 Cloudinary URLs contained duplicated path segments
+   - **Example**: `.../myblog/travelogue/camino/ch1/myblog/travelogue/camino/ch1/IMG_xxx.jpg`
+   - **Should be**: `.../myblog/travelogue/camino/ch1/IMG_xxx.jpg`
+   - **Impact**: All media links returned 404 errors, website displayed no images/videos
+   - **Root Cause**: `upload_to_cloudinary.py` was setting both `folder` parameter and `public_id` with full path, causing Cloudinary to duplicate the path
+
+2. **URL Fix Process** (~20 minutes)
+   - Created temporary fix scripts:
+     - `fix_duplicate_paths.py`: Remove duplicate `/myblog/.../myblog/...` patterns
+     - `fix_missing_slashes.py`: Fix missing slashes (e.g., `ch1IMG_xxx.jpg` → `ch1/IMG_xxx.jpg`)
+   - Fixed 634 URLs in 6 markdown files
+   - Fixed 660 URLs in `cloudinary_mapping.json`
+   - Total: 1,294 URLs fixed
+
+3. **Code Refactoring: Improve upload_to_cloudinary.py** (~30 minutes)
+   - **Added `normalize_url()` function**:
+     - Removes duplicate path segments automatically
+     - Fixes missing slashes before filenames
+     - Ensures consistent URL format
+   - **Improved `public_id` construction**:
+     - Normalized path separators (Windows `\` → `/`)
+     - Removed `folder` parameter to prevent duplication
+     - Removed `use_filename=True` to avoid conflicts with custom `public_id`
+   - **Added URL normalization in `save_mapping()`**:
+     - Normalizes all URLs before saving to mapping file
+     - Ensures future uploads generate correct URLs
+   - **Deleted temporary fix scripts**:
+     - Removed `fix_duplicate_paths.py`
+     - Removed `fix_missing_slashes.py`
+   - **Result**: Future uploads will automatically generate correct URLs without needing fix scripts
+
+4. **Git Push Issues** (~10 minutes)
+   - Attempted to push 4-5 commits to remote
+   - **Issue**: PowerShell commands showing no output (possible terminal/encoding issue)
+   - Commands executed but unable to verify completion status
+   - **Status**: Unclear if push completed successfully
+   - **Pending**: Manual verification needed
+
+5. **Website Testing** (~5 minutes)
+   - Attempted to start Hugo server for local testing
+   - **Issue**: Hugo server connection refused (may need manual start)
+   - **URL Verification**: Confirmed markdown files contain correct URL format
+   - **Status**: URLs verified in source files, but website not tested yet
+
+**Outcome - Current State**:
+- ✅ **URL Format Fixed**: All 634 markdown URLs corrected (no duplicate paths, proper slashes)
+- ✅ **Mapping File Fixed**: All 660 URLs in `cloudinary_mapping.json` normalized
+- ✅ **Code Improved**: `upload_to_cloudinary.py` now handles URL normalization automatically
+- ✅ **Temporary Scripts Removed**: Clean codebase without fix scripts
+- ⏳ **Git Push Status**: Unknown (PowerShell output issue)
+- ⏳ **Website Testing**: Pending (Hugo server not accessible)
+
+**Codebase Changes**:
+- Enhanced `upload_to_cloudinary.py`: Added `normalize_url()`, improved `public_id` logic, removed conflicting options
+- Fixed 6 markdown files (634 URL corrections)
+- Fixed `cloudinary_mapping.json` (660 URL corrections)
+- Deleted 2 temporary fix scripts
+
+**Known Issues**:
+1. **PowerShell Output Issue**: Git commands execute but show no output, making it difficult to verify push status
+2. **Hugo Server**: Local testing not completed due to connection issues
+3. **Git Push Verification**: Need to manually verify if commits were pushed successfully
+
+### Session Log 2026-02-01 (Morning)
 
 **Timestamp**: Session start ~current time
 
@@ -107,6 +176,37 @@
 - Generated `cloudinary_mapping.json` (659 entries, ~150KB)
 
 ## Cumulative Decision Log (ADR - Architecture Decision Records)
+
+### 2026-02-01: ADR-006 - URL Normalization in Upload Script
+
+**Context**:
+After initial migration, discovered all 634 Cloudinary URLs contained duplicated path segments (e.g., `/myblog/path/myblog/path/file.jpg`), causing 404 errors. Root cause: `upload_to_cloudinary.py` was setting both `folder` parameter and `public_id` with full path, causing Cloudinary to duplicate paths.
+
+**Decision**:
+Integrate URL normalization directly into `upload_to_cloudinary.py` instead of using separate fix scripts.
+
+**Alternatives Considered**:
+1. **Separate Fix Scripts**: Created `fix_duplicate_paths.py` and `fix_missing_slashes.py` - quick fix but adds technical debt
+2. **Fix in Upload Script**: Chosen - prevents issues at source, cleaner codebase
+3. **Post-Processing Script**: More complex, requires running after every upload
+
+**Consequences**:
+- ✅ **Pros**:
+  - Prevents URL issues at source
+  - Automatic normalization for all future uploads
+  - Cleaner codebase (no temporary fix scripts)
+  - Self-healing: `save_mapping()` normalizes existing URLs
+- ⚠️ **Trade-offs**:
+  - Slight performance overhead (minimal, URL processing is fast)
+  - More complex upload function (acceptable for correctness)
+
+**Implementation**:
+- Added `normalize_url()` function to handle:
+  - Duplicate path segment removal
+  - Missing slash fixes (e.g., `ch1IMG_xxx.jpg` → `ch1/IMG_xxx.jpg`)
+- Removed `folder` parameter from upload options
+- Removed `use_filename=True` to avoid conflicts
+- Added normalization in `save_mapping()` to fix existing URLs
 
 ### 2026-01-31: ADR-001 - External CDN for Media Storage
 
@@ -334,6 +434,7 @@ myblog/
 - **Total link replacements**: 634
 - **Backup files created**: 30
 - **Large videos compressed**: 1 (115.63 MB → 29.46 MB, 74.5% reduction)
+- **URL fixes applied**: 1,294 (634 in markdown + 660 in mapping file)
 
 ## Updated Roadmap
 
@@ -414,14 +515,31 @@ myblog/
    - **Solution**: Enhanced compression script with aggressive settings (CRF 28-30, resolution scaling)
    - **Long-term**: Compression pipeline now operational for future large videos
 
+2. ~~**Duplicate Path Segments in Cloudinary URLs**~~ ✅ **RESOLVED**
+   - ~~**Issue**: All 634 Cloudinary URLs contained duplicated path segments causing 404 errors~~
+   - **Resolution**: Fixed all URLs in markdown files and mapping file
+   - **Solution**: Improved `upload_to_cloudinary.py` with automatic URL normalization
+   - **Prevention**: Future uploads will automatically generate correct URLs
+
 2. ~~**Missing Video File Reference**~~ ✅ **RESOLVED**
    - ~~**Issue**: Markdown references `VID_20250703_100502.mp4` but file was missing initially~~
    - **Resolution**: File compressed, uploaded, and markdown link updated
 
-3. ~~**FFmpeg Installation Dependency**~~ ✅ **RESOLVED**
+3. **PowerShell Output Issue** ⚠️ **ACTIVE**
+   - **Issue**: Git commands execute but show no output in PowerShell
+   - **Impact**: Cannot verify if git push completed successfully
+   - **Workaround**: Manual verification needed via GitHub web interface or different terminal
+   - **Status**: Pending resolution
+
+4. ~~**FFmpeg Installation Dependency**~~ ✅ **RESOLVED**
    - ~~**Issue**: Video compression requires FFmpeg, needs admin privileges to install~~
    - **Resolution**: FFmpeg successfully installed by user
    - **Status**: Compression workflow now fully operational
+
+5. **Website Testing** ⏳ **PENDING**
+   - **Issue**: Hugo server not accessible for local testing
+   - **Status**: URLs verified in source files, but live website not tested
+   - **Action Needed**: Start Hugo server manually and verify all images/videos load correctly
 
 ### Technical Debt
 
@@ -489,9 +607,11 @@ python-dotenv>=1.0.0
 ### One-Time Migration (Completed)
 1. ✅ Checked for duplicates in Cloudinary
 2. ✅ Removed 3 duplicate files
-3. ✅ Uploaded all 659 media files
+3. ✅ Uploaded all 660 media files (646 images + 14 videos)
 4. ✅ Updated 6 markdown files with Cloudinary URLs
-5. ⏳ Handle remaining large video file (>100MB)
+5. ✅ Handled large video file (>100MB) - compressed and uploaded
+6. ✅ Fixed duplicate path segments in all URLs (1,294 URLs corrected)
+7. ✅ Improved upload script to prevent future URL issues
 
 ## Notes
 
