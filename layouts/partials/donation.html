@@ -1,0 +1,354 @@
+{{- /* Donation section - QR Code transfer */ -}}
+{{- if (and site.Params.donation.enabled (ne .Params.disableDonation true)) }}
+<div class="donation-section">
+  <div class="donation-container">
+    <h3 class="donation-title">{{ site.Params.donation.title | default "如果喜歡這篇文章，歡迎打賞支持" }}</h3>
+    <p class="donation-description">{{ site.Params.donation.description | default "您的支持是我持續創作的動力" }}</p>
+    
+    {{- $amounts := site.Params.donation.amounts | default (slice 50 100 200 500) }}
+    <div class="donation-amounts">
+      {{- range $amounts }}
+      <button class="donation-btn" data-amount="{{ . }}" aria-label="打賞 {{ . }} 元">
+        {{ . }} 元
+      </button>
+      {{- end }}
+    </div>
+
+    {{- $methods := site.Params.donation.methods }}
+    {{- $enabledMethods := slice }}
+    {{- range $key, $method := $methods }}
+      {{- if $method.enabled }}
+        {{- $enabledMethods = $enabledMethods | append (dict "key" $key "method" $method) }}
+      {{- end }}
+    {{- end }}
+
+    {{- if gt (len $enabledMethods) 1 }}
+    <div class="donation-methods">
+      {{- range $enabledMethods }}
+      <button class="method-btn" data-method="{{ .key }}" aria-label="使用 {{ .method.label }} 付款">
+        {{ .method.label }}
+      </button>
+      {{- end }}
+    </div>
+    {{- end }}
+
+    <div class="donation-qr-container" id="donation-qr-container" style="display: none;">
+      <button class="donation-close-btn" id="donation-close-btn" aria-label="關閉 QR Code">×</button>
+      <div class="donation-qr-wrapper">
+        <img id="donation-qr-image" src="" alt="付款 QR Code" class="donation-qr-image">
+        <p class="donation-qr-hint" id="donation-qr-hint"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.donation-section {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: var(--theme);
+  border: 1px solid var(--border);
+}
+
+.donation-container {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.donation-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--primary);
+}
+
+.donation-description {
+  font-size: 0.9rem;
+  color: var(--secondary);
+  margin: 0 0 1.5rem 0;
+}
+
+.donation-amounts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.donation-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--primary);
+  background: var(--theme);
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.donation-btn:hover {
+  background: var(--primary);
+  color: var(--theme);
+  transform: translateY(-2px);
+}
+
+.donation-btn:active {
+  transform: translateY(0);
+}
+
+.donation-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.method-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: var(--secondary);
+  background: var(--theme);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.method-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.method-btn.active {
+  background: var(--primary);
+  color: var(--theme);
+  border-color: var(--primary);
+}
+
+.donation-qr-container {
+  position: relative;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--theme);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.donation-close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.donation-close-btn:hover {
+  background: var(--code-bg);
+  color: var(--primary);
+}
+
+.donation-qr-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.donation-qr-image {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.donation-qr-hint {
+  font-size: 0.875rem;
+  color: var(--secondary);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .donation-section {
+    padding: 1rem;
+  }
+
+  .donation-title {
+    font-size: 1.1rem;
+  }
+
+  .donation-amounts {
+    gap: 0.5rem;
+  }
+
+  .donation-btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .donation-qr-image {
+    max-width: 250px;
+  }
+}
+</style>
+
+<script>
+(function() {
+  'use strict';
+  
+  // Wait for DOM to be ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDonation);
+  } else {
+    initDonation();
+  }
+  
+  function initDonation() {
+  const donationConfig = {
+    amounts: {{ site.Params.donation.amounts | default (slice 50 100 200 500) | jsonify }},
+    methods: {
+      bank: {
+        enabled: {{ site.Params.donation.methods.bank.enabled | jsonify }},
+        qr: {{ site.Params.donation.methods.bank.qr | jsonify }},
+        label: {{ site.Params.donation.methods.bank.label | jsonify }}
+      },
+      linepay: {
+        enabled: {{ site.Params.donation.methods.linepay.enabled | jsonify }},
+        qr: {{ site.Params.donation.methods.linepay.qr | jsonify }},
+        label: {{ site.Params.donation.methods.linepay.label | jsonify }}
+      },
+      jkopay: {
+        enabled: {{ site.Params.donation.methods.jkopay.enabled | jsonify }},
+        qr: {{ site.Params.donation.methods.jkopay.qr | jsonify }},
+        label: {{ site.Params.donation.methods.jkopay.label | jsonify }}
+      }
+    }
+  };
+
+  let currentMethod = null;
+  let currentAmount = null;
+
+  // Initialize: find first enabled method
+  for (const [key, method] of Object.entries(donationConfig.methods)) {
+    if (method.enabled) {
+      currentMethod = key;
+      break;
+    }
+  }
+
+  // Get enabled methods
+  const enabledMethods = Object.entries(donationConfig.methods)
+    .filter(([_, method]) => method.enabled)
+    .map(([key, _]) => key);
+
+  // Amount button click handler
+  document.querySelectorAll('.donation-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const amount = parseInt(this.dataset.amount);
+      currentAmount = amount;
+      // Ensure currentMethod is set
+      if (!currentMethod) {
+        for (const [key, method] of Object.entries(donationConfig.methods)) {
+          if (method.enabled) {
+            currentMethod = key;
+            break;
+          }
+        }
+      }
+      showQRCode(amount, currentMethod);
+    });
+  });
+
+  // Method button click handler
+  document.querySelectorAll('.method-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const method = this.dataset.method;
+      currentMethod = method;
+      
+      // Update active state
+      document.querySelectorAll('.method-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      
+      // If QR code is already shown, update it
+      if (currentAmount) {
+        showQRCode(currentAmount, method);
+      }
+    });
+  });
+
+  // Close button handler
+  const closeBtn = document.getElementById('donation-close-btn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+      hideQRCode();
+    });
+  }
+
+  // Show QR Code
+  function showQRCode(amount, method) {
+    if (!method || !donationConfig.methods[method]) {
+      console.error('Invalid method:', method);
+      return;
+    }
+
+    const methodConfig = donationConfig.methods[method];
+    const qrContainer = document.getElementById('donation-qr-container');
+    const qrImage = document.getElementById('donation-qr-image');
+    const qrHint = document.getElementById('donation-qr-hint');
+
+    if (qrContainer && qrImage && qrHint) {
+      qrImage.src = methodConfig.qr;
+      qrHint.textContent = `請使用 ${methodConfig.label} 掃描 QR Code，金額：${amount} 元`;
+      qrContainer.style.display = 'block';
+      qrImage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  // Hide QR Code
+  function hideQRCode() {
+    const qrContainer = document.getElementById('donation-qr-container');
+    if (qrContainer) {
+      qrContainer.style.display = 'none';
+      currentAmount = null;
+    }
+  }
+
+  // Set initial active method if multiple methods
+  if (enabledMethods.length > 1 && currentMethod) {
+    const activeBtn = document.querySelector(`.method-btn[data-method="${currentMethod}"]`);
+    if (activeBtn) {
+      activeBtn.classList.add('active');
+    }
+  }
+  } // end initDonation
+})();
+</script>
+{{- end }}

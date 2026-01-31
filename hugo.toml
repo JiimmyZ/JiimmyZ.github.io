@@ -25,7 +25,7 @@ googleAnalytics = "G-Z28G5RG1V"
   defaultTheme = 'auto' # dark, light, auto
   ShowReadingTime = true 
   ShowToc = true
-  ShowShareButtons = true
+  ShowShareButtons = false
   ShowPostNavLinks = true
   ShowBreadCrumbs = true # 顯示麵包層級導覽列
   ShowCodeCopyButtons = true # 程式碼區塊出現「複製按鈕」
@@ -128,6 +128,19 @@ googleAnalytics = "G-Z28G5RG1V"
     enableSchema = true
     # Default image for social sharing (Open Graph, Twitter Cards)
     # Can be overridden per page with cover.image frontmatter
+
+  # Donation settings - QR Code transfer
+  # DISABLED: 打賞功能已暫停開發
+  # [params.donation]
+  #   enabled = false
+  #   title = "如果喜歡這篇文章，歡迎打賞支持"
+  #   description = "您的支持是我持續創作的動力"
+  #   amounts = [50, 100, 200, 500]
+  #   
+  #   [params.donation.methods]
+  #     bank = { enabled = true, qr = "/donation/Receive.jpg", label = "銀行轉帳" }
+  #     linepay = { enabled = false, qr = "/donation/qr-linepay.png", label = "Line Pay" }
+  #     jkopay = { enabled = false, qr = "/donation/qr-jkopay.png", label = "街口支付" }
 
   
 
