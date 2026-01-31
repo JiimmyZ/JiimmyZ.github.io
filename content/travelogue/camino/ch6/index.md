@@ -251,6 +251,8 @@ summary = ""
 ![霧與小徑](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_085909.jpg)
 ![濃霧中的Orisson餐館](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_090837.jpg)
 ![Orisson餐館](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_090933.jpg)
+![雲](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_093546.jpg)
+![雲](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_093656.jpg)
 ![雲](https://res.cloudinary.com/dt6lrjaov/video/upload/v1/myblog/travelogue/camino/ch6/VID_20250616_093706.mp4)
 ![牛](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_094533.jpg)
 ![石丘](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_095226.jpg)
