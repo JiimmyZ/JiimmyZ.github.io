@@ -1,7 +1,7 @@
 <!-- 這段用來設定圖片的說明會自動顯示，並且可以設定字體、顏色、置中等等 -->
 {{- $u := urls.Parse .Destination -}}
 {{- $img := false -}}
-{{- $src := $u.String -}}
+{{- $src := .Destination -}}
 {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
 {{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
 {{- if hugo.IsExtended -}}
@@ -9,6 +9,7 @@
 {{- end -}}
 
 {{- /* 嘗試查找資源（支援 page bundle 和全局資源） */ -}}
+{{- /* 對於絕對 URL（如 Cloudinary），直接使用原始 URL，不進行資源查找 */ -}}
 {{- if not $u.IsAbs -}}
   {{- $path := strings.TrimPrefix "./" $u.Path }}
   {{- /* 先嘗試從 page bundle 中獲取 */ -}}
@@ -69,7 +70,9 @@
       {{- $maxWidth := 1200 -}}
       {{- /* 調整最大寬度不超過原圖大小和設定的最大值 */ -}}
       {{- if $img.Width -}}
-        {{- $maxWidth = (min $img.Width $maxWidth) -}}
+        {{- if lt $img.Width $maxWidth -}}
+          {{- $maxWidth = $img.Width -}}
+        {{- end -}}
       {{- end -}}
       {{- /* 生成縮略圖用於顯示（默認 1200px 寬） */ -}}
       {{- $resized := $img.Resize (printf "%dx" $maxWidth) -}}
