@@ -1,1 +1,7 @@
 public/
+.env
+cloudinary_mapping.json
+*.backup
+venv/
+__pycache__/
+*.pyc

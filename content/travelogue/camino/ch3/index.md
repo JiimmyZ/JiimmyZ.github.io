@@ -7,7 +7,7 @@ categories = ["travelogue"]
 summary = ""
 +++
 
-![機場](IMG_20250613_145504.jpg)
+![機場](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764059/myblog/travelogue/camino/ch3/myblog/travelogue/camino/ch3/IMG_20250613_145504.jpg)
 
 # 通勤
 - 這邊以抵達法國之路起點[SJPP](https://maps.app.goo.gl/qXZS35vMmcgzHVvr8)為目標，介紹通勤方式
@@ -15,7 +15,7 @@ summary = ""
 - SJPP出發後第一天的能住宿的目的地是[Roncesvalles](https://maps.app.goo.gl/zndd4rtVu6Hqyzkk8)，必須再發前就先列入考慮、訂房
 	- SJPP到Roncesvalles是法國路線最陡峭的一段，大約需7-8小時路程
 	- 所以如果不能把SJPP出發時間訂在9點前，可以考慮直接在SJPP住一晚，避免時間太過緊繃
-![SJPP](IMG_20250615_194330.jpg)
+![SJPP](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766743/myblog/travelogue/camino/ch6/myblog/travelogue/camino/ch6/IMG_20250615_194330.jpg)
 ## CDG>SJPP
 - 說明:這是網路上最熱門的方式，下機後搭高鐵前往Bayonne，再搭TER列車至SJPP
 - 優點:如果飛機時間和高鐵時間對得起來，可以避開BIQ機場(離SJPP最近的機場)，直接抵達Bayonne車站再至SJPP
@@ -26,7 +26,7 @@ summary = ""
 		- 或是有一個很長的等候高鐵時間，導致抵達SJPP超過check in時間
 - 另外如果馬德里機場(MAD)抵達，也是可以火車抵達SJPP，但車程更久
 - 網路上另有巴塞隆納機場(BCN)前往SJPP的方式，車程更久就不列舉了，僅適合真的想去巴塞隆納的人
-![CDG到SJPP車程](1.jpg)
+![CDG到SJPP車程](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764043/myblog/travelogue/camino/ch3/myblog/travelogue/camino/ch3/1.jpg)
 
 ## BIQ>至SJPP
 - 說明:
@@ -42,7 +42,7 @@ summary = ""
 - 缺點:
 	- BIQ是個小機場，航班相對很少，需要在特定的日期搭乘選擇較少
 	- 且因BIQ是小機場，台灣無直達當以軟體設定目的地為BIQ時，必須先至歐洲某機場再轉機
-![BIQ機場取行李](IMG_20250615_110648.jpg)
+![BIQ機場取行李](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766564/myblog/travelogue/camino/ch6/myblog/travelogue/camino/ch6/IMG_20250615_110648.jpg)
 ## 返程
 - 終點處最近的機場是SCQ機場，做法和去程大同小異
 	- SCQ先飛至歐洲某機場，轉機飛回台灣
@@ -96,7 +96,7 @@ summary = ""
 ## 其他天
 - 前述是各種需要提前的狀況，在此之外，一般時候中午訂即可、甚至更晚都可以的，可以看當天自己想走幾公里
 
-![Roncesvalles庇護所](IMG_20250616_143116.jpg)
+![Roncesvalles庇護所](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764138/myblog/travelogue/camino/ch3/myblog/travelogue/camino/ch3/IMG_20250616_143116.jpg)
 
 # 網站與App
 ## 旅遊通用型
