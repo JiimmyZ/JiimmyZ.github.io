@@ -61,8 +61,9 @@ summary = ""
 	- Moderno餐廳一個白人大男孩看我艱難地完成點餐，對我比了讚哈哈，我很感謝，可惜走時沒和他道別
 - 在庇護所旁的教堂時，我又感到情緒激動，太奇怪了，真的太奇怪了，進入教堂裡面，到底是什麼牽引著我的情緒，木頭椅子、高高在上的更高存在讓我自行慚愧、心生懺悔？好像自己繞了很久很遠的彎路終於回來一樣
 
-![早晨 雲](IMG_20250622_064346.jpg)
-![早晨 陽](IMG_20250622_070501.jpg)
+<!-- Image files IMG_20250622_064346.jpg and IMG_20250622_070501.jpg are missing - not found locally or in Cloudinary -->
+<!-- ![早晨 雲](IMG_20250622_064346.jpg) -->
+<!-- ![早晨 陽](IMG_20250622_070501.jpg) -->
 ![麥浪不盡](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766890/myblog/travelogue/camino/ch7/IMG_20250621_073759.jpg)
 ![旗幟們](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766956/myblog/travelogue/camino/ch7/IMG_20250621_085531.jpg)
 ![很開心看到中文](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766923/myblog/travelogue/camino/ch7/IMG_20250621_085520.jpg)
@@ -176,7 +177,7 @@ summary = ""
 ![我在這迷上了喝可樂](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769768323/myblog/travelogue/camino/ch7/IMG_20250624_122204.jpg)
 ![彷若無盡](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769768348/myblog/travelogue/camino/ch7/IMG_20250624_132549.jpg)
 ![丘陵](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769768373/myblog/travelogue/camino/ch7/IMG_20250624_140844.jpg)
-![美好的景象](https://res.cloudinary.com/dt6lrjaov/video/upload/v1769772903/myblog/travelogue/camino/ch7VID-20250623-WA0000.mp4)
+![美好的景象](https://res.cloudinary.com/dt6lrjaov/video/upload/v1769772903/myblog/travelogue/camino/ch7/VID-20250623-WA0000.mp4)
 ![來這很喜歡喝牛奶](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769768401/myblog/travelogue/camino/ch7/IMG_20250624_170316.jpg)
 ![以及嘗試沒吃過的東西](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769768426/myblog/travelogue/camino/ch7/IMG_20250624_170801.jpg)
 ![這裡的微波食品挺好吃的 超商售價比餐廳便宜不少](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769768450/myblog/travelogue/camino/ch7/IMG_20250624_171615.jpg)
@@ -284,7 +285,7 @@ summary = ""
 ![優雅市容](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769769381/myblog/travelogue/camino/ch7/IMG_20250626_092029.jpg)
 ![昨天多走就是為了這間Burgos教堂](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769769401/myblog/travelogue/camino/ch7/IMG_20250626_092405.jpg)
 ![古人到底怎麼造出這種東西的](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769769422/myblog/travelogue/camino/ch7/IMG_20250626_092809.jpg)
-![另一個角度][IMG_20250626_094656.jpg]
+![另一個角度](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769769443/myblog/travelogue/camino/ch7/IMG_20250626_094656.jpg)
 ![典雅恢弘](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769769460/myblog/travelogue/camino/ch7/IMG_20250626_100856.jpg)
 ![有趣的畫作](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769769487/myblog/travelogue/camino/ch7/IMG_20250626_101433.jpg)
 ![這些照片是冰山一角 這教堂值得一看](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769769519/myblog/travelogue/camino/ch7/IMG_20250626_102349.jpg)
@@ -393,8 +394,8 @@ summary = ""
 ![麥浪](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769770788/myblog/travelogue/camino/ch7/IMG_20250628_115124.jpg)
 ![整段旅程最好的建築彩繪](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769770817/myblog/travelogue/camino/ch7/IMG_20250628_123536.jpg)
 ![杳無人煙](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769770848/myblog/travelogue/camino/ch7/IMG_20250628_143015.jpg)
-![抵達!][IMG_20250628_171549.jpg]
-![窗景][IMG_20250628_171942.jpg]
+![抵達!](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769770876/myblog/travelogue/camino/ch7/IMG_20250628_171549.jpg)
+![窗景](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769770892/myblog/travelogue/camino/ch7/IMG_20250628_171942.jpg)
 ![講究 點個啤酒還會有高腳杯](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769770912/myblog/travelogue/camino/ch7/IMG_20250628_171955.jpg)
 ![晚餐](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769770937/myblog/travelogue/camino/ch7/IMG_20250628_172802.jpg)
 ![你們覺得美乃滋是加哪裡的?](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769770967/myblog/travelogue/camino/ch7/IMG_20250628_172820.jpg)

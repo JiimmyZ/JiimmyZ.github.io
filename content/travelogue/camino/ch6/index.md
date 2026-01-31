@@ -286,7 +286,8 @@ summary = ""
 ![林徑](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765553/myblog/travelogue/camino/ch6/IMG_20250617_093723.jpg)
 ![Zubiri小鎮](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765590/myblog/travelogue/camino/ch6/IMG_20250617_124403.jpg)
 ![pin太重了](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765615/myblog/travelogue/camino/ch6/IMG_20250617_160708.jpg)
-![非常舒適的Nicos民宿](IMG_20250617_162827.jpg)
+<!-- Image file IMG_20250617_162827.jpg is missing - not found locally or in Cloudinary -->
+<!-- ![非常舒適的Nicos民宿](IMG_20250617_162827.jpg) -->
 ![晚餐](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765638/myblog/travelogue/camino/ch6/IMG_20250617_175336.jpg)
 ![電池爐打不開](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765667/myblog/travelogue/camino/ch6/IMG_20250617_180812.jpg)
 ![打開了](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765685/myblog/travelogue/camino/ch6/IMG_20250617_182226.jpg)
