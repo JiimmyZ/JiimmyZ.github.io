@@ -138,7 +138,9 @@ summary = ""
 ![綠草如茵](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769775291/myblog/travelogue/camino/ch8/IMG_20250705_131712.jpg)
 ![整段路程最棒的庇護所 景觀、設備、整潔無可挑剔 La Casas Del Peregrino](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769775321/myblog/travelogue/camino/ch8/IMG_20250705_133532.jpg)
 ![My friend Dylon](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769775378/myblog/travelogue/camino/ch8/IMG_20250705_160855.jpg)
-![最大的雨](VID_20250705_184046.mp4)
+<!-- Video file VID_20250705_184046.mp4 was removed from Git history due to size limit (104.50 MB > 100 MB). 
+     If the file is recovered, upload it to Cloudinary and update this reference with the Cloudinary URL. -->
+<!-- ![最大的雨](VID_20250705_184046.mp4) -->
 ![這間餐點也棒 Paul Wenmy也在這 他們很懂得挑旅店](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769775403/myblog/travelogue/camino/ch8/IMG_20250705_190700.jpg)
 ![薯條在這是常見的肉類配餐](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769775425/myblog/travelogue/camino/ch8/IMG_20250705_192754.jpg)
 ![甜點](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769775447/myblog/travelogue/camino/ch8/IMG_20250705_194822.jpg)
