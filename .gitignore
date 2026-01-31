@@ -5,3 +5,10 @@ cloudinary_mapping.json
 venv/
 __pycache__/
 *.pyc
+
+# Media files - managed by Cloudinary, should not be committed to Git
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
