@@ -7,7 +7,7 @@
         data-category="{{ site.Params.comments.giscus.category }}"
         data-category-id="{{ site.Params.comments.giscus.categoryId }}"
         data-mapping="{{ site.Params.comments.giscus.mapping }}"
-        data-strict="1"
+        data-strict="{{ site.Params.comments.giscus.strict | default "0" }}"
         data-reactions-enabled="{{ site.Params.comments.giscus.reactionsEnabled }}"
         data-emit-metadata="{{ site.Params.comments.giscus.emitMetadata }}"
         data-input-position="{{ site.Params.comments.giscus.inputPosition }}"

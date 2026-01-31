@@ -1,316 +1,6 @@
 # Project Context
 
-## Session Log
-
-### Session Log 2026-02-01 (Evening) - Comprehensive SEO Optimization Implementation
-
-**Summary**: Implemented comprehensive SEO optimization across all phases including enhanced meta tags, structured data, image optimization, technical SEO enhancements, content guidelines, and performance verification.
-
-**Changes Made**:
-- **Phase 1 - Enhanced Meta Tags**: Added `[params.seo]` section to `hugo.toml`, created `layouts/partials/seo_meta.html` with preconnect hints, DNS prefetch, article-specific meta tags, and language/locale settings
-- **Phase 2 - Structured Data**: Created `layouts/partials/schema_article.html` with enhanced Article schema including author, publisher, keywords, categories, and article body
-- **Phase 3 - Image SEO**: Enhanced `layouts/_default/_markup/render-image.html` with automatic alt text generation from filenames, title attribute fallbacks, and improved Cloudinary URL handling
-- **Phase 4 - Technical SEO**: Configured sitemap settings in `hugo.toml`, enhanced `static/robots.txt` with draft/backup file exclusions
-- **Phase 5 - Content Guidelines**: Created comprehensive `SEO_GUIDELINES.md` with best practices for titles, descriptions, headings, images, internal linking, and keywords
-- **Phase 6 - Performance**: Verified image optimization settings, lazy loading, responsive images, and Cloudinary CDN integration
-
-**Files Created**:
-- `layouts/partials/seo_meta.html` - Enhanced SEO meta tags partial
-- `layouts/partials/schema_article.html` - Enhanced Article schema for structured data
-- `SEO_GUIDELINES.md` - Comprehensive SEO best practices documentation
-
-**Files Modified**:
-- `hugo.toml` - Added SEO params and sitemap configuration
-- `layouts/partials/extend_head.html` - Integrated SEO meta and schema partials
-- `layouts/_default/_markup/render-image.html` - Enhanced alt text handling
-- `static/robots.txt` - Added draft/backup file exclusions
-- `README.md` - Added SEO optimization section and guidelines reference
-
-**Technical Details**:
-- All changes maintain backward compatibility with existing content
-- SEO features integrate seamlessly with PaperMod theme
-- Automatic alt text generation from filenames for images without descriptions
-- Resource hints (preconnect, DNS prefetch) for Cloudinary and Google Analytics
-- Enhanced Article schema complements theme's existing BlogPosting schema
-- Sitemap configured with monthly changefreq and 0.5 priority
-
-**Next Steps**:
-- Submit sitemap to Google Search Console
-- Validate structured data with Google Rich Results Test
-- Add descriptions to existing content frontmatter
-- Review and improve image alt text for existing images
-
-### Session Log 2026-02-01 (Evening) - Fix Ch6 Cloudinary Path Duplication
-
-**Summary**: Fixed duplicate path segments in ch6 Cloudinary files (same issue as ch7/ch8). Renamed 98 files (96 images + 2 videos) to correct paths using Cloudinary API.
-
-### Session Log 2026-01-31 (Late Evening) - Fix Ch7 Cloudinary Path Duplication
-
-**Summary**: Fixed duplicate path segments in ch7 Cloudinary files (same issue as ch8). Renamed 255 files (250 images + 5 videos) to correct paths using Cloudinary API.
-
-### Session Log 2026-01-31 (Evening) - Fix Image Rendering & Cloudinary Path Issues
-
-**Summary**: 
-- Fixed template `render-image.html` to handle Cloudinary absolute URLs correctly
-- Fixed ch8 Cloudinary path duplication (renamed 291 files)
-- Updated all URLs to use `v1` version (637 URLs across 6 markdown files)
-
-### Session Log 2026-01-31 (Evening) - Git Repository Cleanup & Push Success
-
-**Summary**: Cleaned Git object database and removed large media files from history. Repository size reduced from 4+ GiB to ~1 GiB (74% reduction). Successfully pushed to remote.
-
-### Session Log 2026-02-01 (Afternoon) - URL Normalization Fix
-
-**Summary**: Fixed duplicate path segments in all Cloudinary URLs (1,294 URLs fixed). Enhanced `upload_to_cloudinary.py` with automatic URL normalization to prevent future issues.
-
-### Session Log 2026-02-01 (Morning) - Large Video Compression
-
-**Summary**: Compressed large video file (115.63 MB → 29.46 MB) and uploaded to Cloudinary. Enhanced compression script with aggressive settings.
-
-### Session Log 2026-01-31 - Initial Cloudinary Migration
-
-**Summary**: Migrated 659 media files to Cloudinary CDN. Created automation scripts for upload and markdown link replacement. Fixed encoding issues and Windows compatibility problems. All files uploaded and markdown files updated with Cloudinary URLs.
-
-## Cumulative Decision Log (ADR - Architecture Decision Records)
-
-### 2026-02-01: ADR-009 - Comprehensive SEO Optimization Strategy
-
-**Context**:
-Blog needed comprehensive SEO optimization to improve search engine visibility and ranking. Existing setup had basic meta tags and theme-provided SEO features, but lacked enhanced structured data, image optimization, and content guidelines.
-
-**Decision**:
-Implement comprehensive SEO optimization across six phases: enhanced meta tags, structured data, image SEO, technical SEO, content guidelines, and performance verification.
-
-**Alternatives Considered**:
-1. **Minimal SEO**: Only basic meta tags - insufficient for competitive ranking
-2. **Plugin-Based SEO**: Use Hugo SEO plugins - adds dependency, less control
-3. **Comprehensive Custom Implementation**: Chosen - full control, no dependencies, integrates with existing theme
-
-**Consequences**:
-- ✅ **Pros**:
-  - Enhanced search engine visibility with Article schema
-  - Improved image SEO with automatic alt text generation
-  - Better social media sharing with enhanced Open Graph tags
-  - Comprehensive documentation for content creators
-  - Performance optimizations (preconnect, DNS prefetch)
-  - Backward compatible with existing content
-- ⚠️ **Trade-offs**:
-  - Additional template complexity (manageable, well-documented)
-  - Requires content creators to follow guidelines (mitigated by documentation)
-  - Slight increase in HTML size from additional meta tags (minimal impact)
-
-**Implementation**:
-- Created `seo_meta.html` partial for enhanced meta tags
-- Created `schema_article.html` for Article structured data
-- Enhanced `render-image.html` with automatic alt text generation
-- Configured sitemap and enhanced robots.txt
-- Created comprehensive `SEO_GUIDELINES.md` documentation
-- Updated README with SEO section
-
-**Validation**:
-- All templates validated with Hugo build
-- No linter errors
-- Structured data follows Schema.org specifications
-- Maintains compatibility with PaperMod theme features
-
-### 2026-02-01: ADR-006 - URL Normalization in Upload Script
-
-**Context**:
-After initial migration, discovered all 634 Cloudinary URLs contained duplicated path segments (e.g., `/myblog/path/myblog/path/file.jpg`), causing 404 errors. Root cause: `upload_to_cloudinary.py` was setting both `folder` parameter and `public_id` with full path, causing Cloudinary to duplicate paths.
-
-**Decision**:
-Integrate URL normalization directly into `upload_to_cloudinary.py` instead of using separate fix scripts.
-
-**Alternatives Considered**:
-1. **Separate Fix Scripts**: Quick fix but adds technical debt
-2. **Fix in Upload Script**: Chosen - prevents issues at source, cleaner codebase
-3. **Post-Processing Script**: More complex, requires running after every upload
-
-**Consequences**:
-- ✅ **Pros**:
-  - Prevents URL issues at source
-  - Automatic normalization for all future uploads
-  - Cleaner codebase (no temporary fix scripts)
-  - Self-healing: `save_mapping()` normalizes existing URLs
-- ⚠️ **Trade-offs**:
-  - Slight performance overhead (minimal, URL processing is fast)
-  - More complex upload function (acceptable for correctness)
-
-**Implementation**:
-- Added `normalize_url()` function to `upload_to_cloudinary.py`
-- Removed conflicting upload parameters (`folder`, `use_filename`)
-- Added normalization in `save_mapping()` to fix existing URLs
-
-### 2026-01-31: ADR-001 - External CDN for Media Storage
-
-**Context**: 
-Repository contained 659 media files (646 images, 13 videos) totaling ~500MB+, causing:
-- Git push operations taking 10+ minutes
-- Repository size bloating to hundreds of MB
-- Poor clone performance
-- Git's inefficiency with binary files
-
-**Decision**: 
-Migrate all media files to Cloudinary CDN instead of Git LFS or keeping files in repository.
-
-**Alternatives Considered**:
-1. **Git LFS**: Would keep files in git but requires LFS server, limited free tier (1GB)
-2. **External CDN (Cloudinary)**: Chosen - 25GB free storage, automatic optimization, CDN delivery
-3. **Separate Media Repository**: More complex, submodule management overhead
-4. **Optimize Before Commit**: Quick win but doesn't solve root problem
-
-**Consequences**:
-- ✅ **Pros**: 
-  - Fast CDN delivery (global edge locations)
-  - Automatic image optimization (WebP, quality adjustment)
-  - Reduced repository size by ~500MB
-  - Better scalability (no git performance degradation)
-  - Free tier sufficient for current needs (25GB storage, 25GB bandwidth/month)
-- ⚠️ **Trade-offs**:
-  - External dependency (Cloudinary service availability)
-  - File size limit: 100MB on free tier (requires compression for larger videos)
-  - Additional setup complexity (API keys, environment variables)
-  - Migration effort required (one-time)
-
-**CAP/PACELC Considerations**:
-- **Consistency**: Eventual (CDN propagation delay ~1-2 seconds)
-- **Availability**: High (Cloudinary SLA 99.9%)
-- **Partition Tolerance**: Handled by CDN edge locations
-- **Latency**: Optimized (CDN edge caching)
-- **Consistency**: Acceptable trade-off for static media (read-heavy workload)
-
-### 2026-01-31: ADR-002 - Mapping File Strategy for Incremental Updates
-
-**Context**:
-Need to prevent duplicate uploads when re-running upload script. Required mechanism to track which files have already been uploaded to Cloudinary.
-
-**Decision**:
-Use JSON mapping file (`cloudinary_mapping.json`) with local relative path as key, storing Cloudinary URL and metadata.
-
-**Alternatives Considered**:
-1. **Database**: Overkill for simple key-value mapping
-2. **Cloudinary API queries**: Slow, rate-limited, unnecessary API calls
-3. **JSON file**: Chosen - Simple, version-controllable, fast local lookups
-
-**Consequences**:
-- ✅ **Pros**:
-  - Fast lookups (O(1) dictionary access)
-  - Version controllable (can track changes in git)
-  - Human-readable format
-  - Enables incremental updates (only upload new files)
-- ⚠️ **Trade-offs**:
-  - File grows with each upload (currently 659 entries, ~150KB)
-  - Manual cleanup may be needed if file becomes too large
-  - Requires file I/O operations (negligible performance impact)
-
-### 2026-01-31: ADR-003 - Deduplication Before Upload
-
-**Context**:
-Initial uploads created duplicate entries in Cloudinary due to path construction issues. Need to identify and remove duplicates to prevent storage waste.
-
-**Decision**:
-Implement pre-upload duplicate detection script that queries Cloudinary API, identifies duplicates by filename, and removes redundant copies (keeping oldest).
-
-**Consequences**:
-- ✅ **Pros**:
-  - Prevents storage waste
-  - Cleaner Cloudinary dashboard
-  - Reduces confusion
-  - One-time cleanup operation
-- ⚠️ **Trade-offs**:
-  - Additional API calls (minimal impact)
-  - Requires manual execution or integration into workflow
-
-### 2026-01-31: ADR-004 - Large Video Handling Strategy
-
-**Context**:
-Videos >50MB failed to upload with error "Video is too large to process synchronously". Cloudinary free tier has 100MB file size limit.
-
-**Decision**:
-- Files 20-50MB: Use `upload_large()` method for reliability
-- Files >50MB: Upload without format conversion to avoid sync processing
-- Files >100MB: Require compression before upload (FFmpeg)
-
-**Consequences**:
-- ✅ **Pros**:
-  - Handles edge cases gracefully
-  - Avoids processing errors
-  - Maintains file quality for smaller videos
-- ⚠️ **Trade-offs**:
-  - Files >100MB require external tool (FFmpeg)
-  - Compression adds processing time
-  - May require admin privileges for FFmpeg installation
-
-### 2026-01-31: ADR-005 - Set-Based File Discovery for Windows Compatibility
-
-**Context**:
-Upload script was processing each file twice, causing duplicate upload warnings. Root cause: Windows file system case-insensitivity combined with searching both `.jpg` and `.JPG` extensions.
-
-**Decision**:
-Change `find_media_files()` to use Python `set()` instead of `list()` for automatic deduplication, ensuring each file path is processed exactly once.
-
-**Consequences**:
-- ✅ **Pros**:
-  - Eliminates duplicate processing
-  - Works correctly on Windows (case-insensitive) and Linux (case-sensitive)
-  - Minimal code change (1 line)
-- ⚠️ **Trade-offs**:
-  - Slight memory overhead (negligible for 659 files)
-  - Requires sorting before return (O(n log n) vs O(n))
-
-### 2026-01-31: ADR-007 - Cloudinary URL Version Strategy
-
-**Context**:
-After fixing Cloudinary path duplication, discovered that URLs with specific version numbers (e.g., `v1769773744`) returned 404 errors, while URLs with `v1` worked correctly. Cloudinary API returns specific version numbers, but these don't work for direct HTTP access.
-
-**Decision**:
-Update all Cloudinary URLs in markdown files to use `v1` version instead of specific version numbers.
-
-**Alternatives Considered**:
-1. **Keep Specific Versions**: Would require fetching current version for each file from Cloudinary API - complex and slow
-2. **Remove Version Numbers**: Cloudinary may require version numbers for some features
-3. **Use v1**: Chosen - Simple, works reliably, Cloudinary automatically serves latest version with v1
-
-**Consequences**:
-- ✅ **Pros**:
-  - Simple solution (regex replace)
-  - Works reliably (v1 always accessible)
-  - No API calls needed
-  - Cloudinary serves latest version with v1
-- ⚠️ **Trade-offs**:
-  - Loses version-specific caching benefits (minimal impact for static media)
-  - If file is updated in Cloudinary, v1 will serve new version (acceptable for read-only media)
-
-**Implementation**:
-- Updated 637 URLs across 6 markdown files to use `v1` version
-
-### 2026-01-31: ADR-008 - Cloudinary Path Duplication Fix Strategy
-
-**Context**:
-Discovered that all Cloudinary files had duplicate path segments, causing 404 errors. Root cause was initial upload script creating incorrect paths.
-
-**Decision**:
-Use Cloudinary API `rename()` method to move all files from duplicate paths to correct paths, rather than re-uploading (local files no longer available).
-
-**Alternatives Considered**:
-1. **Re-upload Files**: Not possible - local files were removed to save space
-2. **Delete and Re-upload**: Would lose files permanently
-3. **Rename via API**: Chosen - Preserves files, corrects paths, no data loss
-
-**Consequences**:
-- ✅ **Pros**:
-  - Preserves all existing files
-  - No data loss
-  - Fast operation (API rename is quick)
-  - Maintains file metadata
-- ⚠️ **Trade-offs**:
-  - Requires Cloudinary API access
-  - One-time operation (acceptable)
-
-**Implementation**:
-- Fixed 644 files total (ch6: 98, ch7: 255, ch8: 291) using `cloudinary.uploader.rename()` method
-
-## Project Overview & Tech Stack
+## Project Overview
 
 ### Project Type
 Hugo static site blog with extensive media content (travelogue with photos and videos)
@@ -319,6 +9,7 @@ Hugo static site blog with extensive media content (travelogue with photos and v
 - **Static Site Generator**: Hugo
 - **Theme**: PaperMod
 - **Media Storage**: Cloudinary (CDN)
+- **Comments System**: Giscus (GitHub Discussions)
 - **Version Control**: Git / GitHub Pages
 - **Python Scripts**: 
   - `cloudinary` SDK (v1.44.1)
@@ -332,182 +23,92 @@ myblog/
 │   └── travelogue/       # Travel blog posts with media
 ├── themes/               # Hugo themes
 ├── public/               # Generated static site
-├── upload_to_cloudinary.py    # Media upload automation
-├── update_markdown.py         # Markdown link replacement
-├── check_duplicates.py        # Cloudinary duplicate detection
+├── media_processor.py         # 圖片影片處理工具（整合上傳、更新、檢測、壓縮）⭐
 ├── check_status.py             # Upload status checker
 └── cloudinary_mapping.json    # Local file → Cloudinary URL mapping
 ```
 
-## Architectural Decisions
+## Recent Session Logs
 
-### Why Cloudinary?
-**Problem**: Repository contained 659 media files (646 images + 13 videos) totaling hundreds of MB, causing:
-- Extremely slow git push operations (minutes to hours)
-- Large repository size
-- Poor clone performance
-- Git not optimized for binary files
+### Session Log 2026-02-01 (Evening) - Final Root Directory Cleanup & Legacy Separation
 
-**Solution**: Migrate all media to Cloudinary CDN
-- **Benefits**:
-  - Fast CDN delivery for better page load times
-  - Automatic image optimization (WebP conversion, quality adjustment)
-  - Reduced repository size (media files removed from git)
-  - Better scalability
-  - Free tier: 25GB storage, 25GB bandwidth/month
+**Summary**: Final cleanup of root directory by removing legacy scripts that have been fully integrated into `media_processor.py`. Separated Legacy Context into independent `LEGACY.md` file to reduce token consumption.
 
-### Design Decisions
+**Files Deleted**:
+- **Legacy Scripts** (4 files):
+  - `upload_to_cloudinary.py` - Integrated into `media_processor.py upload`
+  - `update_markdown.py` - Integrated into `media_processor.py update-markdown`
+  - `check_duplicates.py` - Integrated into `media_processor.py check-duplicates`
+  - `compress_video.py` - Integrated into `media_processor.py compress`
+- **Python Cache**: `__pycache__/` directory
 
-1. **Mapping File Strategy**
-   - Created `cloudinary_mapping.json` to track local → Cloudinary URL mappings
-   - Prevents duplicate uploads on script re-runs
-   - Enables incremental updates
+**Files Created**:
+- `LEGACY.md` - Separated legacy context to reduce token consumption (~46% savings)
 
-2. **Deduplication Before Upload**
-   - Implemented `check_duplicates.py` to identify and remove duplicate files in Cloudinary
-   - Prevents storage waste and confusion
+**Files Retained**:
+- `media_processor.py` - Unified media processing tool (all-in-one)
+- `check_status.py` - Status verification (functionality not integrated)
 
-3. **Progress Tracking**
-   - Added counter display (`[1/659]`, `[2/659]`) for upload progress
-   - Only processes files that need upload (skips already uploaded)
+**Documentation Updates**:
+- Updated `context.md` - Removed legacy script references, added LEGACY.md link
+- Updated `README.md` - Removed all legacy script usage examples, simplified to use `media_processor.py` only
 
-4. **Large Video Handling**
-   - Files >20MB use `upload_large()` method for reliability
-   - Files >50MB uploaded without format conversion to avoid sync processing errors
-   - Files >100MB require compression (Cloudinary free tier limit)
+**Impact**:
+- Cleaner root directory (only 2 Python scripts remaining)
+- Reduced token consumption (~46% when reading context.md)
+- Simplified workflow (single unified tool)
+- Better maintainability (one source of truth)
 
-5. **Backup Strategy**
-   - Markdown files backed up with `.backup` extension before modification
-   - Allows rollback if needed
+### Session Log 2026-02-01 (Evening) - Root Directory Cleanup
 
-## Current Progress
+**Summary**: Cleaned up root directory by removing temporary scripts and backup files that are no longer needed after Cloudinary migration completion.
 
-### Completed Features ✅
+**Files Deleted**:
+- **Temporary Check/Fix Scripts** (10 files): All one-time fix scripts for Cloudinary migration issues
+- **Backup Files** (60+ files): All `.backup` files in `content/` and `public/` directories
+- **Python Cache**: `__pycache__/` directory
 
-1. **Cloudinary Integration Setup**
-   - ✅ Created upload script with progress tracking
-   - ✅ Created markdown update script
-   - ✅ Created duplicate detection and removal script
-   - ✅ Created status checking utilities
-   - ✅ Environment variable configuration (`.env`)
+**Files Retained** (Essential Scripts):
+- `upload_to_cloudinary.py` - Main upload script
+- `update_markdown.py` - Markdown link replacement
+- `check_duplicates.py` - Duplicate detection
+- `check_status.py` - Status verification
+- `compress_video.py` - Video compression utility
 
-2. **Media Migration**
-   - ✅ **659 files uploaded** (646 images + 13 videos)
-   - ✅ All files successfully migrated to Cloudinary
-   - ✅ **6 markdown files updated** with Cloudinary URLs
-   - ✅ **633 image/video links replaced** with CDN URLs
-   - ✅ **3 duplicate files removed** from Cloudinary
+### Session Log 2026-02-01 (Evening) - Giscus Comments System Integration
 
-3. **Scripts Created**
-   - ✅ `upload_to_cloudinary.py` - Automated media upload with deduplication
-   - ✅ `update_markdown.py` - Batch markdown link replacement
-   - ✅ `check_duplicates.py` - Cloudinary duplicate detection and cleanup
-   - ✅ `check_status.py` - Upload status verification
-   - ✅ `compress_video.py` - Video compression utility (for files >100MB)
-   - ✅ `analyze_upload_time.py` - Upload time estimation
+**Summary**: Integrated giscus comments system into Hugo blog. Configured GitHub Discussions-based commenting with full setup documentation.
 
-4. **Optimizations**
-   - ✅ Fixed duplicate file detection (Windows case-insensitivity issue)
-   - ✅ Optimized upload flow (only process files needing upload)
-   - ✅ Added progress counters for better UX
-   - ✅ Handled large video files (>50MB) without format conversion
+**Configuration Values**:
+- `repo`: `JiimmyZ/JiimmyZ.github.io`
+- `repoId`: `R_kgDOPTd04Q`
+- `categoryId`: `DIC_kwDOPTd04c4C0EQR`
+- `mapping`: `pathname` (uses URL pathname to match discussions)
+- `inputPosition`: `top` (comment box at top)
+- `theme`: `preferred_color_scheme` (auto-follows system theme)
+- `lang`: `zh-TW` (Traditional Chinese)
 
-### Migration Statistics
-- **Total files processed**: 660
-- **Successfully uploaded**: 660 (646 images + 14 videos)
-- **Markdown files updated**: 6
-- **Total link replacements**: 634
-- **Backup files created**: 30
-- **Large videos compressed**: 1 (115.63 MB → 29.46 MB, 74.5% reduction)
-- **URL fixes applied**: 1,294 (634 in markdown + 660 in mapping file)
+**Next Steps**:
+- [ ] Test giscus functionality on live site
+- [ ] Verify comments appear correctly on article pages
+- [ ] Test GitHub OAuth flow for visitor comments
+- [ ] Monitor GitHub Discussions for comment management
 
-## Updated Roadmap
+## Current Issues & Improvements Needed
 
-### Immediate Next Steps (Priority Order)
+### Active Issues ⏳
 
-1. ~~**Complete Large Video Migration**~~ ✅ **COMPLETED**
-   - ~~**File**: `VID_20250703_100502.mp4` (115.6 MB)~~
-   - **Status**: ✅ Compressed to 29.46 MB and uploaded successfully
-   - **Action Items**:
-     - [x] Install FFmpeg (admin PowerShell: `choco install ffmpeg -y`)
-     - [x] Verify installation: `ffmpeg -version`
-     - [x] Compress video: `python compress_video.py content/travelogue/camino/ch8/VID_20250703_100502.mp4`
-     - [x] Verify compressed size <100 MB (29.46 MB)
-     - [x] Upload compressed file: `python upload_to_cloudinary.py`
-     - [x] Update markdown: `python update_markdown.py`
-   - **Actual Time**: ~15 minutes (compression) + 2 minutes (upload)
-
-2. **Testing & Verification** 🟡 Medium Priority
-   - **Action Items**:
-     - [ ] Start Hugo server: `hugo server`
-     - [ ] Verify all 633 Cloudinary URLs load correctly
-     - [ ] Test video playback functionality
-     - [ ] Measure page load performance (before/after comparison)
-     - [ ] Check browser console for 404 errors
-     - [ ] Validate responsive image behavior
-   - **Success Criteria**: All media displays, no broken links, improved load times
-
-3. **Repository Cleanup** 🟢 Low Priority
-   - **Action Items**:
-     - [ ] Review `.backup` files (30 files)
-     - [ ] Delete backup files after verification: `Get-ChildItem -Recurse -Filter *.backup | Remove-Item`
-     - [ ] Optional: Remove local media files from `content/` (659 files, ~500MB)
-     - [ ] Update `.gitignore` if removing local media
-   - **Note**: Local files can be kept as backup or removed to reduce repo size
-
-4. ~~**Git Commit & Deployment**~~ ✅ **COMPLETED**
-   - **Status**: ✅ Successfully pushed to remote main branch
-   - **Action Items**:
-     - [x] Cleaned Git object database
-     - [x] Removed large files from Git history
-     - [x] Pushed to remote: `git push origin main --force`
-     - [x] Verified remote branch updated
-   - **Actual Time**: ~1 hour (including history cleanup)
-
-### Future Enhancements (Backlog)
-
-1. **Automation Pipeline** 📅 Future
-   - Integrate upload script into Git pre-commit hook
-   - Auto-upload new media files on content addition
-   - Automated compression for files >100MB
-   - **Estimated Effort**: 4-6 hours
-
-2. **Image Optimization** 📅 Future
-   - Leverage Cloudinary's responsive image features in Hugo templates
-   - Implement lazy loading for better performance
-   - Add srcset generation for different screen sizes
-   - **Estimated Effort**: 2-3 hours
-
-3. **Video Optimization** 📅 Future
-   - Set up automatic video compression pipeline (FFmpeg integration)
-   - Consider alternative storage for very large videos (>100MB)
-   - Implement video thumbnail generation
-   - **Estimated Effort**: 6-8 hours
-
-4. **Monitoring & Analytics** 📅 Future
-   - Track Cloudinary bandwidth usage
-   - Monitor upload success rates
-   - Alert on approaching free tier limits
-   - **Estimated Effort**: 3-4 hours
-
-## Known Issues & Technical Debt
-
-### Resolved Issues ✅
-
-- ~~Image Rendering Template Issue~~ - Fixed template to handle Cloudinary absolute URLs
-- ~~Cloudinary Path Duplication~~ - Fixed ch6/ch7/ch8 paths (644 files total)
-- ~~Cloudinary URL Version Numbers~~ - Updated all URLs to use `v1` version
-- ~~Large Video File Limit~~ - Compression pipeline operational
-- ~~Duplicate Path Segments in URLs~~ - Enhanced upload script with automatic normalization
-- ~~Git Push Failure~~ - Repository size reduced, push successful
-- ~~FFmpeg Installation~~ - Installed and operational
-
-### Current Issues
-
-1. **Website Testing** ⏳ **PENDING**
+1. **Website Testing** - **PENDING**
    - Hugo server not accessible for local testing
    - URLs verified in source files, but live website not tested
    - Action Needed: Start Hugo server and verify all images/videos load correctly
+   - Action Needed: Test giscus comments functionality
+
+2. **SEO Optimization Follow-up**
+   - [ ] Submit sitemap to Google Search Console
+   - [ ] Validate structured data with Google Rich Results Test
+   - [ ] Add descriptions to existing content frontmatter
+   - [ ] Review and improve image alt text for existing images
 
 ### Technical Debt
 
@@ -543,9 +144,109 @@ myblog/
    - Currently manageable (659 entries)
    - May need cleanup strategy if it grows significantly
 
+## Future Enhancements (Backlog)
+
+1. **Automation Pipeline** 📅 Future
+   - Integrate upload script into Git pre-commit hook
+   - Auto-upload new media files on content addition
+   - Automated compression for files >100MB
+   - **Estimated Effort**: 4-6 hours
+
+2. **Image Optimization** 📅 Future
+   - Leverage Cloudinary's responsive image features in Hugo templates
+   - Implement lazy loading for better performance
+   - Add srcset generation for different screen sizes
+   - **Estimated Effort**: 2-3 hours
+
+3. **Video Optimization** 📅 Future
+   - Set up automatic video compression pipeline (FFmpeg integration)
+   - Consider alternative storage for very large videos (>100MB)
+   - Implement video thumbnail generation
+   - **Estimated Effort**: 6-8 hours
+
+4. **Monitoring & Analytics** 📅 Future
+   - Track Cloudinary bandwidth usage
+   - Monitor upload success rates
+   - Alert on approaching free tier limits
+   - **Estimated Effort**: 3-4 hours
+
+## Essential Scripts Reference
+
+
+### `media_processor.py` - 圖片影片處理工具（推薦）
+
+**Purpose**: 整合了上傳、Markdown 更新、重複檢測、影片壓縮功能的統一工具
+
+**Usage**:
+```bash
+# 上傳媒體檔案
+python media_processor.py upload
+
+# 更新 Markdown 檔案中的連結
+python media_processor.py update-markdown
+python media_processor.py update-markdown --no-backup  # 不建立備份
+
+# 檢測重複檔案（僅檢查）
+python media_processor.py check-duplicates
+
+# 檢測並自動刪除重複檔案
+python media_processor.py check-duplicates --auto
+
+# 壓縮大型影片檔案
+python media_processor.py compress <video_file> [output_file]
+```
+
+**Features**:
+- **上傳功能**: 掃描並上傳媒體檔案，自動跳過已上傳檔案，顯示進度
+- **Markdown 更新**: 讀取映射表，更新所有 Markdown 檔案中的連結，自動備份
+- **重複檢測**: 查詢 Cloudinary 所有檔案，識別重複檔案，可自動刪除
+- **影片壓縮**: 使用 FFmpeg 壓縮大型影片（>100MB），支援兩階段壓縮
+
+**File Size Handling**:
+- Files 20-50MB: Uses `upload_large()` for reliability
+- Files >50MB: Uploads without format conversion
+- Files >100MB: Requires compression first (use `compress` command)
+
+**Requirements**: 
+- Cloudinary credentials (for upload/duplicates)
+- FFmpeg (for compression): `choco install ffmpeg` (Windows) or `brew install ffmpeg` (macOS)
+
+### `check_status.py`
+**Purpose**: Verify upload status of media files
+
+**Usage**:
+```bash
+python check_status.py
+```
+
+**Features**:
+- Validates files in `cloudinary_mapping.json`
+- Checks if Cloudinary URLs are accessible
+- Reports missing or broken links
+
+### 其他工具
+
+- `check_status.py` - 驗證上傳狀態（獨立工具，功能未整合到 media_processor.py）
+
+## Workflow
+
+### Typical Media Management Workflow
+1. Add new media files to `content/` directory
+2. Run `python media_processor.py upload` to upload new files
+3. Run `python media_processor.py update-markdown` to update markdown links
+4. Test locally with `hugo server`
+5. Commit and push changes
+
+### For Large Videos (>100MB)
+1. Compress video: `python media_processor.py compress path/to/video.mp4`
+2. Verify compressed size <100MB
+3. Upload compressed file: `python media_processor.py upload`
+4. Update markdown: `python update_markdown.py`
+
 ## Environment Setup
 
 ### Required Environment Variables
+Create `.env` file in project root:
 ```env
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
@@ -553,48 +254,30 @@ CLOUDINARY_API_SECRET=your_api_secret
 ```
 
 ### Python Dependencies
+```bash
+pip install -r requirements.txt
 ```
-cloudinary>=1.36.0
-python-dotenv>=1.0.0
-```
+
+Required packages:
+- `cloudinary>=1.36.0`
+- `python-dotenv>=1.0.0`
 
 ### External Tools
 - **FFmpeg**: Required for video compression (optional, only for files >100MB)
-  - Installation: `choco install ffmpeg` (Windows, requires admin)
-  - Or download from: https://www.gyan.dev/ffmpeg/builds/
+  - Windows: `choco install ffmpeg` (requires admin)
+  - macOS: `brew install ffmpeg`
+  - Download: https://www.gyan.dev/ffmpeg/builds/
 
-## Workflow Summary
+---
 
-### Typical Workflow
-1. Add new media files to `content/` directory
-2. Run `python upload_to_cloudinary.py` to upload new files
-3. Run `python update_markdown.py` to update markdown links
-4. Test locally with `hugo server`
-5. Commit and push changes
+## Legacy Context
 
-### One-Time Migration (Completed)
-1. ✅ Checked for duplicates in Cloudinary
-2. ✅ Removed 3 duplicate files
-3. ✅ Uploaded all 660 media files (646 images + 14 videos)
-4. ✅ Updated 6 markdown files with Cloudinary URLs
-5. ✅ Handled large video file (>100MB) - compressed and uploaded
-6. ✅ Fixed duplicate path segments in all URLs (1,294 URLs corrected)
-7. ✅ Improved upload script to prevent future URL issues
-8. ✅ Cleaned Git object database (reduced from 4.06 GiB to 1.05 GiB)
-9. ✅ Removed large media files from Git history (84% reduction in blob size)
-10. ✅ Successfully pushed all changes to remote main branch
-11. ✅ Cleaned root directory (removed temporary files, backups, and scripts - freed ~3.16 GB)
+歷史記錄和已完成的工作已移至獨立的檔案以節省 token 消耗。
 
-## Notes
+詳細內容請參考：[LEGACY.md](LEGACY.md)
 
-- All media files are now served via Cloudinary CDN
-- Original local files can be safely removed (optional, for repository size reduction)
-- Backup files (`.backup`) can be deleted after verification
-- Cloudinary free tier provides 25GB storage and 25GB bandwidth/month
-- For files >100MB, consider compression or upgrading Cloudinary plan
-- **Git History**: Large media files have been removed from Git history to reduce repository size
-- **Repository Size**: Reduced from 4+ GiB to ~1 GiB (74% reduction)
-- **Push Performance**: Future pushes will be significantly faster due to reduced repository size
-- **Cloudinary URLs**: All URLs use `v1` version for reliable access (Cloudinary serves latest version)
-- **Template Fix**: `render-image.html` now correctly handles absolute URLs by extracting extension from URL path component
-- **Path Fix**: All Cloudinary files moved from duplicate paths to correct paths (644 files total: ch6: 98, ch7: 255, ch8: 291)
+包含內容：
+- 已完成的 Session Logs（SEO 優化、路徑修復、遷移等）
+- 已完成的 Features 和 Migration Statistics
+- Architecture Decision Records (ADR)
+- 已解決的問題和一次性遷移記錄

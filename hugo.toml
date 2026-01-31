@@ -30,10 +30,50 @@ googleAnalytics = "G-Z28G5RG1V"
   ShowBreadCrumbs = true # 顯示麵包層級導覽列
   ShowCodeCopyButtons = true # 程式碼區塊出現「複製按鈕」
 
-  # Giscus 評論設定要先設定好，然這邊設true
+  # Giscus 評論設定
+  # 請先完成以下步驟：
+  # 1. 在 GitHub 上安裝 giscus app: https://github.com/apps/giscus
+  # 2. 在 GitHub repository 中啟用 Discussions 功能
+  # 3. 前往 https://giscus.app/ 設定並取得 repo-id 和 category-id
+  # 4. 將下方設定中的佔位符替換為實際值
 
   [params.comments]
     enabled = true
+    provider = "giscus"
+    
+    [params.comments.giscus]
+      # GitHub repository (格式: "username/repository")
+      repo = "JiimmyZ/JiimmyZ.github.io"
+      
+      # Repository ID (從 https://giscus.app/ 取得)
+      repoId = "R_kgDOPTd04Q"
+      
+      # Discussion category name (例如: "Announcements", "General")
+      category = "Announcements"
+      
+      # Category ID (從 https://giscus.app/ 取得)
+      categoryId = "DIC_kwDOPTd04c4C0EQR"
+      
+      # 頁面與討論的對應方式: "pathname", "url", "title", "og:title", "specific", "number"
+      mapping = "pathname"
+      
+      # 使用嚴格的標題匹配 (避免模糊匹配): "0" 或 "1"
+      strict = "0"
+      
+      # 是否啟用反應功能
+      reactionsEnabled = "1"
+      
+      # 是否發送討論元數據到父窗口
+      emitMetadata = "1"
+      
+      # 評論輸入框位置: "top" 或 "bottom"
+      inputPosition = "top"
+      
+      # 主題: "light", "dark", "preferred_color_scheme", "transparent_dark" 等
+      theme = "preferred_color_scheme"
+      
+      # 語言: "zh-TW" (繁體中文)
+      lang = "zh-TW"
 
   # 以下是首頁logo設置方式
   # profileMode = true

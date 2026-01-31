@@ -47,12 +47,8 @@ myblog/
 ├── static/                    # 靜態檔案（favicon, robots.txt 等）
 ├── public/                    # Hugo 生成的靜態網站（gitignore）
 │
-├── upload_to_cloudinary.py    # 媒體檔案上傳腳本
-├── update_markdown.py         # Markdown 連結更新腳本
-├── check_duplicates.py         # Cloudinary 重複檔案檢測
+├── media_processor.py         # 圖片影片處理工具（整合上傳、更新、檢測、壓縮）⭐ 推薦
 ├── check_status.py            # 上傳狀態檢查
-├── compress_video.py          # 影片壓縮工具
-├── analyze_upload_time.py     # 上傳時間分析
 │
 ├── cloudinary_mapping.json    # 本地檔案 → Cloudinary URL 對應表
 ├── requirements.txt           # Python 依賴
@@ -141,15 +137,33 @@ myblog/
 
 ### 媒體檔案管理
 
+#### 圖片影片處理工具（推薦）
+
+整合了上傳、重複檢測、影片壓縮功能的統一工具：
+
+```bash
+# 上傳媒體檔案到 Cloudinary
+python media_processor.py upload
+
+# 檢測重複檔案（僅檢查）
+python media_processor.py check-duplicates
+
+# 檢測並自動刪除重複檔案
+python media_processor.py check-duplicates --auto
+
+# 壓縮大型影片檔案（>100MB）
+python media_processor.py compress content/travelogue/camino/ch8/VID_xxx.mp4
+```
+
 #### 上傳媒體檔案到 Cloudinary
 
 當你在 `content/` 目錄中新增圖片或影片時：
 
 ```bash
-python upload_to_cloudinary.py
+python media_processor.py upload
 ```
 
-這個腳本會：
+這個功能會：
 - 掃描 `content/` 目錄中的所有媒體檔案
 - 上傳新檔案到 Cloudinary（跳過已上傳的檔案）
 - 更新 `cloudinary_mapping.json` 對應表
@@ -160,13 +174,13 @@ python upload_to_cloudinary.py
 上傳完成後，更新 Markdown 檔案中的媒體連結：
 
 ```bash
-python update_markdown.py
+python media_processor.py update-markdown
 ```
 
-這個腳本會：
+這個功能會：
 - 讀取 `cloudinary_mapping.json`
 - 將 Markdown 檔案中的本地檔案路徑替換為 Cloudinary CDN URL
-- 自動建立 `.backup` 備份檔案
+- 自動建立 `.backup` 備份檔案（可使用 `--no-backup` 跳過）
 - 顯示替換統計
 
 #### 檢查重複檔案
@@ -174,13 +188,16 @@ python update_markdown.py
 檢查 Cloudinary 中是否有重複檔案：
 
 ```bash
-python check_duplicates.py
+python media_processor.py check-duplicates
+python media_processor.py check-duplicates --auto
 ```
 
-使用 `--auto` 參數自動移除重複檔案：
+#### 壓縮大型影片
+
+對於超過 100MB 的影片檔案：
 
 ```bash
-python check_duplicates.py --auto
+python media_processor.py compress content/travelogue/camino/ch8/VID_xxx.mp4
 ```
 
 #### 檢查上傳狀態
@@ -231,12 +248,12 @@ python check_status.py
 
 2. **壓縮影片**
    ```bash
-   python compress_video.py content/travelogue/camino/ch8/VID_xxx.mp4
+   python media_processor.py compress content/travelogue/camino/ch8/VID_xxx.mp4
    ```
 
 3. **上傳壓縮後的檔案**
    ```bash
-   python upload_to_cloudinary.py
+   python media_processor.py upload
    ```
 
 ### 媒體檔案統計
@@ -265,6 +282,26 @@ python check_status.py
 - 導航選單設定
 - Google Analytics 設定
 - 閱讀體驗設定（目錄、閱讀時間、分享按鈕等）
+- Giscus 評論系統設定
+
+### Giscus 評論系統
+
+本專案使用 [giscus](https://giscus.app/) 作為評論系統，基於 GitHub Discussions。
+
+**設定步驟**：
+1. 在 GitHub 上安裝 [giscus app](https://github.com/apps/giscus)
+2. 在 GitHub repository 中啟用 Discussions 功能
+3. 前往 [giscus.app](https://giscus.app/) 設定並取得 `repo-id` 和 `category-id`
+4. 在 `hugo.toml` 中填入 giscus 設定值
+
+詳細設定指南請參考 [GISCUS_SETUP.md](GISCUS_SETUP.md)。
+
+**功能特色**：
+- ✅ 完全免費，無需資料庫
+- ✅ 無追蹤、無廣告
+- ✅ 支援自訂主題
+- ✅ 支援多種語言（包含繁體中文）
+- ✅ 自動同步 GitHub Discussions
 
 ### `cloudinary_mapping.json`
 
@@ -347,6 +384,7 @@ python check_status.py
 ## 相關文件
 
 - [SEO 優化指南](SEO_GUIDELINES.md) - 內容建立與 SEO 最佳實踐
+- [Giscus 設定指南](GISCUS_SETUP.md) - 評論系統設定步驟
 - [Cloudinary 設定指南](CLOUDINARY_SETUP.md)
 - [專案上下文與決策記錄](context.md)
 - [Hugo 官方文件](https://gohugo.io/documentation/)
