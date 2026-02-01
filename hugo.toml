@@ -143,6 +143,11 @@ googleAnalytics = "G-Z28G5RG1V"
   #     linepay = { enabled = false, qr = "/donation/qr-linepay.png", label = "Line Pay" }
   #     jkopay = { enabled = false, qr = "/donation/qr-jkopay.png", label = "街口支付" }
 
+  # Minimal inline donation section
+  [params.donation]
+    enabled = true
+    title = "Buy JZ a coffee"
+
   
 
     

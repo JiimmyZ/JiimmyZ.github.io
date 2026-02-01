@@ -1,0 +1,251 @@
+{{- /* Minimal inline donation section component */ -}}
+{{- if site.Params.donation.enabled }}
+<div class="donation-section-inline">
+  <div class="donation-section-container">
+    <h3 class="donation-section-title">{{ site.Params.donation.title | default "Buy JZ a coffee" }}</h3>
+    <button class="donation-section-btn" id="donation-section-btn" aria-label="Donate">
+      <span class="donation-btn-text">Donate</span>
+    </button>
+  </div>
+</div>
+
+<!-- Modal for "not yet available" message -->
+<div class="donation-modal" id="donation-modal" role="dialog" aria-labelledby="donation-modal-title" aria-hidden="true">
+  <div class="donation-modal-overlay" id="donation-modal-overlay"></div>
+  <div class="donation-modal-content">
+    <button class="donation-modal-close" id="donation-modal-close" aria-label="Close modal">×</button>
+    <h4 class="donation-modal-title" id="donation-modal-title">Donation Feature</h4>
+    <p class="donation-modal-message">Donation feature is not yet available. Stay tuned!</p>
+  </div>
+</div>
+
+<style>
+.donation-section-inline {
+  margin-top: var(--content-gap, 20px);
+  margin-bottom: 0;
+  padding: 1.5rem;
+  border-radius: var(--radius, 8px);
+  background: var(--theme);
+  border: 1px solid var(--border);
+}
+
+.donation-section-container {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.donation-section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  color: var(--primary);
+}
+
+.donation-section-btn {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--theme);
+  background: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius, 8px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.donation-section-btn:hover {
+  background: var(--primary);
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.donation-section-btn:active {
+  transform: translateY(0);
+}
+
+.donation-section-btn:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Modal Styles */
+.donation-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.donation-modal[aria-hidden="false"] {
+  display: flex;
+}
+
+.donation-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+.donation-modal-content {
+  position: relative;
+  background: var(--theme);
+  border: 1px solid var(--border);
+  border-radius: var(--radius, 8px);
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.donation-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.donation-modal-close:hover {
+  background: var(--code-bg);
+  color: var(--primary);
+}
+
+.donation-modal-close:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.donation-modal-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  color: var(--primary);
+}
+
+.donation-modal-message {
+  font-size: 1rem;
+  color: var(--secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .donation-section-inline {
+    padding: 1rem;
+  }
+
+  .donation-section-title {
+    font-size: 1.1rem;
+  }
+
+  .donation-section-btn {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .donation-modal-content {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+}
+</style>
+
+<script>
+(function() {
+  'use strict';
+  
+  // Wait for DOM to be ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDonationSection);
+  } else {
+    initDonationSection();
+  }
+  
+  function initDonationSection() {
+    const donationBtn = document.getElementById('donation-section-btn');
+    const modal = document.getElementById('donation-modal');
+    const modalOverlay = document.getElementById('donation-modal-overlay');
+    const modalClose = document.getElementById('donation-modal-close');
+    
+    if (!donationBtn || !modal) {
+      return;
+    }
+    
+    // Open modal on button click
+    donationBtn.addEventListener('click', function() {
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      
+      // Focus management for accessibility
+      const closeBtn = document.getElementById('donation-modal-close');
+      if (closeBtn) {
+        setTimeout(() => closeBtn.focus(), 100);
+      }
+    });
+    
+    // Close modal functions
+    function closeModal() {
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = ''; // Restore scrolling
+      donationBtn.focus(); // Return focus to button
+    }
+    
+    // Close on overlay click
+    if (modalOverlay) {
+      modalOverlay.addEventListener('click', closeModal);
+    }
+    
+    // Close on close button click
+    if (modalClose) {
+      modalClose.addEventListener('click', closeModal);
+    }
+    
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+        closeModal();
+      }
+    });
+  }
+})();
+</script>
+{{- end }}

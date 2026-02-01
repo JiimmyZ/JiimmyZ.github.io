@@ -57,10 +57,9 @@
     {{- end }}
   </footer>
 
-  {{- /* Donation feature disabled - 打賞功能已暫停開發 */ -}}
-  {{- /* if (and site.Params.donation.enabled (ne .Params.disableDonation true)) */ -}}
-  {{- /* partial "donation.html" . */ -}}
-  {{- /* end */ -}}
+  {{- if site.Params.donation.enabled }}
+  {{- partial "donation_section.html" . }}
+  {{- end }}
 
   {{- if site.Params.comments.enabled }}
   {{- partial "comments.html" . }}
