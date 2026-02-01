@@ -7,7 +7,7 @@ categories = ["travelogue"]
 summary = ""
 +++
 
-![機場](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764059/myblog/travelogue/camino/ch3/IMG_20250613_145504.jpg)
+![機場](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769928448/myblog/travelogue/camino/ch3/IMG_20250613_145504.jpg)
 
 # 通勤
 - 這邊以抵達法國之路起點[SJPP](https://maps.app.goo.gl/qXZS35vMmcgzHVvr8)為目標，介紹通勤方式
@@ -96,7 +96,7 @@ summary = ""
 ## 其他天
 - 前述是各種需要提前的狀況，在此之外，一般時候中午訂即可、甚至更晚都可以的，可以看當天自己想走幾公里
 
-![Roncesvalles庇護所](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764138/myblog/travelogue/camino/ch3/IMG_20250616_143116.jpg)
+![Roncesvalles庇護所](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769928471/myblog/travelogue/camino/ch3/IMG_20250616_143116.jpg)
 
 # 網站與App
 ## 旅遊通用型
