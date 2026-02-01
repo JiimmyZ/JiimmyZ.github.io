@@ -1,0 +1,176 @@
+/* EPUB Stylesheet for Camino Pilgrim */
+
+/* Force single column layout - prevent two-page spread */
+html {
+    max-width: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    column-count: 1 !important;
+    column-width: 100% !important;
+}
+
+body {
+    font-family: "標楷體", "DFKai-SB", "KaiTi", "Georgia", "Times New Roman", serif;
+    line-height: 1.6;
+    margin: 1em;
+    padding: 0;
+    color: #333;
+    max-width: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    column-count: 1 !important;
+    column-width: 100% !important;
+    display: block;
+}
+
+/* Single page view - prevent two-page spread */
+@page {
+    margin: 1em;
+    size: auto;
+    width: 100%;
+}
+
+/* Force single column for all sections */
+section {
+    column-count: 1 !important;
+    column-width: 100% !important;
+    width: 100%;
+    max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "標楷體", "DFKai-SB", "KaiTi", "Georgia", serif;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    color: #2c3e50;
+}
+
+h1 {
+    font-size: 2em;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.3em;
+    /* Prevent page breaks before and after chapter titles for smooth transitions */
+    page-break-before: avoid;
+    page-break-after: avoid;
+    /* Ensure content flows smoothly after chapter title */
+    margin-top: 1em;
+    margin-bottom: 0.8em;
+}
+
+h2 {
+    font-size: 1.5em;
+    border-bottom: 1px solid #95a5a6;
+    padding-bottom: 0.2em;
+    /* Prevent unnecessary page breaks */
+    page-break-after: avoid;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+p {
+    margin: 1em 0;
+    text-align: justify;
+    /* Prevent orphaned paragraphs */
+    orphans: 3;
+    widows: 3;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto;
+}
+
+ul, ol {
+    margin: 1em 0;
+    padding-left: 2em;
+}
+
+li {
+    margin: 0.5em 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 0.5em;
+    text-align: left;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+blockquote {
+    border-left: 4px solid #3498db;
+    margin: 1em 0;
+    padding-left: 1em;
+    color: #555;
+    font-style: italic;
+}
+
+code {
+    background-color: #f4f4f4;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: "Courier New", monospace;
+    font-size: 0.9em;
+}
+
+pre {
+    background-color: #f4f4f4;
+    padding: 1em;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+/* Cover page styles */
+.cover-page {
+    text-align: center;
+    margin: 3em 0;
+    page-break-after: always;
+}
+
+.cover-title-zh {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    color: #2c3e50;
+}
+
+.cover-divider {
+    border-top: 2px solid #3498db;
+    margin: 2em auto;
+    width: 50%;
+}
+
+.cover-title-en {
+    font-size: 2em;
+    margin-top: 1em;
+    color: #34495e;
+    font-style: italic;
+}
+
+/* Links */
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

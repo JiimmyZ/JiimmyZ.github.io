@@ -6,7 +6,7 @@ from pathlib import Path
 
 # Load mapping
 if os.path.exists("cloudinary_mapping.json"):
-    with open("cloudinary_mapping.json", "r", encoding="utf-8") as f:
+    with open("cloudinary_mapping.json", encoding="utf-8") as f:
         mapping = json.load(f)
 
     print(f"Total files in mapping: {len(mapping)}")

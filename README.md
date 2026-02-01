@@ -208,6 +208,29 @@ python media_processor.py compress content/travelogue/camino/ch8/VID_xxx.mp4
 python check_status.py
 ```
 
+### 代碼質量
+
+本專案使用 `ruff` 進行代碼格式化和 linting。
+
+```bash
+# 檢查代碼
+ruff check .
+
+# 自動修復可修復的問題
+ruff check --fix .
+
+# 格式化代碼
+ruff format .
+```
+
+在提交前，請確保代碼通過 ruff 檢查。
+
+#### 安裝開發依賴
+
+```bash
+pip install -r requirements-dev.txt
+```
+
 ### 部署
 
 1. **建置網站**
@@ -224,7 +247,7 @@ python check_status.py
 
 3. **GitHub Pages 自動部署**
    
-   如果已設定 GitHub Actions，推送後會自動部署到 GitHub Pages。
+   如果已設定 GitHub Actions，推送後會自動部署到 GitHub Pages。GitHub Actions 會自動執行代碼檢查，確保代碼質量。
 
 ## 媒體檔案處理
 

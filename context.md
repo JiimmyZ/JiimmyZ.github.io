@@ -30,6 +30,53 @@ myblog/
 
 ## Recent Session Logs
 
+### Session Log 2026-02-01 (Evening) - Comments System Evaluation & Decision to Maintain Giscus
+
+**Summary**: Evaluated options for adding Google login support to comments system. After comparing Giscus, Disqus, and Cusdis, decided to maintain current Giscus-only setup to preserve minimal design aesthetic.
+
+**Problem Statement**:
+- User requested support for additional login methods (e.g., Google) in addition to GitHub
+- Current Giscus system only supports GitHub OAuth authentication
+- Need to evaluate alternatives that support multiple OAuth providers
+
+**Research & Comparison**:
+
+**1. Giscus (Current System)**
+- **Pros**: Free, open-source, privacy-focused, lightweight (~40KB), no tracking/ads, integrates with GitHub ecosystem
+- **Cons**: Only supports GitHub login, requires GitHub account, limits non-technical users
+- **Best for**: Technical blogs, developer communities
+
+**2. Disqus**
+- **Pros**: Supports multiple login methods (Google, Facebook, Twitter, anonymous), mature platform, feature-rich
+- **Cons**: Privacy concerns (tracking, ads), performance issues (heavy JavaScript), data stored on third-party servers, requires VPN in China
+- **Best for**: General content websites needing broad user engagement
+
+**3. Cusdis**
+- **Pros**: Open-source, privacy-focused, supports multiple OAuth providers (Google, GitHub, Twitter), lightweight
+- **Cons**: Limited free tier, requires paid subscription ($12/year) or self-hosting for full features, smaller community
+- **Best for**: Privacy-conscious sites willing to pay/self-host
+
+**Decision**: **Maintain Giscus-only setup**
+
+**Rationale**:
+1. **Design Consistency**: Dual comment system (Giscus + Disqus/Cusdis) would require UI switcher/tabs, which conflicts with the site's minimal design philosophy
+2. **Target Audience Alignment**: Site content (literature, poetry, travelogue) likely attracts users comfortable with GitHub or willing to create GitHub accounts
+3. **Performance & Privacy**: Giscus maintains excellent performance (lightweight) and privacy (no tracking), aligning with site values
+4. **Simplicity**: Single comment system reduces maintenance overhead and keeps codebase clean
+5. **User Experience**: Minimal interface without comment system switcher provides cleaner, more focused reading experience
+
+**Trade-offs Accepted**:
+- Some users without GitHub accounts may be unable to comment
+- Potential reduction in comment engagement from non-technical users
+- Benefits of minimal design and performance outweigh accessibility concerns for this use case
+
+**Status**: **MAINTAINED** - Giscus remains the sole comment system. No code changes made.
+
+**Future Considerations**:
+- If comment engagement becomes a significant issue, revisit decision
+- Monitor user feedback regarding GitHub login requirement
+- Consider alternative solutions if Giscus adds multi-OAuth support in future
+
 ### Session Log 2026-02-01 (Evening) - Minimal Inline Donation Section Implementation
 
 **Summary**: Implemented a minimal inline donation section component following the plan document. Created a simple, unobtrusive donation button that displays a "not yet available" message when clicked.
@@ -76,107 +123,38 @@ myblog/
 
 **Note**: This is a simplified version compared to the previous QR Code-based donation feature. The modal serves as a placeholder for future donation functionality implementation.
 
-### Session Log 2026-01-31 (Evening) - Donation Feature Implementation & Suspension
 
-**Summary**: Implemented donation feature (QR Code transfer) following the plan document, then suspended development by commenting out all related code.
+## Project Improvement Plan Overview (2026-02-01)
 
-**Features Implemented**:
-- Created `layouts/partials/donation.html` - Donation partial template with HTML, CSS, and JavaScript
-- Modified `layouts/_default/single.html` - Added donation section between footer and comments
-- Updated `hugo.toml` - Added donation configuration parameters
-- Created `static/donation/` directory for QR Code images
-- Added `static/donation/README.md` - Instructions for QR Code image preparation
+**Summary**: Comprehensive technical assessment identifying improvement opportunities in testing, CI/CD, code quality, documentation, and security.
 
-**Configuration**:
-- Donation section displayed at article bottom (between share buttons and comments)
-- Four fixed amount buttons: 50, 100, 200, 500 NTD
-- Support for multiple payment methods (bank transfer, Line Pay, JKO Pay)
-- Responsive design for mobile and desktop
-- Dark/light theme auto-adaptation
+### Priority Categories
 
-**Status**: **SUSPENDED** - All donation-related code has been commented out
-- `hugo.toml`: Donation configuration section commented out
-- `layouts/_default/single.html`: Donation partial reference commented out
-- `layouts/partials/donation.html`: File retained but not called
+**High Priority (Immediate)**:
+1. **Automated Testing** - No unit/integration tests exist
+2. **Error Handling** - Basic error handling, needs structured logging and retry mechanisms
+3. **CI/CD Testing** - GitHub Actions lacks test steps before deployment
 
-**Files Created**:
-- `layouts/partials/donation.html` - Donation partial template (359 lines)
-- `static/donation/README.md` - QR Code image preparation guide
-- `static/donation/Receive.jpg` - User-provided QR Code image
+**Medium Priority (Short-term)**:
+4. **Dependency Locking** - Versions use `>=` ranges, need pinning
+5. **Code Formatting** - No linting/formatting tools (ruff recommended)
+6. **Documentation** - Missing developer docs (CONTRIBUTING.md, DEVELOPMENT.md)
 
-**Files Modified**:
-- `hugo.toml` - Added (then commented out) donation configuration
-- `layouts/_default/single.html` - Added (then commented out) donation section
+**Low Priority (Long-term)**:
+7. **Performance Monitoring** - No metrics for upload/processing times
+8. **Security Scanning** - No dependency vulnerability scanning
+9. **Build Validation** - No HTML validation or broken links checking
 
-**To Re-enable**:
-1. Uncomment `[params.donation]` section in `hugo.toml`
-2. Uncomment donation partial reference in `layouts/_default/single.html`
+### Key Improvements Identified
 
-**Note**: Feature was tested but QR Code display functionality had issues. Development suspended for future refinement.
+- **Testing**: Add pytest for `media_processor.py` unit/integration tests
+- **Linting**: Integrate ruff for code formatting and style checking
+- **Error Handling**: Replace print statements with structured logging (logging module)
+- **CI/CD**: Add test steps and build validation to GitHub Actions workflow
+- **Dependencies**: Lock versions in requirements.txt, add requirements-dev.txt
+- **Documentation**: Create CONTRIBUTING.md and DEVELOPMENT.md guides
 
-### Session Log 2026-02-01 (Evening) - Final Root Directory Cleanup & Legacy Separation
-
-**Summary**: Final cleanup of root directory by removing legacy scripts that have been fully integrated into `media_processor.py`. Separated Legacy Context into independent `LEGACY.md` file to reduce token consumption.
-
-**Files Deleted**:
-- **Legacy Scripts** (4 files):
-  - `upload_to_cloudinary.py` - Integrated into `media_processor.py upload`
-  - `update_markdown.py` - Integrated into `media_processor.py update-markdown`
-  - `check_duplicates.py` - Integrated into `media_processor.py check-duplicates`
-  - `compress_video.py` - Integrated into `media_processor.py compress`
-- **Python Cache**: `__pycache__/` directory
-
-**Files Created**:
-- `LEGACY.md` - Separated legacy context to reduce token consumption (~46% savings)
-
-**Files Retained**:
-- `media_processor.py` - Unified media processing tool (all-in-one)
-- `check_status.py` - Status verification (functionality not integrated)
-
-**Documentation Updates**:
-- Updated `context.md` - Removed legacy script references, added LEGACY.md link
-- Updated `README.md` - Removed all legacy script usage examples, simplified to use `media_processor.py` only
-
-**Impact**:
-- Cleaner root directory (only 2 Python scripts remaining)
-- Reduced token consumption (~46% when reading context.md)
-- Simplified workflow (single unified tool)
-- Better maintainability (one source of truth)
-
-### Session Log 2026-02-01 (Evening) - Root Directory Cleanup
-
-**Summary**: Cleaned up root directory by removing temporary scripts and backup files that are no longer needed after Cloudinary migration completion.
-
-**Files Deleted**:
-- **Temporary Check/Fix Scripts** (10 files): All one-time fix scripts for Cloudinary migration issues
-- **Backup Files** (60+ files): All `.backup` files in `content/` and `public/` directories
-- **Python Cache**: `__pycache__/` directory
-
-**Files Retained** (Essential Scripts):
-- `upload_to_cloudinary.py` - Main upload script
-- `update_markdown.py` - Markdown link replacement
-- `check_duplicates.py` - Duplicate detection
-- `check_status.py` - Status verification
-- `compress_video.py` - Video compression utility
-
-### Session Log 2026-02-01 (Evening) - Giscus Comments System Integration
-
-**Summary**: Integrated giscus comments system into Hugo blog. Configured GitHub Discussions-based commenting with full setup documentation.
-
-**Configuration Values**:
-- `repo`: `JiimmyZ/JiimmyZ.github.io`
-- `repoId`: `R_kgDOPTd04Q`
-- `categoryId`: `DIC_kwDOPTd04c4C0EQR`
-- `mapping`: `pathname` (uses URL pathname to match discussions)
-- `inputPosition`: `top` (comment box at top)
-- `theme`: `preferred_color_scheme` (auto-follows system theme)
-- `lang`: `zh-TW` (Traditional Chinese)
-
-**Next Steps**:
-- [ ] Test giscus functionality on live site
-- [ ] Verify comments appear correctly on article pages
-- [ ] Test GitHub OAuth flow for visitor comments
-- [ ] Monitor GitHub Discussions for comment management
+**Full details**: See plan document for complete analysis and implementation recommendations.
 
 ## Current Issues & Improvements Needed
 
@@ -361,7 +339,7 @@ Required packages:
 詳細內容請參考：[LEGACY.md](LEGACY.md)
 
 包含內容：
-- 已完成的 Session Logs（SEO 優化、路徑修復、遷移等）
+- 已完成的 Session Logs（Giscus 整合、根目錄清理、捐贈功能暫停、SEO 優化、路徑修復、遷移等）
 - 已完成的 Features 和 Migration Statistics
 - Architecture Decision Records (ADR)
 - 已解決的問題和一次性遷移記錄

@@ -1,0 +1,7 @@
+# Development dependencies for myblog project
+
+# Code quality and formatting
+ruff>=0.1.0
+
+# Pre-commit hooks (optional)
+# pre-commit>=3.0.0

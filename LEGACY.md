@@ -4,6 +4,108 @@
 
 ## Completed Session Logs
 
+### Session Log 2026-02-01 (Evening) - Giscus Comments System Integration
+
+**Summary**: Integrated giscus comments system into Hugo blog. Configured GitHub Discussions-based commenting with full setup documentation.
+
+**Configuration Values**:
+- `repo`: `JiimmyZ/JiimmyZ.github.io`
+- `repoId`: `R_kgDOPTd04Q`
+- `categoryId`: `DIC_kwDOPTd04c4C0EQR`
+- `mapping`: `pathname` (uses URL pathname to match discussions)
+- `inputPosition`: `top` (comment box at top)
+- `theme`: `preferred_color_scheme` (auto-follows system theme)
+- `lang`: `zh-TW` (Traditional Chinese)
+
+**Status**: **COMPLETED** - Giscus comments system successfully integrated and configured.
+
+### Session Log 2026-02-01 (Evening) - Final Root Directory Cleanup & Legacy Separation
+
+**Summary**: Final cleanup of root directory by removing legacy scripts that have been fully integrated into `media_processor.py`. Separated Legacy Context into independent `LEGACY.md` file to reduce token consumption.
+
+**Files Deleted**:
+- **Legacy Scripts** (4 files):
+  - `upload_to_cloudinary.py` - Integrated into `media_processor.py upload`
+  - `update_markdown.py` - Integrated into `media_processor.py update-markdown`
+  - `check_duplicates.py` - Integrated into `media_processor.py check-duplicates`
+  - `compress_video.py` - Integrated into `media_processor.py compress`
+- **Python Cache**: `__pycache__/` directory
+
+**Files Created**:
+- `LEGACY.md` - Separated legacy context to reduce token consumption (~46% savings)
+
+**Files Retained**:
+- `media_processor.py` - Unified media processing tool (all-in-one)
+- `check_status.py` - Status verification (functionality not integrated)
+
+**Documentation Updates**:
+- Updated `context.md` - Removed legacy script references, added LEGACY.md link
+- Updated `README.md` - Removed all legacy script usage examples, simplified to use `media_processor.py` only
+
+**Impact**:
+- Cleaner root directory (only 2 Python scripts remaining)
+- Reduced token consumption (~46% when reading context.md)
+- Simplified workflow (single unified tool)
+- Better maintainability (one source of truth)
+
+**Status**: **COMPLETED**
+
+### Session Log 2026-02-01 (Evening) - Root Directory Cleanup
+
+**Summary**: Cleaned up root directory by removing temporary scripts and backup files that are no longer needed after Cloudinary migration completion.
+
+**Files Deleted**:
+- **Temporary Check/Fix Scripts** (10 files): All one-time fix scripts for Cloudinary migration issues
+- **Backup Files** (60+ files): All `.backup` files in `content/` and `public/` directories
+- **Python Cache**: `__pycache__/` directory
+
+**Files Retained** (Essential Scripts):
+- `upload_to_cloudinary.py` - Main upload script
+- `update_markdown.py` - Markdown link replacement
+- `check_duplicates.py` - Duplicate detection
+- `check_status.py` - Status verification
+- `compress_video.py` - Video compression utility
+
+**Status**: **COMPLETED**
+
+### Session Log 2026-01-31 (Evening) - Donation Feature Implementation & Suspension
+
+**Summary**: Implemented donation feature (QR Code transfer) following the plan document, then suspended development by commenting out all related code.
+
+**Features Implemented**:
+- Created `layouts/partials/donation.html` - Donation partial template with HTML, CSS, and JavaScript
+- Modified `layouts/_default/single.html` - Added donation section between footer and comments
+- Updated `hugo.toml` - Added donation configuration parameters
+- Created `static/donation/` directory for QR Code images
+- Added `static/donation/README.md` - Instructions for QR Code image preparation
+
+**Configuration**:
+- Donation section displayed at article bottom (between share buttons and comments)
+- Four fixed amount buttons: 50, 100, 200, 500 NTD
+- Support for multiple payment methods (bank transfer, Line Pay, JKO Pay)
+- Responsive design for mobile and desktop
+- Dark/light theme auto-adaptation
+
+**Status**: **SUSPENDED** - All donation-related code has been commented out
+- `hugo.toml`: Donation configuration section commented out
+- `layouts/_default/single.html`: Donation partial reference commented out
+- `layouts/partials/donation.html`: File retained but not called
+
+**Files Created**:
+- `layouts/partials/donation.html` - Donation partial template (359 lines)
+- `static/donation/README.md` - QR Code image preparation guide
+- `static/donation/Receive.jpg` - User-provided QR Code image
+
+**Files Modified**:
+- `hugo.toml` - Added (then commented out) donation configuration
+- `layouts/_default/single.html` - Added (then commented out) donation section
+
+**To Re-enable**:
+1. Uncomment `[params.donation]` section in `hugo.toml`
+2. Uncomment donation partial reference in `layouts/_default/single.html`
+
+**Note**: Feature was tested but QR Code display functionality had issues. Development suspended for future refinement.
+
 ### Session Log 2026-02-01 (Evening) - Comprehensive SEO Optimization Implementation
 
 **Summary**: Implemented comprehensive SEO optimization across all phases including enhanced meta tags, structured data, image optimization, technical SEO enhancements, content guidelines, and performance verification.

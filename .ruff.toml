@@ -1,0 +1,56 @@
+# Ruff configuration for myblog project
+
+# Target Python version
+target-version = "py311"
+
+# Line length (compatible with Black)
+line-length = 88
+
+# Excluded directories and files
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    "public",
+    "themes",
+    "resources",
+    ".hugo_build.lock",
+    "ebook-generator/output",
+    "ebook-generator/merged",
+    "ebook-generator/cache",
+]
+
+# Enabled rule sets
+[lint]
+# Enable all rules, but exclude some overly strict ones
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort (import sorting)
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+]
+
+# Ignored rules (adjust as needed)
+ignore = [
+    "E501",  # line too long (handled by formatter)
+    "B008",  # function calls in argument defaults (common in argparse)
+    "C901",  # too complex (may need case-by-case review)
+]
+
+# Import sorting configuration
+[lint.isort]
+known-first-party = []
+
+# Formatting configuration
+[format]
+# Use double quotes (optional, based on project preference)
+quote-style = "double"
+
+# Indentation
+indent-style = "space"

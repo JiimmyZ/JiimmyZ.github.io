@@ -33,7 +33,6 @@ import subprocess
 import sys
 from collections import defaultdict
 from pathlib import Path
-from typing import Dict, List, Optional
 
 import cloudinary
 import cloudinary.api
@@ -65,7 +64,7 @@ VIDEO_EXTENSIONS = {".mp4", ".webm", ".mov", ".avi", ".ogg"}
 # ============================================================================
 
 
-def find_media_files(content_dir: str = "content") -> List[Path]:
+def find_media_files(content_dir: str = "content") -> list[Path]:
     """Find all media files in content directory."""
     media_files = set()  # Use set to avoid duplicates
     content_path = Path(content_dir)
@@ -121,7 +120,7 @@ def normalize_url(url: str) -> str:
 
 def upload_file(
     file_path: Path, folder: str = "myblog", current: int = 0, total: int = 0
-) -> Optional[Dict]:
+) -> dict | None:
     """
     Upload a file to Cloudinary.
 
@@ -232,15 +231,15 @@ def upload_file(
         return None
 
 
-def load_existing_mapping(mapping_file: str = "cloudinary_mapping.json") -> Dict:
+def load_existing_mapping(mapping_file: str = "cloudinary_mapping.json") -> dict:
     """Load existing URL mapping to avoid re-uploading."""
     if os.path.exists(mapping_file):
-        with open(mapping_file, "r", encoding="utf-8") as f:
+        with open(mapping_file, encoding="utf-8") as f:
             return json.load(f)
     return {}
 
 
-def save_mapping(mapping: Dict, mapping_file: str = "cloudinary_mapping.json"):
+def save_mapping(mapping: dict, mapping_file: str = "cloudinary_mapping.json"):
     """Save URL mapping to JSON file."""
     # Normalize all URLs in mapping before saving
     normalized_mapping = {}
@@ -296,7 +295,6 @@ def cmd_upload():
     # Upload new files
     uploaded_count = 0
     skipped_count = 0
-    total_files = len(media_files)
 
     # Count files that need upload
     need_upload = []
@@ -508,7 +506,7 @@ def cmd_check_duplicates(auto_delete: bool = False):
     deleted_count = 0
     failed_count = 0
 
-    for filename, dup_info in duplicates.items():
+    for _filename, dup_info in duplicates.items():
         for dup_file in dup_info["delete"]:
             public_id = dup_file["public_id"]
             resource_type = dup_file["resource_type"]
@@ -601,7 +599,7 @@ def compress_video(input_path, output_path=None, target_size_mb=95):
     ]
 
     try:
-        result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+        subprocess.run(cmd, check=True, capture_output=True, text=True)
 
         # 檢查輸出文件大小
         if output_file.exists():
@@ -682,7 +680,7 @@ def compress_video(input_path, output_path=None, target_size_mb=95):
         return False
 
 
-def cmd_compress(video_file: str, output_file: Optional[str] = None):
+def cmd_compress(video_file: str, output_file: str | None = None):
     """壓縮大型影片檔案"""
     if not check_ffmpeg():
         print("Error: FFmpeg is not installed or not in PATH")
@@ -703,14 +701,14 @@ def cmd_compress(video_file: str, output_file: Optional[str] = None):
 
 def load_markdown_mapping(
     mapping_file: str = "cloudinary_mapping.json",
-) -> Dict[str, str]:
+) -> dict[str, str]:
     """Load Cloudinary URL mapping for markdown updates."""
     if not os.path.exists(mapping_file):
         print(f"Error: {mapping_file} not found!")
         print("Please run 'upload' command first.")
         return {}
 
-    with open(mapping_file, "r", encoding="utf-8") as f:
+    with open(mapping_file, encoding="utf-8") as f:
         data = json.load(f)
 
     # Create lookup by filename (for easy matching)
@@ -723,14 +721,14 @@ def load_markdown_mapping(
     return lookup
 
 
-def find_markdown_files(content_dir: str = "content") -> List[Path]:
+def find_markdown_files(content_dir: str = "content") -> list[Path]:
     """Find all markdown files in content directory."""
     content_path = Path(content_dir)
     return sorted(content_path.rglob("*.md"))
 
 
 def update_markdown_file(
-    file_path: Path, url_mapping: Dict[str, str], backup: bool = True
+    file_path: Path, url_mapping: dict[str, str], backup: bool = True
 ) -> int:
     """
     Update markdown file with Cloudinary URLs.
@@ -739,7 +737,7 @@ def update_markdown_file(
     """
     # Read file
     try:
-        with open(file_path, "r", encoding="utf-8") as f:
+        with open(file_path, encoding="utf-8") as f:
             content = f.read()
     except Exception as e:
         print(f"Error reading {file_path}: {e}")
@@ -864,7 +862,7 @@ def main():
     subparsers = parser.add_subparsers(dest="command", help="可用命令")
 
     # 上傳命令
-    parser_upload = subparsers.add_parser("upload", help="上傳媒體檔案到 Cloudinary")
+    subparsers.add_parser("upload", help="上傳媒體檔案到 Cloudinary")
 
     # Markdown 更新命令
     parser_update = subparsers.add_parser(
