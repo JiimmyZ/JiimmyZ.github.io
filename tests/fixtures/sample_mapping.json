@@ -1,0 +1,29 @@
+{
+  "travelogue/camino/ch1/IMG_001.jpg": {
+    "local_path": "content/travelogue/camino/ch1/IMG_001.jpg",
+    "relative_path": "travelogue/camino/ch1/IMG_001.jpg",
+    "public_id": "myblog/travelogue/camino/ch1/IMG_001",
+    "url": "https://res.cloudinary.com/test/image/upload/v123/myblog/travelogue/camino/ch1/IMG_001.jpg",
+    "resource_type": "image",
+    "bytes": 1024,
+    "uploaded_at": "2024-01-01T00:00:00"
+  },
+  "travelogue/camino/ch2/IMG_002.png": {
+    "local_path": "content/travelogue/camino/ch2/IMG_002.png",
+    "relative_path": "travelogue/camino/ch2/IMG_002.png",
+    "public_id": "myblog/travelogue/camino/ch2/IMG_002",
+    "url": "https://res.cloudinary.com/test/image/upload/v123/myblog/travelogue/camino/ch2/IMG_002.png",
+    "resource_type": "image",
+    "bytes": 2048,
+    "uploaded_at": "2024-01-02T00:00:00"
+  },
+  "travelogue/camino/ch1/VID_001.mp4": {
+    "local_path": "content/travelogue/camino/ch1/VID_001.mp4",
+    "relative_path": "travelogue/camino/ch1/VID_001.mp4",
+    "public_id": "myblog/travelogue/camino/ch1/VID_001",
+    "url": "https://res.cloudinary.com/test/video/upload/v123/myblog/travelogue/camino/ch1/VID_001.mp4",
+    "resource_type": "video",
+    "bytes": 1048576,
+    "uploaded_at": "2024-01-03T00:00:00"
+  }
+}

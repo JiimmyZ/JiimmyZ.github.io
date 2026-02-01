@@ -26,7 +26,7 @@ summary = ""
 		- 或是有一個很長的等候高鐵時間，導致抵達SJPP超過check in時間
 - 另外如果馬德里機場(MAD)抵達，也是可以火車抵達SJPP，但車程更久
 - 網路上另有巴塞隆納機場(BCN)前往SJPP的方式，車程更久就不列舉了，僅適合真的想去巴塞隆納的人
-![CDG到SJPP車程](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch31.jpg)
+![CDG到SJPP車程](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764043/myblog/travelogue/camino/ch31.jpg)
 
 ## BIQ>至SJPP
 - 說明:

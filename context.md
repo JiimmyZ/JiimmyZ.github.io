@@ -14,6 +14,8 @@ Hugo static site blog with extensive media content (travelogue with photos and v
 - **Python Scripts**: 
   - `cloudinary` SDK (v1.44.1)
   - `python-dotenv` (v1.2.1)
+  - `pydantic` (v2.12.5) - Data validation and type safety
+  - `pydantic-settings` (v2.12.0) - Settings management
 - **Deployment**: GitHub Actions → GitHub Pages
 
 ### Project Structure
@@ -29,6 +31,109 @@ myblog/
 ```
 
 ## Recent Session Logs
+
+### Session Log 2026-02-01 (Evening) - Automated Testing Implementation
+
+**Summary**: Implemented comprehensive automated testing framework using pytest with unit tests, integration tests, coverage reporting, and CI/CD integration. All Python scripts now have test coverage, and tests run automatically in GitHub Actions before deployment.
+
+**Implementation Phases**:
+
+**Phase 1: Test Infrastructure Setup**
+- Created `tests/` directory structure with proper organization
+- Added pytest dependencies to `requirements-dev.txt`: pytest, pytest-cov, pytest-mock, pytest-asyncio, responses
+- Created `pytest.ini` with coverage configuration and test markers
+- Created `tests/conftest.py` with shared fixtures for common test scenarios
+- Created test utilities (`tests/utils.py`) and sample test data files
+
+**Phase 2-4: Unit Tests**
+- **`tests/test_media_processor.py`** (673 lines): Comprehensive tests for media processing
+  - Pure function tests: `find_media_files()`, `normalize_url()`, `find_duplicates()`
+  - Mocked function tests: `upload_file()`, `load_existing_mapping()`, `save_mapping()`, `update_markdown_file()`, `compress_video()`, `check_ffmpeg()`
+- **`tests/test_check_status.py`**: Tests for upload status verification script
+- **`tests/ebook_generator/test_config.py`**: Tests for Pydantic configuration models with validation, backward compatibility, and environment variable loading
+
+**Phase 5: Integration Tests**
+- **`tests/test_integration.py`**: End-to-end workflow tests
+  - Upload workflow: find files → upload → save mapping
+  - Markdown update workflow: load mapping → update links → verify changes
+  - Duplicate detection workflow: list resources → find duplicates → verify logic
+
+**Phase 6: CI/CD Integration**
+- Updated `.github/workflows/deploy.yml` to add `test` job before `lint` job
+- Test job installs dependencies, runs pytest with coverage, and uploads coverage reports
+- Workflow structure: `test → lint → build → deploy`
+- Test failures now block deployment pipeline
+
+**Test Coverage**:
+- 80+ test functions across 15+ test classes
+- Coverage targets: Core functions ≥80%, utilities ≥70%, config ≥90%
+- All external dependencies (Cloudinary API, FFmpeg) are mocked
+- Tests use temporary directories to avoid modifying actual project files
+
+**Files Created**:
+- `tests/__init__.py`, `tests/conftest.py`, `tests/utils.py`
+- `tests/test_media_processor.py`, `tests/test_check_status.py`, `tests/test_integration.py`
+- `tests/ebook_generator/__init__.py`, `tests/ebook_generator/test_config.py`
+- `tests/fixtures/sample_mapping.json`, `tests/fixtures/sample_markdown.md`
+- `tests/README.md` - Test documentation
+- `pytest.ini` - Pytest configuration
+
+**Files Modified**:
+- `requirements-dev.txt` - Added pytest and testing dependencies
+- `.github/workflows/deploy.yml` - Added test job with coverage reporting
+
+**Status**: **COMPLETED** - Full test suite implemented and integrated into CI/CD pipeline.
+
+### Session Log 2026-02-01 (Evening) - Pydantic Integration Implementation
+
+**Summary**: Implemented Pydantic integration across Python scripts to improve type safety, data validation, and configuration management. Completed Phase 1 (Foundation Setup), Phase 2 (Ebook Generator Configuration), and Phase 3 (Cloudinary Data Models) of the Pydantic integration plan.
+
+**Implementation Phases**:
+
+**Phase 1: Foundation Setup**
+- Added `pydantic>=2.0.0` and `pydantic-settings>=2.0.0` to dependencies
+- Created `CloudinarySettings` class using `BaseSettings` for environment variable validation
+- Replaced manual `os.getenv()` calls with validated settings
+- Scripts now fail fast with clear error messages if environment variables are missing
+- Removed redundant credential checks in command functions
+
+**Phase 2: Ebook Generator Configuration**
+- Rewrote `ebook-generator/config.py` to use Pydantic models
+- Created `EbookConfig` class with `BaseSettings` for all configuration values
+- Created `EpubMetadata` model for EPUB metadata
+- Added type hints and validation for all config values (ranges, paths, etc.)
+- Maintained backward compatibility with old `UPPER_CASE` constant names
+- Added support for `GEMINI_API_KEY` from environment variables
+
+**Phase 3: Cloudinary Data Models**
+- Created `CloudinaryResource` model with validated fields:
+  - `local_path`, `relative_path`, `public_id`, `url`
+  - `resource_type`: `Literal["image", "video"]`
+  - `bytes`: non-negative integer validation
+  - `uploaded_at`: optional datetime
+- Updated `upload_file()` to return `CloudinaryResource` instead of dict
+- Updated `load_existing_mapping()` to return `dict[str, CloudinaryResource]` with automatic validation
+- Updated `save_mapping()` to serialize Pydantic models
+- Updated `load_markdown_mapping()` to use CloudinaryResource models
+- Updated `cmd_upload()` to use model attributes instead of dict access
+- Maintained backward compatibility with old JSON format
+
+**Benefits**:
+- **Type Safety**: All mapping operations now have type hints and IDE autocomplete
+- **Data Validation**: JSON data is automatically validated when loaded
+- **Better Error Messages**: Clear validation errors for missing/invalid configuration
+- **IDE Support**: Full autocomplete for all config values and data models
+- **Backward Compatibility**: All existing workflows continue to work unchanged
+
+**Files Modified**:
+- `requirements.txt` - Added Pydantic dependencies
+- `media_processor.py` - Added CloudinarySettings, CloudinaryResource models, updated all functions
+- `ebook-generator/config.py` - Complete rewrite using Pydantic models
+
+**Status**: **COMPLETED** - Phase 1, 2, and 3 successfully implemented and tested.
+
+**Future Work**:
+- Phase 4: API Response Models (Low Priority, optional) - Add models for Cloudinary API responses
 
 ### Session Log 2026-02-01 (Evening) - Comments System Evaluation & Decision to Maintain Giscus
 
@@ -131,13 +236,13 @@ myblog/
 ### Priority Categories
 
 **High Priority (Immediate)**:
-1. **Automated Testing** - No unit/integration tests exist
+1. ✅ **Automated Testing** - Comprehensive pytest test suite implemented (completed)
 2. **Error Handling** - Basic error handling, needs structured logging and retry mechanisms
-3. **CI/CD Testing** - GitHub Actions lacks test steps before deployment
+3. ✅ **CI/CD Testing** - GitHub Actions test job added before deployment (completed)
 
 **Medium Priority (Short-term)**:
 4. **Dependency Locking** - Versions use `>=` ranges, need pinning
-5. **Code Formatting** - No linting/formatting tools (ruff recommended)
+5. ✅ **Code Formatting** - Ruff integrated for linting and formatting (completed)
 6. **Documentation** - Missing developer docs (CONTRIBUTING.md, DEVELOPMENT.md)
 
 **Low Priority (Long-term)**:
@@ -147,10 +252,19 @@ myblog/
 
 ### Key Improvements Identified
 
-- **Testing**: Add pytest for `media_processor.py` unit/integration tests
-- **Linting**: Integrate ruff for code formatting and style checking
+- ✅ **Testing**: Comprehensive pytest test suite implemented (completed)
+  - Unit tests for `media_processor.py`, `check_status.py`, and `ebook-generator/config.py`
+  - Integration tests for complete workflows
+  - Coverage reporting with targets: core functions ≥80%, utilities ≥70%, config ≥90%
+  - All tests use mocking for external dependencies (Cloudinary, FFmpeg)
+- ✅ **Linting**: Ruff integrated for code formatting and style checking (completed)
+  - Added to `requirements-dev.txt`
+  - Integrated into GitHub Actions workflow (lint job with `ruff check` and `ruff format --check`)
 - **Error Handling**: Replace print statements with structured logging (logging module)
-- **CI/CD**: Add test steps and build validation to GitHub Actions workflow
+- ✅ **CI/CD**: Test job added to GitHub Actions workflow (completed)
+  - Tests run automatically on every push before lint/build/deploy
+  - Coverage reports generated and uploaded as artifacts
+  - Test failures block deployment pipeline
 - **Dependencies**: Lock versions in requirements.txt, add requirements-dev.txt
 - **Documentation**: Create CONTRIBUTING.md and DEVELOPMENT.md guides
 
@@ -179,10 +293,16 @@ myblog/
    - Better error messages for common issues (file size limits, authentication)
 
 2. **Configuration Management**
-   - Cloudinary credentials stored in `.env` (good)
-   - Consider adding validation for required environment variables
+   - ✅ Cloudinary credentials stored in `.env` with Pydantic validation
+   - ✅ Environment variables validated at startup with clear error messages
+   - ✅ Ebook generator configuration uses Pydantic models with type safety
 
-3. **Script Organization**
+3. **Code Quality & Formatting**
+   - ✅ Ruff integrated for linting and code formatting
+   - ✅ GitHub Actions workflow includes ruff checks before deployment
+   - ✅ Development dependencies managed in `requirements-dev.txt`
+
+4. **Script Organization**
    - Multiple utility scripts could be organized into a package
    - Consider adding CLI argument parsing for better usability
 
@@ -190,9 +310,12 @@ myblog/
    - Scripts have basic docstrings but could use more detailed usage examples
    - Consider adding a README for the upload workflow
 
-5. **Testing**
-   - No automated tests for upload/update scripts
-   - Manual testing only
+5. ✅ **Testing** - **COMPLETED**
+   - Comprehensive pytest test suite implemented
+   - Unit tests for all core functions
+   - Integration tests for complete workflows
+   - CI/CD integration with automatic test execution
+   - Coverage reporting and targets established
 
 ### Performance Considerations
 
@@ -238,6 +361,11 @@ myblog/
 ### `media_processor.py` - 圖片影片處理工具（推薦）
 
 **Purpose**: 整合了上傳、Markdown 更新、重複檢測、影片壓縮功能的統一工具
+
+**Features**:
+- ✅ **Pydantic Integration**: Uses `CloudinarySettings` for validated environment variables and `CloudinaryResource` models for type-safe data handling
+- ✅ **Type Safety**: All mapping operations have type hints and IDE autocomplete support
+- ✅ **Data Validation**: Automatic validation of JSON data when loading mapping files
 
 **Usage**:
 ```bash

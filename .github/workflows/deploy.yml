@@ -25,9 +25,45 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Test job
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+      
+      - name: Run tests with coverage
+        run: |
+          pytest --cov=. --cov-report=xml --cov-report=html --cov-report=term
+        env:
+          # Mock Cloudinary credentials for tests (tests use mocking, but config validation needs these)
+          CLOUDINARY_CLOUD_NAME: test_cloud
+          CLOUDINARY_API_KEY: test_key
+          CLOUDINARY_API_SECRET: test_secret
+      
+      - name: Upload coverage reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-reports
+          path: |
+            htmlcov/
+            coverage.xml
+          retention-days: 30
+
   # Lint job
   lint:
     runs-on: ubuntu-latest
+    needs: test  # Ensure tests pass before linting
     steps:
       - name: Checkout
         uses: actions/checkout@v4

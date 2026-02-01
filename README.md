@@ -22,6 +22,8 @@
 ### Python 依賴
 - `cloudinary>=1.36.0`: Cloudinary SDK
 - `python-dotenv>=1.0.0`: 環境變數管理
+- `pydantic>=2.0.0`: 資料驗證與型別安全
+- `pydantic-settings>=2.0.0`: 設定管理與環境變數驗證
 
 ## 專案結構
 
@@ -210,7 +212,10 @@ python check_status.py
 
 ### 代碼質量
 
-本專案使用 `ruff` 進行代碼格式化和 linting。
+本專案使用以下工具確保代碼質量：
+
+- **ruff**: 代碼格式化和 linting
+- **Pydantic**: 資料驗證與型別安全（環境變數、配置、資料模型）
 
 ```bash
 # 檢查代碼
