@@ -234,8 +234,8 @@ summary = ""
 ![出發](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769776161/myblog/travelogue/camino/ch8/IMG_20250707_074033.jpg)
 ![貓](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769776188/myblog/travelogue/camino/ch8/IMG_20250707_075222.jpg)
 ![小鎮](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769776217/myblog/travelogue/camino/ch8/IMG_20250707_075702.jpg)
-![走完大半](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769781274/myblog/travelogue/camino/ch8/Screenshot_2025-07-07-06-36-08-366_com.editorialbuencamino.buencamino.jpg)
-![慘 走錯路](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769781287/myblog/travelogue/camino/ch8/Screenshot_2025-07-07-08-51-49-443_com.editorialbuencamino.buencamino.jpg)
+![走完大半](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769781274/myblog/travelogue/camino/ch8Screenshot_2025-07-07-06-36-08-366_com.editorialbuencamino.buencamino.jpg)
+![慘 走錯路](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769781287/myblog/travelogue/camino/ch8Screenshot_2025-07-07-08-51-49-443_com.editorialbuencamino.buencamino.jpg)
 ![191km](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769776245/myblog/travelogue/camino/ch8/IMG_20250707_090421.jpg)
 ![貓](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769776275/myblog/travelogue/camino/ch8/IMG_20250707_094702.jpg)
 ![美景](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769776302/myblog/travelogue/camino/ch8/IMG_20250707_095320.jpg)
@@ -418,7 +418,7 @@ summary = ""
 - 拆帳付錢在很多人時，會是一個問題，因為每個人點餐的內容不一樣，而且酒水有些是共享的，不是很容易計算
 - Emma的人格特質的確是非常好，有點像是某種歐洲貴族公主?優雅、知性，但也富有冒險精神，20出頭就在深圳留學
 - 今天Peter說他會待到禮拜一，能跟他再見上一面感覺真的很不錯，所以我走了29天完成我的camino，7/15休息，16的飛機
-![今天起的很早 看著地圖](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769781301/myblog/travelogue/camino/ch8/Screenshot_2025-07-11-22-46-33-803_com.editorialbuencamino.buencamino.jpg)
+![今天起的很早 看著地圖](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769781301/myblog/travelogue/camino/ch8Screenshot_2025-07-11-22-46-33-803_com.editorialbuencamino.buencamino.jpg)
 ![雕塑](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769778909/myblog/travelogue/camino/ch8/IMG_20250712_074012.jpg)
 ![冷](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769778936/myblog/travelogue/camino/ch8/IMG_20250712_085652.jpg)
 ![汽車回收廠](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769778961/myblog/travelogue/camino/ch8/IMG_20250712_091815.jpg)
@@ -488,7 +488,7 @@ summary = ""
 ![在這休息時巧遇Dylon Emma，很高興遇到他們，我是因為迷路才在這個時間抵達這間店的，真的很巧](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769780116/myblog/travelogue/camino/ch8/IMG_20250714_131002.jpg)
 ![門](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769780138/myblog/travelogue/camino/ch8/IMG_20250714_143020.jpg)
 ![這標線實在是看不懂](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769780163/myblog/travelogue/camino/ch8/IMG_20250714_145234.jpg)
-![So close](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769781313/myblog/travelogue/camino/ch8/Screenshot_2025-07-14-15-00-31-778_com.google.android.apps.maps.jpg)
+![So close](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769781313/myblog/travelogue/camino/ch8Screenshot_2025-07-14-15-00-31-778_com.google.android.apps.maps.jpg)
 ![街景](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769780186/myblog/travelogue/camino/ch8/IMG_20250714_151417.jpg)
 ![主教堂旁的建築](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769780211/myblog/travelogue/camino/ch8/IMG_20250714_151635.jpg)
 ![oh my](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769780233/myblog/travelogue/camino/ch8/IMG_20250714_151643.jpg)

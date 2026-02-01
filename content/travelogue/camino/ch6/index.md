@@ -110,7 +110,7 @@ summary = ""
 	- 這次飛機取消吃了沒電話跟簡訊的大虧，其他人似乎都有得到轉機的相關資訊，以我的視角來看，地勤告知大家並安撫先等待確認到底是航班取消還是延後，大家不耐煩地等，我滑了下手機人就大部分人就不見了，差點把我嚇死
 
 ![眾人排隊和地勤溝通](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764413/myblog/travelogue/camino/ch6/IMG_20250614_161445.jpg)
-![時速180的車子](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766456/myblog/travelogue/camino/ch6/Screenshot_2025-06-14-18-28-58-638_com.ktwapps.speedometer.jpg)
+![時速180的車子](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766456/myblog/travelogue/camino/ch6Screenshot_2025-06-14-18-28-58-638_com.ktwapps.speedometer.jpg)
 
 - 飯店接駁
 	- 剛開始一直搞不懂接駁車怎麼知道要派幾台車、約在哪個時間、地點，我是不是錯過那個時間就到不瞭了，整個很緊張，還在看Uber自己去要多少，後來才了解
