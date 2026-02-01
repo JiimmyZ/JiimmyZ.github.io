@@ -32,6 +32,49 @@ myblog/
 
 ## Recent Session Logs
 
+### Session Log 2026-02-01 (Late Evening) - Cloudinary Image Display Issues Resolution
+
+**Summary**: Resolved image display issues in ch2 and ch3 by identifying root causes (incorrect chapter paths, stale timestamps, mapping-reality mismatch) and implementing force re-upload solution.
+
+**Problem Discovery**:
+- User reported images in ch2 and ch3 not displaying
+- Initial investigation found URLs with incorrect chapter paths (pointing to ch6/ch7 instead of ch2/ch3)
+- URLs also had incorrect timestamps
+
+**Initial Fix Attempts**:
+1. ✅ Corrected chapter paths in markdown URLs (ch6 → ch2, ch7 → ch2, ch6 → ch3)
+2. ✅ Updated timestamps to match mapping file entries
+3. ❌ Images still not displaying after URL corrections
+
+**Root Cause Analysis**:
+- Mapping file contained entries but images may not have been actually uploaded to Cloudinary
+- `update-markdown` command couldn't always match files with identical filenames across different chapters
+- Need to verify actual Cloudinary resource existence, not just mapping file presence
+
+**Final Resolution**:
+1. Created temporary `force_upload_ch2_ch3.py` script to force re-upload 4 problematic images
+2. Successfully re-uploaded:
+   - `ch2/IMG_20250616_121207.jpg` → v1769928422
+   - `ch2/IMG_20250616_121609.jpg` → v1769928438
+   - `ch3/IMG_20250613_145504.jpg` → v1769928448
+   - `ch3/IMG_20250616_143116.jpg` → v1769928471
+3. Ran `update-markdown` to update all markdown files with new URLs
+4. Fixed remaining incorrect chapter paths manually
+
+**Key Learnings Documented**:
+- Added comprehensive troubleshooting guide to context.md
+- Documented prevention strategy for future issues
+- Identified need for `--force` flag in upload command
+- Highlighted `update-markdown` limitations with same-filename-different-path scenarios
+
+**Files Modified**:
+- `content/travelogue/camino/ch2/index.md` - Fixed 4 image URLs
+- `content/travelogue/camino/ch3/index.md` - Fixed 5 image URLs
+- `cloudinary_mapping.json` - Updated with new timestamps after re-upload
+- `context.md` - Added detailed problem resolution documentation
+
+**Status**: **RESOLVED** - All images now have correct URLs and are successfully uploaded to Cloudinary.
+
 ### Session Log 2026-02-01 (Evening) - Automated Testing Implementation
 
 **Summary**: Implemented comprehensive automated testing framework using pytest with unit tests, integration tests, coverage reporting, and CI/CD integration. All Python scripts now have test coverage, and tests run automatically in GitHub Actions before deployment.
@@ -272,6 +315,52 @@ myblog/
 
 ## Current Issues & Improvements Needed
 
+### Resolved Issues ✅
+
+#### Image Display Issues - Cloudinary URL Mismatch (2026-02-01)
+
+**Problem**: Images in ch2 and ch3 were not displaying despite URLs appearing correct in markdown files.
+
+**Root Causes Identified**:
+1. **Incorrect Chapter Paths**: URLs pointed to wrong chapters (e.g., `ch6/IMG_xxx.jpg` instead of `ch2/IMG_xxx.jpg`)
+2. **Stale Timestamps**: URLs had old timestamps that may not match actual Cloudinary resources
+3. **Mapping vs Reality Mismatch**: Files existed in `cloudinary_mapping.json` but may not have been actually uploaded to Cloudinary
+4. **Update-Markdown Limitations**: The `update-markdown` command couldn't always match files correctly when filenames were identical across different chapters
+
+**Resolution Process**:
+1. ✅ Fixed incorrect chapter paths in markdown URLs
+2. ✅ Corrected timestamps to match mapping file
+3. ✅ **Force re-uploaded problematic images** to Cloudinary to ensure they exist
+4. ✅ Updated all markdown files with new valid URLs
+
+**Key Learnings**:
+- **Don't trust mapping file alone**: Even if a file exists in `cloudinary_mapping.json`, it may not actually be on Cloudinary
+- **Force re-upload when in doubt**: If URLs are correct but images don't display, force re-upload to get fresh, valid URLs
+- **Verify actual file existence**: Check both mapping file AND Cloudinary to confirm resources exist
+- **Chapter path accuracy matters**: Same filename in different chapters requires correct path matching
+
+**Prevention Strategy**:
+1. **Before uploading**: Verify local files are in correct chapter directories
+2. **After uploading**: Always run `python check_status.py` to verify upload status
+3. **When images don't display**:
+   - First: Check URL format (correct chapter path, valid timestamp)
+   - Second: Verify file exists in Cloudinary (check mapping file)
+   - Third: **Force re-upload** if mapping exists but image doesn't display
+4. **Use force re-upload script pattern**:
+   ```python
+   # Create temporary script to force re-upload specific files
+   # Remove mapping entries or use overwrite=True in upload_file()
+   ```
+
+**Tools Created**:
+- Temporary `force_upload_ch2_ch3.py` script (deleted after use)
+- Pattern: Create targeted upload scripts for problematic files
+
+**Future Improvements Needed**:
+- Add `--force` flag to `media_processor.py upload` to force re-upload even if in mapping
+- Improve `update-markdown` to better handle same-filename-different-path scenarios
+- Add validation step that checks Cloudinary API to verify resources actually exist
+
 ### Active Issues ⏳
 
 1. **Website Testing** - **PENDING**
@@ -291,6 +380,7 @@ myblog/
 1. **Error Handling**
    - Upload script could benefit from retry logic for network failures
    - Better error messages for common issues (file size limits, authentication)
+   - Add validation to verify Cloudinary resources actually exist (not just in mapping file)
 
 2. **Configuration Management**
    - ✅ Cloudinary credentials stored in `.env` with Pydantic validation
@@ -391,6 +481,11 @@ python media_processor.py compress <video_file> [output_file]
 - **Markdown 更新**: 讀取映射表，更新所有 Markdown 檔案中的連結，自動備份
 - **重複檢測**: 查詢 Cloudinary 所有檔案，識別重複檔案，可自動刪除
 - **影片壓縮**: 使用 FFmpeg 壓縮大型影片（>100MB），支援兩階段壓縮
+
+**Known Limitations**:
+- `update-markdown` may not correctly match files with identical filenames in different chapters
+- No `--force` flag to re-upload files that already exist in mapping
+- Mapping file may contain entries for files not actually uploaded to Cloudinary
 
 **File Size Handling**:
 - Files 20-50MB: Uses `upload_large()` for reliability
