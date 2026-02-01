@@ -6,7 +6,7 @@ layout = "single"
 categories = ["travelogue"]                                 
 summary = ""
 +++
-![庇里牛斯山](https://res.cloudinary.com/dt6lrjaov/image/upload/myblog/travelogue/camino/ch1/IMG_20250616_132941.jpg)
+![庇里牛斯山](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769921302/myblog/travelogue/camino/ch1/IMG_20250616_132941.jpg)
 
 我走的完嗎?  
 那裡治安好不好?  
@@ -37,4 +37,4 @@ summary = ""
 
 我分享所經歷到的，願對你會有所幫助。
 
-![聖地牙哥大教堂](https://res.cloudinary.com/dt6lrjaov/image/upload/myblog/travelogue/camino/ch1/IMG_20250715_154442.jpg)
+![聖地牙哥大教堂](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769921317/myblog/travelogue/camino/ch1/IMG_20250715_154442.jpg)

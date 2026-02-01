@@ -37,8 +37,8 @@ summary = ""
 	- 右腳正前方的肌腱還是有點疼痛
 
 <!-- -->
-![浦東機場大廳](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250613_193958.jpg)
-![浦東機場候機區](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250613_203952.jpg)
+![浦東機場大廳](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764287/myblog/travelogue/camino/ch6/IMG_20250613_193958.jpg)
+![浦東機場候機區](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764303/myblog/travelogue/camino/ch6/IMG_20250613_203952.jpg)
 
 - 搭機至PVG(上海浦東機場)
 	- 華航空服小姐特意向兩個人報了姓名，對其中一個說差一個人就可以起飛，問另一個問要不要換座位
@@ -67,7 +67,7 @@ summary = ""
 - 很驚嘆於我這樣一天可以打這麼多字
 
 
-![PVG機場上空](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250614_113514.jpg)
+![PVG機場上空](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766370/myblog/travelogue/camino/ch6/IMG_20250614_113514.jpg)
 
 # 6/14,FRA
 - 搭機至FRA(德國法蘭克福)
@@ -83,7 +83,7 @@ summary = ""
 	- 玩著飛機座位上的小遊戲黑白棋，原本輸了好幾場，但我總想著再試試看，靜下心來嘗試，最後贏了，並且可以一直贏，我又學會一種棋牌小遊戲，感覺很不錯
 	- 隔壁的中國女生玩麻將好強阿，勝率有9成了吧
 
-![整潔的FRA機場](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250614_073230.jpg)
+![整潔的FRA機場](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764327/myblog/travelogue/camino/ch6/IMG_20250614_073230.jpg)
 
 - 抵達FRA機場
 	- 在FRA夠長的待機時間，我完成了海外外幣提款測試、sim卡網路測試、外幣刷卡測試，現在要來找充電跟洗澡
@@ -93,8 +93,8 @@ summary = ""
 		- 後來得知20-63是申根出境區，所以我回來時從SCQ>FRA>PVG，這個學到的事情可能就會用到
 	- 問了站務人員，過了20-63才有shower，只給出歐洲區shower!?看來B13是什麼都沒，水也沒，慘啊
 
-![漫長的出境排隊](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250614_111623.jpg)
-![出境區的通緝犯照片](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250614_123506.jpg)
+![漫長的出境排隊](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764349/myblog/travelogue/camino/ch6/IMG_20250614_111623.jpg)
+![出境區的通緝犯照片](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764389/myblog/travelogue/camino/ch6/IMG_20250614_123506.jpg)
 
 - 班機取消
 	- 往BIQ的飛機delay半小時！解說的櫃檯很友善
@@ -109,8 +109,8 @@ summary = ""
 			- 住宿位置其實挺遠的，因為德國那台接駁車時速150公里，我還特地開始手機紀錄時速表看了一下
 	- 這次飛機取消吃了沒電話跟簡訊的大虧，其他人似乎都有得到轉機的相關資訊，以我的視角來看，地勤告知大家並安撫先等待確認到底是航班取消還是延後，大家不耐煩地等，我滑了下手機人就大部分人就不見了，差點把我嚇死
 
-![眾人排隊和地勤溝通](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250614_161445.jpg)
-![時速180的車子](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/Screenshot_2025-06-14-18-28-58-638_com.ktwapps.speedometer.jpg)
+![眾人排隊和地勤溝通](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764413/myblog/travelogue/camino/ch6/IMG_20250614_161445.jpg)
+![時速180的車子](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766456/myblog/travelogue/camino/ch6Screenshot_2025-06-14-18-28-58-638_com.ktwapps.speedometer.jpg)
 
 - 飯店接駁
 	- 剛開始一直搞不懂接駁車怎麼知道要派幾台車、約在哪個時間、地點，我是不是錯過那個時間就到不瞭了，整個很緊張，還在看Uber自己去要多少，後來才了解
@@ -125,11 +125,11 @@ summary = ""
 			- 沒有因禍得福，因為隔天開始腹瀉
 		- 印象深刻的是頸椎枕挺舒服的，他讓我思考我前一個頸椎枕可能是太硬，我拍下了他的廠牌，希望回去找的到
 
-![舒適的寢具](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250614_185135.jpg)
-![塑膠底座的淋浴間](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250614_185458.jpg)
-![飯店料理](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250614_193414.jpg)
-![久遠而典雅的餐廳](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250614_193109.jpg)
-![西方人20點才進餐廳用餐](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250614_193540.jpg)	
+![舒適的寢具](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764431/myblog/travelogue/camino/ch6/IMG_20250614_185135.jpg)
+![塑膠底座的淋浴間](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764445/myblog/travelogue/camino/ch6/IMG_20250614_185458.jpg)
+![飯店料理](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764486/myblog/travelogue/camino/ch6/IMG_20250614_193414.jpg)
+![久遠而典雅的餐廳](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764461/myblog/travelogue/camino/ch6/IMG_20250614_193109.jpg)
+![西方人20點才進餐廳用餐](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764513/myblog/travelogue/camino/ch6/IMG_20250614_193540.jpg)	
 
 # 6/15,BIQ
 - 飯店起床
@@ -139,7 +139,7 @@ summary = ""
 	- 有個要去瑞士的女生友善問我幾點的飛機跟要不要喝咖啡，我回答I know好像有點嚇到他哈哈哈哈，才反應過來這真的是很不禮貌。我想講的是「剛剛櫃檯有跟我說過，但我不用咖啡（空腹怕肚子痛）」,我應該要說的是Thank you, I'm good.
 	- 在車上我詢問是整個歐洲車都那麼快還是只有德國，他們回我只有德國，真是個好國家，道路上沒車限速有意義嗎，不如把那些處分都加在未保持車距、惡意超車等危險駕駛
 
-![久違的清晨醒來](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250615_044849.jpg)
+![久違的清晨醒來](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764528/myblog/travelogue/camino/ch6/IMG_20250615_044849.jpg)
 
 - 登機報到
 	- checkin一波三折
@@ -158,7 +158,7 @@ summary = ""
 		- 還好從旅店過去的車程只用了google一半的時間（原預計28分鐘因為德國車速很快僅開15分鐘）
 	- 感覺到人遇到不好的事情，當下或回憶產生的負面情緒會加以放大，記憶較久較深；而同等級的友善感恩部分則需特意牢記。這恐怕是某種人類的本能避免危險的古老機制
 
-![這水真是買不下去](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250615_155449.jpg)
+![這水真是買不下去](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764648/myblog/travelogue/camino/ch6/IMG_20250615_155449.jpg)
 
 - 飛往CDG
 	- 到了登機門後，仔細閱讀機票，發現CDG>BIQ的飛機很快就起飛，但沒有標示登機門，推測是不用過安檢不然應該來不及，上網查詢航班知道是G40登機門，這時我還在感嘆於自己的機智，知道要在上飛機前先查好登機門節省時間
@@ -171,8 +171,8 @@ summary = ""
 	- 今天到SJPP應該可以先弄朝聖者護照
 	- CDG機場連不上booking和agoda讓我有點小煩躁，沒有辦法先訂SJPP的旅店
 
-![CDG的紅窗讓人印象深刻](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250615_090145.jpg)
-![第一次用這種方式上機](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250615_064537.jpg)
+![CDG的紅窗讓人印象深刻](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764563/myblog/travelogue/camino/ch6/IMG_20250615_090145.jpg)
+![第一次用這種方式上機](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764546/myblog/travelogue/camino/ch6/IMG_20250615_064537.jpg)
 
 - 飛往BIQ
 	- 到BIQ行李不見啦!
@@ -188,8 +188,8 @@ summary = ""
 	- 如果我沒有在行李托盤那邊等久一點也許我就錯過了那位善心引導我的女士
 	- 順利拿到行李了
 
-![開心等行李](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250615_110648.jpg)
-![不開心](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250615_110733.jpg)
+![開心等行李](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766564/myblog/travelogue/camino/ch6/IMG_20250615_110648.jpg)
+![不開心](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764601/myblog/travelogue/camino/ch6/IMG_20250615_110733.jpg)
 
 - 前往SJPP
 	- 順利搭上公車，車上很熱好像沒開冷氣，司機開很晃，我竟然會暈車？
@@ -205,9 +205,9 @@ summary = ""
 		- 沒事，後來查票站務人員來糾正她了，看來觀念是類似的，只是這位女生特別
 	- 火車上訂了民宿
 
-![公車離開BIQ前往Bayonnene](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250615_134609.jpg)
-![大窗火車 心曠神怡](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250615_182022.jpg)
-![建築美麗 沒有鐵皮](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250615_190357.jpg)
+![公車離開BIQ前往Bayonnene](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764624/myblog/travelogue/camino/ch6/IMG_20250615_134609.jpg)
+![大窗火車 心曠神怡](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764673/myblog/travelogue/camino/ch6/IMG_20250615_182022.jpg)
+![建築美麗 沒有鐵皮](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764690/myblog/travelogue/camino/ch6/IMG_20250615_190357.jpg)
 
 - 抵達SJPP
 	- 傍晚剛下SJPP感覺很冷，也許班機延遲是救了我避開最冷的時候，出發前帶了發熱衣也是救了我，不然出發時非常想省發熱衣的重量
@@ -216,9 +216,9 @@ summary = ""
 	- 澳洲人的登山杖是一個大木棒，非常有趣，很高興跟澳洲人在Roncesvalles還有見面
 	- 跟民宿買了早餐
 
-![在這裡念幼稚園是種什麼樣的體驗](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250615_192725.jpg)
-![白色石墩是為了什麼?](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250615_192635.jpg)
-![石板與磚製建築](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250615_194330.jpg)
+![在這裡念幼稚園是種什麼樣的體驗](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764739/myblog/travelogue/camino/ch6/IMG_20250615_192725.jpg)
+![白色石墩是為了什麼?](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764713/myblog/travelogue/camino/ch6/IMG_20250615_192635.jpg)
+![石板與磚製建築](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766743/myblog/travelogue/camino/ch6/IMG_20250615_194330.jpg)
 
 # 6/16,SJPP, Roncesvalles 
 - 早上吃早餐遇到Alice，她說她因雨晚兩天出發，會跟我同一天出發，覺得航班延期也不錯，是比較好的天氣出門
@@ -244,33 +244,33 @@ summary = ""
 - 我的下鋪是一位葡萄牙黑人，看起來非常精實，我們短暫地打了招呼
 - 今天成功到達Roncesvalles ，把因為飛機延誤的衣服都洗好晾乾了，第一天算很成功的一天
 
-![不確定就跟著人走](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_071704.jpg)
-![陰天很美](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_075355.jpg)
-![遠處朝陽](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_080151.jpg)
-![天光雲影共徘徊](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_081809.jpg)
-![霧與小徑](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_085909.jpg)
-![濃霧中的Orisson餐館](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_090837.jpg)
-![Orisson餐館](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_090933.jpg)
-![雲](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_093546.jpg)
-![雲](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_093656.jpg)
-![雲](https://res.cloudinary.com/dt6lrjaov/video/upload/v1/myblog/travelogue/camino/ch6/VID_20250616_093706.mp4)
-![牛](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_094533.jpg)
-![石丘](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_095226.jpg)
-![高山草原](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_100936.jpg)
-![羊](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_102248.jpg)
-![餐車](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_111755.jpg)
-![雨過天青](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_132250.jpg)
-![沒青多久](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_133546.jpg)
-![白牛](https://res.cloudinary.com/dt6lrjaov/video/upload/v1/myblog/travelogue/camino/ch6/VID_20250616_133703.mp4)
-![林間黃箭頭](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_141626.jpg)
-![抵達!](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_143109.jpg)
-![整潔的宿舍](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_151353.jpg)
-![前一晚的室友也平安抵達](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_163528.jpg)
-![Roncesvalles室外餐酒館](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_164212.jpg)
-![Roncesvalles真的很美](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_182253.jpg)
-![遙遠異鄉曬衣服](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_202346.jpg)
-![建模潦草的晚餐魚排](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_210617.jpg)
-![稍微好點的雞排](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250616_210749.jpg)
+![不確定就跟著人走](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764775/myblog/travelogue/camino/ch6/IMG_20250616_071704.jpg)
+![陰天很美](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764789/myblog/travelogue/camino/ch6/IMG_20250616_075355.jpg)
+![遠處朝陽](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764804/myblog/travelogue/camino/ch6/IMG_20250616_080151.jpg)
+![天光雲影共徘徊](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764824/myblog/travelogue/camino/ch6/IMG_20250616_081809.jpg)
+![霧與小徑](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764845/myblog/travelogue/camino/ch6/IMG_20250616_085909.jpg)
+![濃霧中的Orisson餐館](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764863/myblog/travelogue/camino/ch6/IMG_20250616_090837.jpg)
+![Orisson餐館](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764880/myblog/travelogue/camino/ch6/IMG_20250616_090933.jpg)
+![雲](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764893/myblog/travelogue/camino/ch6/IMG_20250616_093546.jpg)
+![雲](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764909/myblog/travelogue/camino/ch6/IMG_20250616_093656.jpg)
+![雲](https://res.cloudinary.com/dt6lrjaov/video/upload/v1769766560/myblog/travelogue/camino/ch6/VID_20250616_093706.mp4)
+![牛](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764936/myblog/travelogue/camino/ch6/IMG_20250616_094533.jpg)
+![石丘](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764969/myblog/travelogue/camino/ch6/IMG_20250616_095226.jpg)
+![高山草原](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769764997/myblog/travelogue/camino/ch6/IMG_20250616_100936.jpg)
+![羊](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765030/myblog/travelogue/camino/ch6/IMG_20250616_102248.jpg)
+![餐車](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765069/myblog/travelogue/camino/ch6/IMG_20250616_111755.jpg)
+![雨過天青](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765090/myblog/travelogue/camino/ch6/IMG_20250616_132250.jpg)
+![沒青多久](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765108/myblog/travelogue/camino/ch6/IMG_20250616_133546.jpg)
+![白牛](https://res.cloudinary.com/dt6lrjaov/video/upload/v1769766745/myblog/travelogue/camino/ch6/VID_20250616_133703.mp4)
+![林間黃箭頭](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765143/myblog/travelogue/camino/ch6/IMG_20250616_141626.jpg)
+![抵達!](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765195/myblog/travelogue/camino/ch6/IMG_20250616_143109.jpg)
+![整潔的宿舍](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765226/myblog/travelogue/camino/ch6/IMG_20250616_151353.jpg)
+![前一晚的室友也平安抵達](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765240/myblog/travelogue/camino/ch6/IMG_20250616_163528.jpg)
+![Roncesvalles室外餐酒館](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765261/myblog/travelogue/camino/ch6/IMG_20250616_164212.jpg)
+![Roncesvalles真的很美](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765293/myblog/travelogue/camino/ch6/IMG_20250616_182253.jpg)
+![遙遠異鄉曬衣服](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765329/myblog/travelogue/camino/ch6/IMG_20250616_202346.jpg)
+![建模潦草的晚餐魚排](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765363/myblog/travelogue/camino/ch6/IMG_20250616_210617.jpg)
+![稍微好點的雞排](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765392/myblog/travelogue/camino/ch6/IMG_20250616_210749.jpg)
 
 # 6/17,Larrasoana
 - 早上我起來時昨晚借我1歐元的女生已經離開了，我可能永遠錯過還她一歐元的機會了
@@ -292,19 +292,19 @@ summary = ""
 - 今晚睡前再次檢討早餐跟picnic ，目前想法是絕對不要有picnic ，重量實在不划算，且picnic的內容有可能太乾燥，會需要我喝更多的水浪費我的水，只要有高熱量小點心就好，12-13點吃第一餐，17-19點吃第二餐，然後買高熱量小點心早上吃
 	- 這個節奏回頭看非常棒，我一路到終點都是這進食節奏，有時12-13點這餐會省略
 
-![Roncesvalles早餐](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250617_070044.jpg)
-![建築就沒有不好看的](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250617_075713.jpg)
-![這裡的牛馬可比都市裡的舒服許多](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250617_082705.jpg)
-![漫漫長路](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250617_084617.jpg)
-![林徑](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250617_093723.jpg)
-![Zubiri小鎮](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250617_124403.jpg)
-![pin太重了](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250617_160708.jpg)
+![Roncesvalles早餐](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765419/myblog/travelogue/camino/ch6/IMG_20250617_070044.jpg)
+![建築就沒有不好看的](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765449/myblog/travelogue/camino/ch6/IMG_20250617_075713.jpg)
+![這裡的牛馬可比都市裡的舒服許多](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765484/myblog/travelogue/camino/ch6/IMG_20250617_082705.jpg)
+![漫漫長路](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765517/myblog/travelogue/camino/ch6/IMG_20250617_084617.jpg)
+![林徑](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765553/myblog/travelogue/camino/ch6/IMG_20250617_093723.jpg)
+![Zubiri小鎮](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765590/myblog/travelogue/camino/ch6/IMG_20250617_124403.jpg)
+![pin太重了](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765615/myblog/travelogue/camino/ch6/IMG_20250617_160708.jpg)
 <!-- Image file IMG_20250617_162827.jpg is missing - not found locally or in Cloudinary -->
 <!-- ![非常舒適的Nicos民宿](IMG_20250617_162827.jpg) -->
-![晚餐](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250617_175336.jpg)
-![電池爐打不開](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250617_180812.jpg)
-![打開了](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250617_182226.jpg)
-![暖氣?](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250617_184917.jpg)
+![晚餐](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765638/myblog/travelogue/camino/ch6/IMG_20250617_175336.jpg)
+![電池爐打不開](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765667/myblog/travelogue/camino/ch6/IMG_20250617_180812.jpg)
+![打開了](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765685/myblog/travelogue/camino/ch6/IMG_20250617_182226.jpg)
+![暖氣?](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765702/myblog/travelogue/camino/ch6/IMG_20250617_184917.jpg)
 
 # 6/18, Pamplona
 - 進入城市人多很多開始有點怕被偷被搶之類的，也許是亞洲面孔，也許是自己心理作用，總覺得許多目光在自己身上，在台灣的外國人可能也是這種感覺嗎?
@@ -329,21 +329,21 @@ summary = ""
 	- 服務態度極佳
 - 明天的a計畫，Albergue Padres Reparadores；b計畫，Albergue La Bodega del Camino aka Albergue_on_the_Left
 
-![林徑](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250618_083255.jpg)
-![磚屋](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250618_083505.jpg)
-![公路](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250618_084112.jpg)
-![黑貓求蹭](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250618_085523.jpg)
-![從這天開始都是好天氣](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250618_085850.jpg)
-![令人心醉的廣場](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250618_102927.jpg)
-![市容整潔 差在招牌嗎?](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250618_111418.jpg)
-![抵達Pampolona](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250618_114440.jpg)
-![Pampolona教堂](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250618_120229.jpg)
-![Pampolona廣場](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250618_131552.jpg)
-![第一次路邊點餐](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250618_132746.jpg)
-![也許沒有機車也是市容差異的一環](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250618_135350.jpg)
-![我永遠吃到一半才想到拍照](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250618_142504.jpg)
-![超棒的Asador Olaverri牛排](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250618_144920.jpg)
-![弄老半天才知道他是電燈兼具吊扇](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250618_203811.jpg)
+![林徑](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765725/myblog/travelogue/camino/ch6/IMG_20250618_083255.jpg)
+![磚屋](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765747/myblog/travelogue/camino/ch6/IMG_20250618_083505.jpg)
+![公路](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765765/myblog/travelogue/camino/ch6/IMG_20250618_084112.jpg)
+![黑貓求蹭](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765804/myblog/travelogue/camino/ch6/IMG_20250618_085523.jpg)
+![從這天開始都是好天氣](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765838/myblog/travelogue/camino/ch6/IMG_20250618_085850.jpg)
+![令人心醉的廣場](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765857/myblog/travelogue/camino/ch6/IMG_20250618_102927.jpg)
+![市容整潔 差在招牌嗎?](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765878/myblog/travelogue/camino/ch6/IMG_20250618_111418.jpg)
+![抵達Pampolona](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765900/myblog/travelogue/camino/ch6/IMG_20250618_114440.jpg)
+![Pampolona教堂](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765918/myblog/travelogue/camino/ch6/IMG_20250618_120229.jpg)
+![Pampolona廣場](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765933/myblog/travelogue/camino/ch6/IMG_20250618_131552.jpg)
+![第一次路邊點餐](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765950/myblog/travelogue/camino/ch6/IMG_20250618_132746.jpg)
+![也許沒有機車也是市容差異的一環](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765968/myblog/travelogue/camino/ch6/IMG_20250618_135350.jpg)
+![我永遠吃到一半才想到拍照](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769765985/myblog/travelogue/camino/ch6/IMG_20250618_142504.jpg)
+![超棒的Asador Olaverri牛排](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766007/myblog/travelogue/camino/ch6/IMG_20250618_144920.jpg)
+![弄老半天才知道他是電燈兼具吊扇](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766022/myblog/travelogue/camino/ch6/IMG_20250618_203811.jpg)
 
 # 6/19,Lorca
 - 成功走到Lorca，快累死我了，結束時的可樂終生難忘
@@ -363,17 +363,17 @@ summary = ""
 	- 中間沒城市的地方就沒有補水點，要小心過長一段距離沒水，沿路雖然可能有餐車但可遇不可求
 	- 前後一天可能25公里就好，不能連續
 - Marissa臨別前給我一個什麼best choice的小卡片，看不太懂什麼意思，有點像是勸我入教？
-![起床出發 再見 Pampolona](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250619_075438.jpg)
-![金黃麥浪](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250619_090057.jpg)
-![綿延無際](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250619_092650.jpg)
-![這裡有個陡坡快把我累死](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250619_102237.jpg)
-![石橋](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250619_130136.jpg)
-![葡萄](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250619_144709.jpg)
-![37公里後難忘的可樂](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250619_162923.jpg)
-![馬拉松到底都什麼人在跑的 我用走的快不行了](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250619_165045.jpg)
-![可以用大頭釘釘選自己的家鄉的世界地圖](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250619_180556.jpg)
-![美味的西班牙燉飯](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250619_184408.jpg)
-![普通的豆子湯](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250619_185121.jpg)
+![起床出發 再見 Pampolona](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766035/myblog/travelogue/camino/ch6/IMG_20250619_075438.jpg)
+![金黃麥浪](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766056/myblog/travelogue/camino/ch6/IMG_20250619_090057.jpg)
+![綿延無際](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766078/myblog/travelogue/camino/ch6/IMG_20250619_092650.jpg)
+![這裡有個陡坡快把我累死](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766094/myblog/travelogue/camino/ch6/IMG_20250619_102237.jpg)
+![石橋](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766109/myblog/travelogue/camino/ch6/IMG_20250619_130136.jpg)
+![葡萄](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766126/myblog/travelogue/camino/ch6/IMG_20250619_144709.jpg)
+![37公里後難忘的可樂](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766147/myblog/travelogue/camino/ch6/IMG_20250619_162923.jpg)
+![馬拉松到底都什麼人在跑的 我用走的快不行了](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766167/myblog/travelogue/camino/ch6/IMG_20250619_165045.jpg)
+![可以用大頭釘釘選自己的家鄉的世界地圖](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766195/myblog/travelogue/camino/ch6/IMG_20250619_180556.jpg)
+![美味的西班牙燉飯](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766225/myblog/travelogue/camino/ch6/IMG_20250619_184408.jpg)
+![普通的豆子湯](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766248/myblog/travelogue/camino/ch6/IMG_20250619_185121.jpg)
 
 # 6/20,Los Aros
 - 今天約29公里，碎石路太多腳底有點痠
@@ -399,12 +399,12 @@ summary = ""
 - 今天吃飯忘記我到底有沒有付過一次錢了，我付錢時美國76歲老人還跟我說「我給小費真大方」，我到底是付了15.5還是總共給了兩次變成31歐
 - 今天經過的地方種植著整片的葡萄，讓我寫想起一款巫師3血與酒DLC的場景，那陽光、那綠色的葡萄葉，覺得製作團隊真的可能是取景於南歐或法國
 
-![自助早餐 好吃的鮪魚抹醬](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250620_061159.jpg)
-![室友起的很早 我也六點半就出發了](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250620_063536.jpg)
-![塗鴉](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250620_075207.jpg)
-![特別的取水口](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250620_082127.jpg)
-![始終優雅的市容 不論大城小鎮](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250620_082840.jpg)
-![公園玩一下](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250620_092954.jpg)
-![彷若無盡](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250620_120806.jpg)
-![面生的洗衣機](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250620_165228.jpg)
-![燉飯、瑪格麗特pizza與美國老先生](https://res.cloudinary.com/dt6lrjaov/image/upload/v1/myblog/travelogue/camino/ch6/IMG_20250620_171741.jpg)
+![自助早餐 好吃的鮪魚抹醬](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766268/myblog/travelogue/camino/ch6/IMG_20250620_061159.jpg)
+![室友起的很早 我也六點半就出發了](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766282/myblog/travelogue/camino/ch6/IMG_20250620_063536.jpg)
+![塗鴉](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766301/myblog/travelogue/camino/ch6/IMG_20250620_075207.jpg)
+![特別的取水口](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766336/myblog/travelogue/camino/ch6/IMG_20250620_082127.jpg)
+![始終優雅的市容 不論大城小鎮](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766371/myblog/travelogue/camino/ch6/IMG_20250620_082840.jpg)
+![公園玩一下](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766394/myblog/travelogue/camino/ch6/IMG_20250620_092954.jpg)
+![彷若無盡](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766414/myblog/travelogue/camino/ch6/IMG_20250620_120806.jpg)
+![面生的洗衣機](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766431/myblog/travelogue/camino/ch6/IMG_20250620_165228.jpg)
+![燉飯、瑪格麗特pizza與美國老先生](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769766445/myblog/travelogue/camino/ch6/IMG_20250620_171741.jpg)
