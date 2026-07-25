@@ -9,6 +9,8 @@ line-length = 88
 # Excluded directories and files
 exclude = [
     ".git",
+    # Ruff formats Python blocks inside Markdown; keep IDE plan docs untouched
+    ".cursor",
     ".venv",
     "venv",
     "__pycache__",
@@ -16,9 +18,6 @@ exclude = [
     "themes",
     "resources",
     ".hugo_build.lock",
-    "ebook-generator/output",
-    "ebook-generator/merged",
-    "ebook-generator/cache",
 ]
 
 # Enabled rule sets

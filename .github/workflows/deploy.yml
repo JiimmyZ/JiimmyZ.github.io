@@ -43,8 +43,8 @@ jobs:
           pip install -r requirements-dev.txt
       
       - name: Run tests with coverage
-        run: |
-          pytest --cov=. --cov-report=xml --cov-report=html --cov-report=term
+        # Coverage flags and threshold come from pytest.ini / .coveragerc
+        run: pytest
         env:
           # Mock Cloudinary credentials for tests (tests use mocking, but config validation needs these)
           CLOUDINARY_CLOUD_NAME: test_cloud

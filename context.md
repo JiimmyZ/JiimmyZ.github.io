@@ -27,12 +27,58 @@ myblog/
 │   └── travelogue/       # Travel blog posts with media
 ├── themes/               # Hugo themes
 ├── public/               # Generated static site
+├── tests/                # pytest suite (gates deployment)
 ├── media_processor.py         # 圖片影片處理工具（整合上傳、更新、檢測、壓縮）⭐
 ├── check_status.py             # Upload status checker
 └── cloudinary_mapping.json    # Local file → Cloudinary URL mapping
 ```
 
+`ebook-generator/` (Camino EPUB tool) was moved out of this repo on 2026-07-25.
+
 ## Recent Session Logs
+
+### Session Log 2026-07-25 - Fix CI: deployment blocked since 2026-02-01
+
+**Summary**: Every push since `2a1f71d` (the commit that introduced pytest) failed the
+`test` job, so `lint` / `build` / `deploy` were skipped and the live site never updated.
+Two independent defects were responsible.
+
+**Root cause 1 — 7 broken tests** (they never passed, on any platform):
+- `tests/test_media_processor.py::TestUploadFile` passed *absolute* paths to
+  `upload_file()`, which does `file_path.relative_to(Path("content"))` → `ValueError`,
+  so the function returned `None` and `assert result is not None` failed
+- `tests/test_integration.py` compared `find_media_files()` output (cwd-relative,
+  e.g. `content/travelogue/.../IMG_001.jpg`) against `.relative_to(tmp_content_dir)`
+  (absolute) → `ValueError`. Fixed to `.relative_to("content").as_posix()`, matching how
+  `upload_file()` normalises `relative_path`
+- 4 tests did `shutil.copy(sample_mapping_file, tmp_path / "cloudinary_mapping.json")`,
+  but the `sample_mapping_file` fixture already creates that exact file →
+  `shutil.SameFileError`. The redundant copies were removed
+
+**Root cause 2 — `pytest.ini` section misplacement**: `markers` and `addopts` were declared
+*after* `[coverage:run]` / `[coverage:report]`, so INI parsing assigned them to
+`[coverage:report]` and pytest ignored both. Consequences: `--strict-markers` never applied
+(51 unknown-mark warnings), and `--cov-fail-under=60` never ran. The `[coverage:*]` sections
+were dead config anyway — coverage.py does not read `pytest.ini`.
+
+**Fixes**:
+- `pytest.ini` — all keys back inside `[pytest]`, with a comment warning against adding
+  sections above them
+- `.coveragerc` — new; holds coverage `source` / `omit` / `report` settings
+- `--cov-fail-under=45` — ratchet just below the real total (46.64%); the old 60 was never
+  achievable and never enforced
+- `.github/workflows/deploy.yml` — `run: pytest` instead of duplicating `--cov` flags
+- `ruff check --fix` + `ruff format` — 190 findings cleared (whitespace, import order,
+  unused `HttpUrl` import). `lint` had also been failing since `fda0ca1`
+- `.ruff.toml` — excludes `.cursor` (ruff 0.16 formats Python blocks inside Markdown and
+  would rewrite plan docs); dropped stale `ebook-generator/*` excludes
+- `.gitignore` — added `.venv/`, `.pytest_cache/`, `htmlcov/`, `coverage.xml`, `.coverage`
+- `tests/ebook_generator/` — deleted; the subproject moved out of this repo
+
+**Verification**: `pytest` → 46 passed, coverage 46.64% ≥ 45; `ruff check` → all passed;
+`ruff format --check` → 62 files already formatted.
+
+**Status**: **COMPLETED**
 
 ### Session Log 2026-07-25 - Remove external fonts
 

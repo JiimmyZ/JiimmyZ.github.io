@@ -32,15 +32,15 @@ import shutil
 import subprocess
 import sys
 from collections import defaultdict
+from datetime import datetime
 from pathlib import Path
+from typing import Literal
 
 import cloudinary
 import cloudinary.api
 import cloudinary.uploader
-from datetime import datetime
-from typing import Literal
 from dotenv import load_dotenv
-from pydantic import BaseModel, Field, HttpUrl, ValidationError
+from pydantic import BaseModel, Field, ValidationError
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 # Fix Windows console encoding for Unicode characters
@@ -53,11 +53,11 @@ load_dotenv()
 
 class CloudinarySettings(BaseSettings):
     """Cloudinary configuration from environment variables."""
-    
+
     cloud_name: str
     api_key: str
     api_secret: str
-    
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
@@ -65,7 +65,7 @@ class CloudinarySettings(BaseSettings):
         case_sensitive=False,
         extra="ignore",
     )
-    
+
     def configure_cloudinary(self) -> None:
         """Configure Cloudinary SDK with validated settings."""
         cloudinary.config(
@@ -96,7 +96,7 @@ VIDEO_EXTENSIONS = {".mp4", ".webm", ".mov", ".avi", ".ogg"}
 
 class CloudinaryResource(BaseModel):
     """Cloudinary resource model with validated fields."""
-    
+
     local_path: str
     relative_path: str
     public_id: str
@@ -104,7 +104,7 @@ class CloudinaryResource(BaseModel):
     resource_type: Literal["image", "video"]
     bytes: int = Field(ge=0)
     uploaded_at: datetime | None = None
-    
+
     model_config = {
         "json_encoders": {
             datetime: lambda v: v.isoformat() if v else None,
@@ -271,7 +271,9 @@ def upload_file(
 
         return CloudinaryResource(
             local_path=str(file_path),
-            relative_path=str(relative_path).replace("\\", "/"),  # Normalize path separators
+            relative_path=str(relative_path).replace(
+                "\\", "/"
+            ),  # Normalize path separators
             public_id=public_id,
             url=url,
             resource_type=resource_type,
@@ -285,20 +287,20 @@ def upload_file(
 
 
 def load_existing_mapping(
-    mapping_file: str = "cloudinary_mapping.json"
+    mapping_file: str = "cloudinary_mapping.json",
 ) -> dict[str, CloudinaryResource]:
     """
     Load existing URL mapping with validation.
-    
+
     Returns dict mapping relative_path to CloudinaryResource.
     Handles both old dict format and new CloudinaryResource format for backward compatibility.
     """
     if not os.path.exists(mapping_file):
         return {}
-    
+
     with open(mapping_file, encoding="utf-8") as f:
         data = json.load(f)
-    
+
     # Validate and convert to models
     validated = {}
     for key, value in data.items():
@@ -308,7 +310,9 @@ def load_existing_mapping(
                 # Parse uploaded_at if present (may be ISO string)
                 if "uploaded_at" in value and isinstance(value["uploaded_at"], str):
                     try:
-                        value["uploaded_at"] = datetime.fromisoformat(value["uploaded_at"])
+                        value["uploaded_at"] = datetime.fromisoformat(
+                            value["uploaded_at"]
+                        )
                     except (ValueError, TypeError):
                         value["uploaded_at"] = None
                 validated[key] = CloudinaryResource(**value)
@@ -319,17 +323,17 @@ def load_existing_mapping(
             print(f"Warning: Invalid entry in mapping file: {key}")
             print(f"  Error: {e}")
             continue
-    
+
     return validated
 
 
 def save_mapping(
     mapping: dict[str, CloudinaryResource],
-    mapping_file: str = "cloudinary_mapping.json"
+    mapping_file: str = "cloudinary_mapping.json",
 ) -> None:
     """
     Save URL mapping to JSON file.
-    
+
     Normalizes URLs and path separators before saving.
     """
     # Normalize all URLs in mapping before saving
@@ -337,15 +341,17 @@ def save_mapping(
     for key, resource in mapping.items():
         # Create a copy to avoid modifying the original
         resource_dict = resource.model_dump(mode="json", exclude_none=True)
-        
+
         # Normalize URL
         if "url" in resource_dict:
             resource_dict["url"] = normalize_url(resource_dict["url"])
-        
+
         # Normalize relative_path
         if "relative_path" in resource_dict:
-            resource_dict["relative_path"] = resource_dict["relative_path"].replace("\\", "/")
-        
+            resource_dict["relative_path"] = resource_dict["relative_path"].replace(
+                "\\", "/"
+            )
+
         normalized_data[key] = resource_dict
 
     with open(mapping_file, "w", encoding="utf-8") as f:
@@ -370,10 +376,7 @@ def cmd_upload():
 
     # Create sets for checking - use both relative_path and local_path
     existing_relative_paths = set(mapping.keys())
-    existing_local_paths = {
-        resource.local_path
-        for resource in mapping.values()
-    }
+    existing_local_paths = {resource.local_path for resource in mapping.values()}
 
     # Upload new files
     uploaded_count = 0
@@ -778,11 +781,11 @@ def load_markdown_mapping(
 ) -> dict[str, str]:
     """
     Load Cloudinary URL mapping for markdown updates.
-    
+
     Returns dict mapping filename to Cloudinary URL.
     """
     mapping = load_existing_mapping(mapping_file)
-    
+
     if not mapping:
         print(f"Error: {mapping_file} not found or empty!")
         print("Please run 'upload' command first.")

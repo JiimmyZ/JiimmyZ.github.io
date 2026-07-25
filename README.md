@@ -60,17 +60,21 @@ myblog/
 ├── themes/PaperMod/
 ├── static/                  # favicon、robots.txt 等
 ├── public/                  # hugo 產出（gitignore）
-├── ebook-generator/         # 電子書相關（獨立子專案）
+├── tests/                   # pytest 測試（CI 通過才會部署）
 ├── media_processor.py       # 媒體：upload / update-markdown / check-duplicates / compress
 ├── check_status.py          # 上傳狀態檢查
 ├── cloudinary_mapping.json  # 本地路徑 → Cloudinary URL
 ├── hugo.toml                # 設定真相來源
+├── pytest.ini               # pytest 設定（含 addopts 與覆蓋率門檻）
+├── .coveragerc              # coverage.py 設定
 ├── context.md               # 現況與近期 session
 ├── LEGACY.md                # 歷史與 ADR
 ├── requirements.txt
-├── requirements-dev.txt     # ruff 等
+├── requirements-dev.txt     # pytest / ruff 等
 └── README.md
 ```
+
+> `ebook-generator/`（Camino EPUB 工具）已於 2026-07-25 移出本 repo，成為獨立專案。
 
 ## 環境設定
 

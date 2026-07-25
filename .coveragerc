@@ -1,0 +1,27 @@
+# Coverage.py configuration.
+# Kept separate from pytest.ini because coverage.py does not read pytest.ini.
+
+[run]
+source = .
+omit =
+    tests/*
+    .venv/*
+    venv/*
+    env/*
+    themes/*
+    public/*
+    resources/*
+    */__pycache__/*
+
+[report]
+precision = 2
+show_missing = True
+skip_covered = False
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise AssertionError
+    raise NotImplementedError
+    if __name__ == .__main__.:
+    if TYPE_CHECKING:
+    @abstractmethod

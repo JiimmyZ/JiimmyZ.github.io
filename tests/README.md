@@ -11,9 +11,6 @@ tests/
 ├── test_media_processor.py  # Tests for media_processor.py
 ├── test_check_status.py     # Tests for check_status.py
 ├── test_integration.py       # Integration tests for workflows
-├── ebook_generator/
-│   ├── __init__.py
-│   └── test_config.py       # Tests for ebook-generator/config.py
 ├── fixtures/
 │   ├── sample_mapping.json  # Sample Cloudinary mapping file
 │   └── sample_markdown.md   # Sample markdown file
@@ -27,10 +24,8 @@ tests/
 pytest
 ```
 
-### Run with coverage report
-```bash
-pytest --cov=. --cov-report=html
-```
+Coverage flags come from `pytest.ini`, so a bare `pytest` already produces
+`term-missing`, `htmlcov/`, and `coverage.xml`.
 
 ### Run specific test file
 ```bash
@@ -56,11 +51,16 @@ pytest -m cloudinary    # Run Cloudinary-related tests
 - `@pytest.mark.cloudinary` - Tests that mock Cloudinary API
 - `@pytest.mark.ffmpeg` - Tests that mock FFmpeg subprocess
 
-## Coverage Goals
+## Coverage
 
-- Core functions (`media_processor.py`): ≥80% coverage
-- Utility scripts (`check_status.py`): ≥70% coverage
-- Configuration (`config.py`): ≥90% coverage
+The gate lives in `pytest.ini` (`--cov-fail-under`) and is a ratchet set just below
+the current total, so a regression fails CI. Coverage scope/omissions are in `.coveragerc`.
+
+| Module | Current | Goal |
+|--------|---------|------|
+| `media_processor.py` | ~51% | ≥80% |
+| `check_status.py` | 0% (module-level script, not imported by tests) | ≥70% |
+| **Total gate** | **45%** | raise as coverage improves |
 
 ## Test Fixtures
 
