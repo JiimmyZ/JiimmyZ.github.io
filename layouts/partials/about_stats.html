@@ -1,0 +1,10 @@
+{{- /* About-page stats: site UV (Busuanzi) + operating days from siteStartDate. */ -}}
+{{- if and site.Params.busuanzi.enabled (.Param "showSiteStats") }}
+{{- $start := time (site.Params.busuanzi.siteStartDate | default "2025-07-26") }}
+{{- $days := div (sub now.Unix $start.Unix) 86400 }}
+{{- if lt $days 0 }}{{ $days = 0 }}{{ end }}
+<div class="about-stats post-meta">
+  <p>本站總訪客數 · <span id="busuanzi_site_uv">載入中…</span> 人</p>
+  <p>本站已運營 · {{ $days }} 天</p>
+</div>
+{{- end }}

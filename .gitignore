@@ -12,3 +12,4 @@ __pycache__/
 *.avi
 *.mkv
 *.webm
+.tmp.driveupload/

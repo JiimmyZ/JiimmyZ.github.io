@@ -2,6 +2,7 @@
 date = '2025-07-26T08:35:16+08:00'
 draft = false
 title = 'About'
+showSiteStats = true
 +++
 
 虛擲光陰求名利  

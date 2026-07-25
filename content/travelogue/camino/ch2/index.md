@@ -4,7 +4,8 @@ draft = false
 title = 'Camino Ch2 典故、語言與路線'
 layout = "single" 
 categories = ["travelogue"]
-summary = ""
+tags = ["Camino", "朝聖之路", "法國之路"]
+summary = "Camino典故、相關名詞、語言與法國之路路線介紹"
 +++
 ch2-ch5會是客觀、實用的介紹，不涉及過多個人體驗
 在此之後則是日記分享

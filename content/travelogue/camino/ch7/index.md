@@ -4,7 +4,8 @@ draft = false
 title = 'Camino Ch7 日記 part 2'
 layout = "single" 
 categories = ["travelogue"]
-summary = ""
+tags = ["Camino", "朝聖之路", "日記"]
+summary = "Camino日記 part 2：中段路程的風景與人情"
 +++
 # 6/21,Logrono
 - 今天第一次有事先訂好旅店，感覺真棒

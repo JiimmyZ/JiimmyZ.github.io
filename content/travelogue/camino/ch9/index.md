@@ -4,7 +4,8 @@ draft = false
 title = 'Camino Ch9 總結'
 layout = "single" 
 categories = ["travelogue"]
-summary = ""
+tags = ["Camino", "朝聖之路", "心得"]
+summary = "Camino旅程心得總結與人生體悟"
 +++
 # 心得總結
 - camino有許多像是縮小版模擬人生的地方

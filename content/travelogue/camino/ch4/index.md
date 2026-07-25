@@ -4,7 +4,8 @@ draft = false
 title = 'Camino Ch4 裝備與體能'
 layout = "single" 
 categories = ["travelogue"]
-summary = ""
+tags = ["Camino", "朝聖之路", "裝備"]
+summary = "裝備清單與體能訓練建議"
 +++
 # Camino試算表
 - 在準備這場旅程時，我建立一個線上試算表，方便估計重量、通勤時間、提醒待辦事項等等，在此分享給大家

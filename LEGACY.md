@@ -4,6 +4,120 @@
 
 ## Completed Session Logs
 
+### Session Log 2026-07-25 - Remove external fonts (perf ADR)
+
+**Summary**: Confirmed CDN web fonts were the main cause of slow first paint / jank. Removed all external font loading; site uses PaperMod system stack only.
+
+**Timeline / findings**:
+1. Site used Google Fonts (Literata) + jsDelivr `lxgw-wenkai-webfont@1.7.0/style.css`
+2. Package `style.css` imported **6** families (regular/light/bold + mono variants); each regular alone has ~97 unicode-range `.woff2` subsets → large CSS parse + many font requests on CJK pages
+3. Interim trim: load only `lxgwwenkai-regular.css` (helped somewhat)
+4. User confirmed fonts were still the bottleneck → **remove all external fonts**
+
+**Decision (ADR)**:
+- **Do not** load Google Fonts, jsDelivr webfonts, or a local `fonts.css` override
+- Rely on PaperMod `reset.css` system stack (`-apple-system`, `BlinkMacSystemFont`, `Segoe UI`, etc.)
+- Prefer perceived speed over custom typography for this solo blog
+
+**Files**:
+- `layouts/partials/extend_head.html` — font `<link>` / preconnect removed
+- `static/css/fonts.css` — deleted
+- `README.md` / `context.md` — stack documented as system fonts
+
+**Supersedes**: Session Log 2026-07-25 - Site font unification (LXGW WenKai + Literata) below (historical only; stack no longer in use).
+
+**Status**: **COMPLETED** — reload felt much faster after removal.
+
+### Session Log 2026-07-25 - README rewrite (solo + agent)
+
+**Summary**: Rewrote `README.md` for single-maintainer + future AI agents (not contributor onboarding).
+
+**Done**:
+- Quick-start flows (text-only / with media / large video)
+- Source-of-truth table (`hugo.toml` / `context.md` / `LEGACY.md` / `media_processor.py`)
+- One media section; historical Cloudinary migration stats deferred to LEGACY
+- Removed 貢獻／授權；deleted dead links to non-existent `GISCUS_SETUP.md` / `CLOUDINARY_SETUP.md` / `SEO_GUIDELINES.md`
+- FAQ: `python media_processor.py update-markdown`; clone URL = `JiimmyZ/JiimmyZ.github.io`
+
+**Status**: **COMPLETED**
+
+### Session Log 2026-07-25 - Giscus theme & login options (no change)
+
+**Summary**: Reviewed whether Giscus comment UI colors and login providers can be customized. Decided to leave the current setup unchanged.
+
+**Theme / colors**:
+- Giscus runs in a cross-origin iframe; site CSS cannot style the widget directly
+- Colors are controlled via `params.comments.giscus.theme` in `hugo.toml` (currently `preferred_color_scheme`)
+- Possible approaches (not applied): built-in themes (e.g. `transparent_dark`), custom CSS URL as `data-theme`, or `postMessage` sync with site light/dark toggle
+- **Decision**: Do not change theme for now
+
+**Login options**:
+- Giscus only supports GitHub OAuth (comments are GitHub Discussions)
+- Other providers (Google, etc.) are not available without replacing or dual-running another comment system (Disqus, Cusdis, self-hosted + Auth)
+- Dual systems conflict with the site’s minimal design; keep Giscus-only
+- **Decision**: Keep GitHub-only login
+
+**Config reference** (`hugo.toml` → `[params.comments.giscus]`):
+- `theme = "preferred_color_scheme"`
+- Partial: `layouts/partials/comments.html` (`data-theme` from config)
+
+**Status**: **NO CHANGE** — documented for future reference; Giscus remains sole comment system with GitHub login only.
+
+### Session Log 2026-07-25 - Dim Buy JZ Coffee button
+
+**Summary**: Softened the inline donation button from a solid primary fill to a quiet outline style so it blends with surrounding article content.
+
+**CSS** (`layouts/partials/donation_section.html`):
+- Text: `var(--secondary)`
+- Background: transparent
+- Border: `1px solid var(--border)`
+- Hover: text → `var(--primary)`, border → `var(--tertiary)`
+- Focus outline: `var(--secondary)`
+
+**Status**: **COMPLETED**
+
+### Session Log 2026-07-25 - Site font unification (LXGW WenKai + Literata)
+
+**Summary**: Unified site-wide fonts to 霞鹜文楷 (LXGW WenKai) for CJK and Literata for Latin/numbers via CDN; code blocks use system monospace (Consolas stack).
+
+**Why not `assets/css/extended`**: Hugo’s CSS minify strips quotes from multi-word `font-family` names (e.g. `"LXGW WenKai"` → broken). Font rules therefore live in `static/css/fonts.css` and are linked from `extend_head.html`.
+
+**Stack**:
+- Chinese / body: `"LXGW WenKai", "Literata", "Noto Serif TC", serif`
+- Code: `ui-monospace, Consolas, "Cascadia Code", "Courier New", monospace`
+- CDN: Google Fonts (Literata) + jsDelivr `lxgw-wenkai-webfont@1.7.0`
+
+**Files**:
+- `layouts/partials/extend_head.html` — preconnect + font stylesheets + local `css/fonts.css`
+- `static/css/fonts.css` — `body` / code `font-family`
+- `README.md` / `context.md` — documentation
+
+**Known limitation**: Giscus comments/reactions run in a cross-origin iframe and do **not** inherit site fonts. Unifying Giscus requires a custom `data-theme` CSS URL (not done in this session).
+
+**Status**: **SUPERSEDED** — external fonts removed the same day for performance (see “Remove external fonts” above). Kept here as history of why CDN CJK fonts were tried and why `static/css/fonts.css` existed.
+
+### Session Log 2026-07-25 - Busuanzi visitor stats on About page
+
+**Summary**: Added [不蒜子](https://www.busuanzi.cc/) for site-wide visit counting; UI only on the About page.
+
+**Design**:
+- Script loads site-wide (so all page views count toward `site_uv`)
+- Visible stats only when `showSiteStats = true` (currently `content/about.md`)
+- Displays: total unique visitors (`busuanzi_site_uv`) + operating days from `params.busuanzi.siteStartDate` (`2025-07-26`)
+- No API key / registration required
+
+**Files**:
+- `hugo.toml` — `[params.busuanzi]` (`enabled`, `siteStartDate`)
+- `layouts/partials/extend_footer.html` — Busuanzi script
+- `layouts/partials/about_stats.html` — About-page UI
+- `layouts/_default/single.html` — render `about_stats`
+- `content/about.md` — `showSiteStats = true`
+- `README.md` / `context.md` — documentation
+
+**Known limitation**: On localhost, Busuanzi may show「域名/IP已被禁用」; production domain should work after deploy.
+
+**Status**: **COMPLETED**
+
 ### Session Log 2026-02-01 (Evening) - Pydantic Integration Implementation
 
 **Summary**: Implemented comprehensive Pydantic integration across Python scripts to improve type safety, data validation, and configuration management. Completed Phase 1 (Foundation Setup), Phase 2 (Ebook Generator Configuration), and Phase 3 (Cloudinary Data Models).

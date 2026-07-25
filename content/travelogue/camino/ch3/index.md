@@ -4,7 +4,8 @@ draft = false
 title = 'Camino Ch3 通勤、住宿、網站與app'
 layout = "single" 
 categories = ["travelogue"]
-summary = ""
+tags = ["Camino", "朝聖之路", "住宿"]
+summary = "通勤、住宿選擇與實用網站、App整理"
 +++
 
 ![機場](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769928448/myblog/travelogue/camino/ch3/IMG_20250613_145504.jpg)

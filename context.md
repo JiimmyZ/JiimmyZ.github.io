@@ -10,6 +10,8 @@ Hugo static site blog with extensive media content (travelogue with photos and v
 - **Theme**: PaperMod
 - **Media Storage**: Cloudinary (CDN)
 - **Comments System**: Giscus (GitHub Discussions)
+- **Visitor Counter**: Busuanzi (script site-wide; UI only on About via `showSiteStats`)
+- **Fonts**: PaperMod system font stack; no external font requests
 - **Version Control**: Git / GitHub Pages
 - **Python Scripts**: 
   - `cloudinary` SDK (v1.44.1)
@@ -31,6 +33,79 @@ myblog/
 ```
 
 ## Recent Session Logs
+
+### Session Log 2026-07-25 - Remove external fonts
+
+**Summary**: Removed Google Fonts, jsDelivr font CSS, and the local font override. The site now uses PaperMod's system font stack to eliminate external font requests and font swapping.
+
+**Files**:
+- `layouts/partials/extend_head.html` — removed font preconnect and stylesheet links
+- `static/css/fonts.css` — deleted
+- `README.md` / `context.md` — documentation
+
+**Status**: **COMPLETED**
+
+### Session Log 2026-07-25 - Font load trim (perf)
+
+**Summary**: Homepage felt slow due to LXGW WenKai package `style.css` importing regular+light+bold+mono (~6× `@font-face` CSS). Switched to `lxgwwenkai-regular.css` only; `fonts.css` already uses regular weight.
+
+**File**: `layouts/partials/extend_head.html`
+
+**Status**: **COMPLETED**
+
+### Session Log 2026-07-25 - SEO improvements
+
+**Summary**: Closed SEO gaps: default OG image, content tags/summaries, noindex for placeholder pages, Cloudinary image transforms, deduped meta vs PaperMod.
+
+**Changes**:
+- `static/og-default.png` (option B dark typographic, 1200x630) + `params.seo.defaultImage` in `hugo.toml`
+- Archetypes and posts: `tags`; travelogue empty `summary` filled
+- Placeholder `essay/novel/review` First pages: `robotsNoIndex` + sitemap disable
+- `render-image.html`: Cloudinary `f_auto,q_auto,w_*` + srcset
+- `seo_meta.html`: only preconnect + default OG fallback
+- `schema_article.html`: apple-touch logo + default image; removed `jsonify` (Hugo auto-encodes ld+json; jsonify was double-quoting)
+
+**Status**: **COMPLETED**
+
+### Session Log 2026-07-25 - README rewrite (solo + agent)
+
+**Summary**: Restructured `README.md` for infrequent solo use and future AI agents: quick-start, single media section, source-of-truth table, removed collab/license sections and dead SETUP/SEO links.
+
+**Changes**:
+- Added「給未來的你／Agent」+「日常速查」
+- Merged duplicate media sections; migration stats → point to `LEGACY.md`
+- Fixed FAQ (`update_markdown.py` → `media_processor.py update-markdown`); real clone URL
+- Removed 貢獻／授權；trimmed SEO／ruff
+
+**Status**: **COMPLETED**
+
+### Session Log 2026-07-25 - Dim Buy JZ Coffee button
+
+**Summary**: Softened the inline donation button so it blends with surrounding post content instead of reading as a high-contrast primary CTA.
+
+**Change**: In `layouts/partials/donation_section.html`, `.donation-section-btn` now uses `color: var(--secondary)`, `background: transparent`, and `border: 1px solid var(--border)`. Hover lifts text to `var(--primary)` and border to `var(--tertiary)`; focus outline uses `var(--secondary)`.
+
+**Status**: **COMPLETED**
+
+### Session Log 2026-07-25 - Site font unification
+
+**Summary**: Unified site fonts to LXGW WenKai (CJK) + Literata (Latin) via CDN; monospace stack for code. Font rules live in `static/css/fonts.css` (not `assets/css/extended`) so Hugo minify cannot strip quotes from multi-word family names.
+
+**Files**:
+- `layouts/partials/extend_head.html` — preconnect + Google Fonts / jsDelivr + local fonts.css
+- `static/css/fonts.css` — body and code `font-family`
+- `README.md` / `context.md` — documentation
+
+### Session Log 2026-07-25 - Busuanzi on About page
+
+**Summary**: Added Busuanzi visitor stats shown only on the About page (`showSiteStats`), with site-wide script load for accurate `site_uv`. Operating days derived from `params.busuanzi.siteStartDate` (default 2025-07-26).
+
+**Files**:
+- `hugo.toml` — `[params.busuanzi]`
+- `layouts/partials/extend_footer.html` — Busuanzi script
+- `layouts/partials/about_stats.html` — UV + operating days UI
+- `layouts/_default/single.html` — render `about_stats`
+- `content/about.md` — `showSiteStats = true`
 
 ### Session Log 2026-02-01 (Late Evening) - Cloudinary Image Display Issues Resolution
 
@@ -238,12 +313,13 @@ myblog/
 1. **Initial Implementation**: Full donation section with title "Buy JZ a coffee" and "Donate" button
 2. **Refinement 1**: Removed title for cleaner look, changed button text to "Buy JZ Coffee"
 3. **Refinement 2**: Reduced padding and size for more compact design (padding: 0.75rem → 0.5rem, font-size: 1rem → 0.875rem)
-4. **Final**: Removed border and background to seamlessly blend with page content
+4. **Refinement 3**: Solid primary fill (high contrast)
+5. **Current (2026-07-25)**: Secondary text + transparent background + weak border so the button blends with post content
 
 **Component Features**:
 - Minimal design: Single button with "Buy JZ Coffee" text
 - Modal dialog: Shows "Donation feature is not yet available. Stay tuned!" message
-- No border/background: Seamlessly integrated into page flow
+- Quiet outline style: `var(--secondary)` text, transparent fill, `var(--border)` edge
 - Responsive design: Works on mobile and desktop
 - Theme support: Auto-adapts to light/dark mode
 - Accessibility: ARIA labels, keyboard navigation, focus management
@@ -464,7 +540,7 @@ python media_processor.py upload
 
 # 更新 Markdown 檔案中的連結
 python media_processor.py update-markdown
-python media_processor.py update-markdown --no-backup  # 不建立備份
+python media_processor.py update-markdown --backup  # 更新前建立 .backup 備份
 
 # 檢測重複檔案（僅檢查）
 python media_processor.py check-duplicates

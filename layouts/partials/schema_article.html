@@ -1,75 +1,68 @@
 {{- /*
-  Enhanced Article schema for better SEO
-  This extends the theme's BlogPosting schema with additional Article properties
-  Only rendered for pages (articles), not sections or home
+  Enhanced Article schema for better SEO.
+  Do not pipe through jsonify here: Hugo encodes values inside
+  application/ld+json automatically (same pattern as PaperMod schema_json).
 */ -}}
 {{- if and .IsPage (site.Params.seo.enableSchema | default true) -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": {{ .Title | plainify | jsonify }},
-  "description": {{ with .Description | plainify }}{{ . | jsonify }}{{ else }}{{ .Summary | plainify | truncate 200 | jsonify }}{{ end }},
-  {{- /* Image handling */ -}}
+  "headline": {{ .Title | plainify }},
+  "description": {{ with .Description | plainify }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 200 }}{{ end }},
   {{- if .Params.cover.image -}}
   "image": [
     {{- if (ne .Params.cover.relative true) -}}
-    {{ .Params.cover.image | absURL | jsonify }}
+    {{ .Params.cover.image | absURL }}
     {{- else -}}
-    {{ (path.Join .RelPermalink .Params.cover.image ) | absURL | jsonify }}
-    {{- end }}
-    {{- /* Add first content image if available */ -}}
+    {{ (path.Join .RelPermalink .Params.cover.image ) | absURL }}
+    {{- end -}}
     {{- $images := partial "templates/_funcs/get-page-images" . -}}
     {{- with index $images 0 -}}
-    , {{ .Permalink | jsonify }}
+    , {{ .Permalink }}
     {{- end -}}
   ],
   {{- else -}}
     {{- $images := partial "templates/_funcs/get-page-images" . -}}
     {{- with index $images 0 -}}
-  "image": {{ .Permalink | jsonify }},
+  "image": {{ .Permalink }},
+    {{- else -}}
+      {{- with site.Params.seo.defaultImage -}}
+  "image": {{ . }},
+      {{- end -}}
     {{- end -}}
   {{- end -}}
-  {{- /* Dates */ -}}
   {{- if .PublishDate -}}
-  "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" | jsonify }},
+  "datePublished": {{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }},
   {{- end -}}
   {{- if .Lastmod -}}
-  "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | jsonify }},
+  "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05-07:00" }},
   {{- end -}}
-  {{- /* Author information */ -}}
   {{- with (.Params.author | default site.Params.author) -}}
   "author": {
     "@type": "Person",
-    "name": {{ . | jsonify }}{{ if site.Params.social }},
-    "url": {{ with site.Params.social.website }}{{ . | jsonify }}{{ end }}{{ end }}
+    "name": {{ . }}
   },
   {{- end -}}
-  {{- /* Publisher information */ -}}
   "publisher": {
     "@type": "{{ site.Params.schema.publisherType | default "Organization" | title }}",
-    "name": {{ site.Title | jsonify }},
+    "name": {{ site.Title }},
     "logo": {
       "@type": "ImageObject",
-      "url": {{ (site.Params.assets.favicon | default "favicon.ico") | absURL | jsonify }},
-      "width": 32,
-      "height": 32
+      "url": {{ "apple-touch-icon.png" | absURL }},
+      "width": 180,
+      "height": 180
     }
   },
-  {{- /* Main entity */ -}}
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": {{ .Permalink | jsonify }}
+    "@id": {{ .Permalink }}
   },
-  {{- /* Article body */ -}}
   {{- if .Content -}}
-  "articleBody": {{ .Content | plainify | truncate 5000 | jsonify }},
+  "articleBody": {{ .Content | plainify | truncate 5000 }},
   {{- end -}}
-  {{- /* Word count */ -}}
   "wordCount": {{ .WordCount }},
-  {{- /* Language */ -}}
-  "inLanguage": {{ .Language.Lang | default "zh-tw" | jsonify }},
-  {{- /* Keywords/Tags */ -}}
+  "inLanguage": {{ .Language.Lang | default "zh-tw" }},
   {{- $keywords := slice -}}
   {{- if .Params.keywords -}}
     {{- $keywords = .Params.keywords -}}
@@ -80,28 +73,25 @@
   "keywords": [
     {{- range $i, $e := $keywords -}}
     {{- if $i }}, {{ end -}}
-    {{ $e | jsonify }}
+    {{ $e }}
     {{- end -}}
   ],
   {{- end -}}
-  {{- /* Article section */ -}}
   {{- if .Section -}}
-  "articleSection": {{ .Section | jsonify }},
+  "articleSection": {{ .Section }},
   {{- end -}}
-  {{- /* Category mapping */ -}}
   {{- if .Params.categories -}}
   "about": [
     {{- range $i, $cat := .Params.categories -}}
     {{- if $i }}, {{ end -}}
     {
       "@type": "Thing",
-      "name": {{ $cat | jsonify }}
+      "name": {{ $cat }}
     }
     {{- end -}}
   ],
   {{- end -}}
-  {{- /* URL */ -}}
-  "url": {{ .Permalink | jsonify }}
+  "url": {{ .Permalink }}
 }
 </script>
 {{- end -}}

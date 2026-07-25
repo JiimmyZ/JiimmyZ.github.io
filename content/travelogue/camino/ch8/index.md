@@ -4,7 +4,8 @@ draft = false
 title = 'Camino Ch8 日記 part 3'
 layout = "single" 
 categories = ["travelogue"]
-summary = ""
+tags = ["Camino", "朝聖之路", "日記"]
+summary = "Camino日記 part 3：接近終點的日子"
 +++
 # 7/3，Villares de Orbigo
 - 享受>品味>鑑賞>創作，這可能是一個藝術家有能力創作藝術品，從最開始到開始創作的過程

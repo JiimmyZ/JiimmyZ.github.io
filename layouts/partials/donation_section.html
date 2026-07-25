@@ -34,9 +34,9 @@
   padding: 0.5rem 1.25rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--theme);
-  background: var(--primary);
-  border: 1px solid var(--primary);
+  color: var(--secondary);
+  background: transparent;
+  border: 1px solid var(--border);
   border-radius: var(--radius, 6px);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -47,10 +47,10 @@
 }
 
 .donation-section-btn:hover {
-  background: var(--primary);
-  opacity: 0.9;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: var(--primary);
+  background: transparent;
+  border-color: var(--tertiary);
+  transform: translateY(-1px);
 }
 
 .donation-section-btn:active {
@@ -58,7 +58,7 @@
 }
 
 .donation-section-btn:focus {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--secondary);
   outline-offset: 2px;
 }
 

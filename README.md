@@ -2,338 +2,212 @@
 
 ## 專案簡介
 
-這是一個使用 Hugo 建置的靜態網站部落格，主要內容包含詩詞、小說、雜感、賞析和遊記等文學創作。網站使用 PaperMod 主題，並透過 Cloudinary CDN 管理媒體檔案（圖片和影片）。
+Hugo 靜態部落格（PaperMod），內容含詩詞、小說、雜感、賞析、遊記。媒體（圖／影片）放 Cloudinary CDN；部署於 GitHub Pages。
 
 ### 網站資訊
-- **網站標題**: JZ隨筆
+
+- **標題**: JZ隨筆
 - **語言**: 繁體中文 (zh-TW)
-- **部署**: GitHub Pages
 - **網址**: https://jiimmyz.github.io/
+- **Repo**: https://github.com/JiimmyZ/JiimmyZ.github.io
+
+## 給未來的你／Agent
+
+本站**永遠單人維護**。久久才開一次時，先讀本檔「日常速查」，再查下表。
+
+| 要找什麼 | 看哪裡 |
+|----------|--------|
+| 網站／評論／不蒜子等設定 | [`hugo.toml`](hugo.toml) |
+| 近期決策與現況 | [`context.md`](context.md) |
+| 歷史 session、遷移、ADR | [`LEGACY.md`](LEGACY.md) |
+| 媒體上傳／換連結 | 只認 [`media_processor.py`](media_processor.py)（舊腳本已刪） |
+
+請勿擅自加第二套評論系統、協作流程或「貢獻指南」。改行為後更新 `context.md`，較大決策再記 `LEGACY.md`。
+
+## 日常速查
+
+```text
+純文字發文：
+  hugo new poetry/題名.md  → 編輯 → hugo server → git push
+
+有圖／影片：
+  檔案放進 content/... → python media_processor.py upload
+  → python media_processor.py update-markdown → 預覽 → push
+
+大影片 >100MB：
+  python media_processor.py compress <video> → 再 upload
+```
+
+- 本地預覽：`hugo server` → http://localhost:1313
+- 純文字不需要 Cloudinary／`.env`
+- 推 `main` 後由 GitHub Actions 部署 GitHub Pages
 
 ## 技術棧
 
-### 核心技術
-- **Hugo**: 靜態網站生成器
-- **PaperMod**: Hugo 主題
-- **Cloudinary**: 媒體檔案 CDN 儲存與優化
-- **Python**: 媒體管理自動化腳本
-- **GitHub Pages**: 靜態網站託管
-
-### Python 依賴
-- `cloudinary>=1.36.0`: Cloudinary SDK
-- `python-dotenv>=1.0.0`: 環境變數管理
-- `pydantic>=2.0.0`: 資料驗證與型別安全
-- `pydantic-settings>=2.0.0`: 設定管理與環境變數驗證
+- **Hugo** + **PaperMod**
+- **Cloudinary**（媒體 CDN）
+- **Giscus**（GitHub Discussions 評論，僅 GitHub 登入）
+- **不蒜子**（訪客統計，UI 僅關於頁）
+- **字體**: PaperMod 系統字體（無外部字體）
+- **Python**: `cloudinary`、`python-dotenv`、`pydantic`、`pydantic-settings`（見 `requirements.txt`）
 
 ## 專案結構
 
 ```
 myblog/
-├── content/                    # Hugo 內容目錄
-│   ├── about.md               # 關於頁面
-│   ├── poetry/                # 詩詞文章
-│   ├── novel/                 # 小說文章
-│   ├── essay/                 # 雜感文章
-│   ├── review/                # 賞析文章
-│   └── travelogue/            # 遊記（含大量媒體檔案）
-│       └── camino/            # Camino 遊記系列
-│
-├── themes/                    # Hugo 主題
-│   └── PaperMod/              # PaperMod 主題
-│
-├── layouts/                   # 自訂佈局
-│   ├── _default/             # 預設佈局
-│   ├── partials/             # 部分模板
-│   └── shortcodes/           # 短代碼
-│
-├── static/                    # 靜態檔案（favicon, robots.txt 等）
-├── public/                    # Hugo 生成的靜態網站（gitignore）
-│
-├── media_processor.py         # 圖片影片處理工具（整合上傳、更新、檢測、壓縮）⭐ 推薦
-├── check_status.py            # 上傳狀態檢查
-│
-├── cloudinary_mapping.json    # 本地檔案 → Cloudinary URL 對應表
-├── requirements.txt           # Python 依賴
-├── hugo.toml                  # Hugo 設定檔
-├── context.md                 # 專案上下文與決策記錄
-└── README.md                  # 本檔案
+├── content/                 # 文章（poetry / novel / essay / review / travelogue）
+├── layouts/                 # 自訂佈局、partials、shortcodes
+├── themes/PaperMod/
+├── static/                  # favicon、robots.txt 等
+├── public/                  # hugo 產出（gitignore）
+├── ebook-generator/         # 電子書相關（獨立子專案）
+├── media_processor.py       # 媒體：upload / update-markdown / check-duplicates / compress
+├── check_status.py          # 上傳狀態檢查
+├── cloudinary_mapping.json  # 本地路徑 → Cloudinary URL
+├── hugo.toml                # 設定真相來源
+├── context.md               # 現況與近期 session
+├── LEGACY.md                # 歷史與 ADR
+├── requirements.txt
+├── requirements-dev.txt     # ruff 等
+└── README.md
 ```
 
 ## 環境設定
 
 ### 前置需求
-1. **Hugo**: 安裝 Hugo 靜態網站生成器
+
+1. **Hugo Extended**（建議）
    ```bash
-   # Windows (使用 Chocolatey)
-   choco install hugo-extended
-   
-   # macOS (使用 Homebrew)
-   brew install hugo
-   
-   # 或從官網下載: https://gohugo.io/installation/
+   choco install hugo-extended   # Windows
+   brew install hugo             # macOS
    ```
+2. **Python 3.8+**（僅媒體腳本需要）
+3. **Cloudinary**（僅有媒體上傳時需要；免費方案單檔 ≤100MB）
 
-2. **Python 3.8+**: 用於執行媒體管理腳本
-   ```bash
-   python --version
-   ```
-
-3. **Cloudinary 帳號**: 免費帳號即可（25GB 儲存空間）
-
-### 安裝步驟
-
-1. **複製專案**
-   ```bash
-   git clone <repository-url>
-   cd myblog
-   ```
-
-2. **安裝 Python 依賴**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **設定 Cloudinary 憑證**
-   
-   建立 `.env` 檔案（在專案根目錄）：
-   ```env
-   CLOUDINARY_CLOUD_NAME=your_cloud_name
-   CLOUDINARY_API_KEY=your_api_key
-   CLOUDINARY_API_SECRET=your_api_secret
-   ```
-   
-   > **注意**: `.env` 檔案已加入 `.gitignore`，不會被提交到版本控制
-
-4. **驗證 Hugo 安裝**
-   ```bash
-   hugo version
-   ```
-
-## 開發工作流程
-
-### 本地開發
-
-1. **啟動 Hugo 開發伺服器**
-   ```bash
-   hugo server
-   ```
-   
-   伺服器會在 `http://localhost:1313` 啟動，支援熱重載。
-
-2. **建立新文章**
-   ```bash
-   # 使用 Hugo archetypes
-   hugo new poetry/新詩名.md
-   hugo new novel/新小說名.md
-   hugo new essay/新雜感名.md
-   hugo new review/新賞析名.md
-   hugo new travelogue/camino/ch10/index.md
-   ```
-
-3. **建置靜態網站**
-   ```bash
-   hugo
-   ```
-   
-   生成的檔案會輸出到 `public/` 目錄。
-
-### 媒體檔案管理
-
-#### 圖片影片處理工具（推薦）
-
-整合了上傳、重複檢測、影片壓縮功能的統一工具：
+### 安裝
 
 ```bash
-# 上傳媒體檔案到 Cloudinary
-python media_processor.py upload
-
-# 檢測重複檔案（僅檢查）
-python media_processor.py check-duplicates
-
-# 檢測並自動刪除重複檔案
-python media_processor.py check-duplicates --auto
-
-# 壓縮大型影片檔案（>100MB）
-python media_processor.py compress content/travelogue/camino/ch8/VID_xxx.mp4
+git clone https://github.com/JiimmyZ/JiimmyZ.github.io.git
+cd JiimmyZ.github.io   # 或本機目錄名 myblog
+pip install -r requirements.txt
+hugo version
 ```
 
-#### 上傳媒體檔案到 Cloudinary
+有媒體要上傳時，根目錄建立 `.env`（已在 `.gitignore`）：
 
-當你在 `content/` 目錄中新增圖片或影片時：
-
-```bash
-python media_processor.py upload
+```env
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
 ```
 
-這個功能會：
-- 掃描 `content/` 目錄中的所有媒體檔案
-- 上傳新檔案到 Cloudinary（跳過已上傳的檔案）
-- 更新 `cloudinary_mapping.json` 對應表
-- 顯示上傳進度
+## 本地開發與部署
 
-#### 更新 Markdown 檔案中的連結
-
-上傳完成後，更新 Markdown 檔案中的媒體連結：
+### 新文章
 
 ```bash
-python media_processor.py update-markdown
+hugo new poetry/新詩名.md
+hugo new novel/新小說名.md
+hugo new essay/新雜感名.md
+hugo new review/新賞析名.md
+hugo new travelogue/camino/ch10/index.md
 ```
 
-這個功能會：
-- 讀取 `cloudinary_mapping.json`
-- 將 Markdown 檔案中的本地檔案路徑替換為 Cloudinary CDN URL
-- 自動建立 `.backup` 備份檔案（可使用 `--no-backup` 跳過）
-- 顯示替換統計
-
-#### 檢查重複檔案
-
-檢查 Cloudinary 中是否有重複檔案：
+### 預覽與建置
 
 ```bash
-python media_processor.py check-duplicates
-python media_processor.py check-duplicates --auto
-```
-
-#### 壓縮大型影片
-
-對於超過 100MB 的影片檔案：
-
-```bash
-python media_processor.py compress content/travelogue/camino/ch8/VID_xxx.mp4
-```
-
-#### 檢查上傳狀態
-
-驗證檔案上傳狀態：
-
-```bash
-python check_status.py
-```
-
-### 代碼質量
-
-本專案使用以下工具確保代碼質量：
-
-- **ruff**: 代碼格式化和 linting
-- **Pydantic**: 資料驗證與型別安全（環境變數、配置、資料模型）
-
-```bash
-# 檢查代碼
-ruff check .
-
-# 自動修復可修復的問題
-ruff check --fix .
-
-# 格式化代碼
-ruff format .
-```
-
-在提交前，請確保代碼通過 ruff 檢查。
-
-#### 安裝開發依賴
-
-```bash
-pip install -r requirements-dev.txt
+hugo server    # http://localhost:1313
+hugo           # 輸出到 public/
 ```
 
 ### 部署
 
-1. **建置網站**
-   ```bash
-   hugo
-   ```
+```bash
+git add .
+git commit -m "更新內容"
+git push origin main
+```
 
-2. **提交變更**
-   ```bash
-   git add .
-   git commit -m "更新內容"
-   git push origin main
-   ```
+GitHub Actions 會建置並部署到 GitHub Pages。
 
-3. **GitHub Pages 自動部署**
-   
-   如果已設定 GitHub Actions，推送後會自動部署到 GitHub Pages。GitHub Actions 會自動執行代碼檢查，確保代碼質量。
+### 代碼檢查（改 Python 時）
 
-## 媒體檔案處理
+```bash
+pip install -r requirements-dev.txt
+ruff check .
+ruff format .
+```
 
-### 檔案大小限制
+## 媒體檔案
 
-- **Cloudinary 免費方案限制**: 單一檔案最大 100MB
-- **建議**: 圖片 < 10MB，影片 < 100MB
+統一工具：`media_processor.py`。限制：Cloudinary 免費單檔 **最大 100MB**（建議圖 <10MB）。
 
-### 大檔案處理
+### 標準流程
 
-對於超過 100MB 的影片檔案：
+1. 媒體放進 `content/...`（與文章同目錄或相對路徑）
+2. `python media_processor.py upload` — 掃描並上傳新檔，更新 `cloudinary_mapping.json`
+3. `python media_processor.py update-markdown` — 本地路徑換成 CDN URL（可加 `--backup`）
+4. `hugo server` 確認顯示後再 push
 
-1. **安裝 FFmpeg**（用於影片壓縮）
-   ```bash
-   # Windows (需要管理員權限)
-   choco install ffmpeg -y
-   
-   # macOS
-   brew install ffmpeg
-   ```
+### 其他指令
 
-2. **壓縮影片**
-   ```bash
-   python media_processor.py compress content/travelogue/camino/ch8/VID_xxx.mp4
-   ```
+```bash
+python media_processor.py check-duplicates      # 只檢查
+python media_processor.py check-duplicates --auto
+python media_processor.py compress path/to/video.mp4
+python check_status.py                          # 驗證上傳狀態
+```
 
-3. **上傳壓縮後的檔案**
-   ```bash
-   python media_processor.py upload
-   ```
+### 大影片（>100MB）
 
-### 媒體檔案統計
+先裝 FFmpeg，再壓縮後上傳：
 
-目前專案狀態：
-- ✅ **659 個媒體檔案**已上傳到 Cloudinary（646 張圖片 + 13 個影片）
-- ✅ **6 個 Markdown 檔案**已更新為 Cloudinary URL
-- ✅ **633 個連結**已替換為 CDN URL
+```bash
+choco install ffmpeg -y   # Windows（可能需管理員）
+brew install ffmpeg       # macOS
+
+python media_processor.py compress content/travelogue/camino/ch8/VID_xxx.mp4
+python media_processor.py upload
+```
+
+初次大量遷移（約 659 檔等）細節見 [`LEGACY.md`](LEGACY.md)，不當現況統計。
 
 ## 內容分類
 
-網站包含以下內容分類：
+| 路徑 | 說明 |
+|------|------|
+| `/poetry/` | 詩詞 |
+| `/novel/` | 小說 |
+| `/essay/` | 雜感 |
+| `/review/` | 賞析 |
+| `/travelogue/` | 遊記（媒體多） |
 
-- **詩詞** (`/poetry/`): 新詩、絕句、律詩、宋詞等
-- **小說** (`/novel/`): 小說創作
-- **雜感** (`/essay/`): 生活隨筆、哲思
-- **賞析** (`/review/`): 文學作品賞析
-- **遊記** (`/travelogue/`): 旅行記錄，包含大量照片和影片
-
-## 設定檔說明
+## 設定索引
 
 ### `hugo.toml`
 
-主要設定檔，包含：
-- 網站基本資訊（標題、語言、主題）
-- 導航選單設定
-- Google Analytics 設定
-- 閱讀體驗設定（目錄、閱讀時間、分享按鈕等）
-- Giscus 評論系統設定
+網站標題、選單、Analytics、閱讀體驗、`[params.comments.giscus]`、`[params.busuanzi]` 等都在這裡。
 
-### Giscus 評論系統
+### 不蒜子
 
-本專案使用 [giscus](https://giscus.app/) 作為評論系統，基於 GitHub Discussions。
+- 設定：`[params.busuanzi]`（`enabled`、`siteStartDate`）
+- UI：僅 [`content/about.md`](content/about.md)（`showSiteStats = true`）
+- 腳本：[`layouts/partials/extend_footer.html`](layouts/partials/extend_footer.html)（全站載入以累計）
 
-**設定步驟**：
-1. 在 GitHub 上安裝 [giscus app](https://github.com/apps/giscus)
-2. 在 GitHub repository 中啟用 Discussions 功能
-3. 前往 [giscus.app](https://giscus.app/) 設定並取得 `repo-id` 和 `category-id`
-4. 在 `hugo.toml` 中填入 giscus 設定值
+### 字體
 
-詳細設定指南請參考 [GISCUS_SETUP.md](GISCUS_SETUP.md)。
+- 使用 PaperMod 內建的系統 sans-serif 字體堆疊，不載入 Google Fonts、jsDelivr 或本機字體檔。
+- Giscus iframe **不繼承**本站字體（見 `LEGACY.md`）
 
-**功能特色**：
-- ✅ 完全免費，無需資料庫
-- ✅ 無追蹤、無廣告
-- ✅ 支援自訂主題
-- ✅ 支援多種語言（包含繁體中文）
-- ✅ 自動同步 GitHub Discussions
+### Giscus
+
+設定在 `hugo.toml` → `[params.comments.giscus]`；模板 [`layouts/partials/comments.html`](layouts/partials/comments.html)。
+
+- 僅支援 **GitHub 登入**（Discussions）
+- 主題目前：`preferred_color_scheme`；顏色／其他登入方案曾評估後不改（見 `LEGACY.md`）
+- 若需重設：GitHub 裝 [giscus app](https://github.com/apps/giscus) → 開 Discussions → [giscus.app](https://giscus.app/) 取 repo-id／category-id → 寫回 `hugo.toml`
 
 ### `cloudinary_mapping.json`
-
-本地檔案路徑與 Cloudinary URL 的對應表，格式：
 
 ```json
 {
@@ -345,87 +219,47 @@ pip install -r requirements-dev.txt
 }
 ```
 
-## SEO 優化
+## SEO（發文時）
 
-本專案已實作完整的 SEO 優化設定，包括：
+站內已有 meta、OG、sitemap、結構化資料、預設分享圖等（見 `layouts/partials/`、`static/og-default.png`）。
 
-### 已實作的 SEO 功能
+新文章檢查：
 
-- ✅ **Meta 標籤優化**: 自動生成 title、description、keywords
-- ✅ **結構化資料**: Article schema、BreadcrumbList schema
-- ✅ **Open Graph 標籤**: 社群媒體分享優化
-- ✅ **Twitter Cards**: Twitter 分享卡片支援
-- ✅ **圖片 SEO**: 自動 alt 文字生成、響應式圖片
-- ✅ **Sitemap**: 自動生成 sitemap.xml
-- ✅ **robots.txt**: 搜尋引擎爬蟲指引
-- ✅ **效能優化**: 圖片懶加載、CDN 加速
-
-### SEO 最佳實踐
-
-詳細的 SEO 指南請參考 [SEO_GUIDELINES.md](SEO_GUIDELINES.md)，包含：
-
-- 標題優化建議（50-60 字元）
-- Meta 描述撰寫（150-160 字元）
-- 標題層級結構（H1-H4）
-- 圖片 alt 文字最佳實踐
-- 內部連結策略
-- 關鍵字使用指南
-
-### 內容建立檢查清單
-
-建立新內容時，請確保：
-
-1. **標題**: 獨特且描述性（50-60 字元）
-2. **描述**: 在 frontmatter 中添加 `description` 欄位
-3. **圖片**: 為所有圖片提供描述性 alt 文字
-4. **標籤**: 添加適當的 tags 和 categories
-5. **內部連結**: 連結到相關內容
-
-### SEO 工具與驗證
-
-- **Google Search Console**: 提交 sitemap 並監控搜尋表現
-- **Google Analytics**: 追蹤流量和用戶行為
-- **PageSpeed Insights**: 檢查頁面載入效能
-- **Schema Markup Validator**: 驗證結構化資料
+1. 標題清楚（約 50–60 字元）
+2. frontmatter 填 `summary`（或 `description`）
+3. 圖片有描述性 alt（`![說明](url)`）
+4. 適當 `tags`／`categories`
+5. 佔位／空頁可加 `robotsNoIndex = true` 與 `[sitemap] disable = true`
 
 ## 常見問題
 
-### 圖片/影片無法顯示
+### 圖片／影片無法顯示
 
-1. 檢查 `cloudinary_mapping.json` 中是否有對應的 URL
-2. 確認 Markdown 檔案已執行 `update_markdown.py` 更新
-3. 驗證 Cloudinary URL 是否可正常存取
+1. `cloudinary_mapping.json` 是否有該檔
+2. 是否已跑 `python media_processor.py update-markdown`
+3. Cloudinary URL 是否可開啟
 
 ### 上傳失敗
 
-1. 檢查 `.env` 檔案中的 Cloudinary 憑證是否正確
-2. 確認網路連線正常
-3. 檢查檔案大小是否超過 100MB 限制
-4. 查看錯誤訊息，可能需要壓縮大檔案
+1. `.env` 憑證是否正確
+2. 單檔是否 >100MB（需先 compress）
+3. 網路與錯誤訊息
 
 ### Hugo 建置錯誤
 
-1. 確認 Hugo 版本（建議使用 extended 版本）
-2. 檢查 `hugo.toml` 語法是否正確
-3. 確認所有必要的目錄結構存在
+1. 建議 Hugo **extended**
+2. 檢查 `hugo.toml` 語法
+3. 目錄／主題是否完整
 
 ## 相關文件
 
-- [SEO 優化指南](SEO_GUIDELINES.md) - 內容建立與 SEO 最佳實踐
-- [Giscus 設定指南](GISCUS_SETUP.md) - 評論系統設定步驟
-- [Cloudinary 設定指南](CLOUDINARY_SETUP.md)
-- [專案上下文與決策記錄](context.md)
-- [Hugo 官方文件](https://gohugo.io/documentation/)
-- [PaperMod 主題文件](https://github.com/adityatelange/hugo-PaperMod)
-
-## 授權
-
-[待定]
-
-## 貢獻
-
-歡迎提出問題和建議！
+- [`context.md`](context.md) — 現況與近期決策
+- [`LEGACY.md`](LEGACY.md) — 歷史 session、遷移、ADR
+- [Hugo 文件](https://gohugo.io/documentation/)
+- [PaperMod](https://github.com/adityatelange/hugo-PaperMod)
+- [giscus](https://giscus.app/)
+- [Cloudinary](https://cloudinary.com/documentation)
 
 ---
 
-**注意**: 本專案使用 Cloudinary 免費方案託管媒體檔案。如需更多儲存空間或頻寬，請考慮升級 Cloudinary 方案。
+媒體使用 Cloudinary 免費方案；空間／頻寬不足再考慮升級。

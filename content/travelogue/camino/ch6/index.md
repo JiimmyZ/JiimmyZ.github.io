@@ -4,7 +4,8 @@ draft = false
 title = 'Camino Ch6 日記 part 1'
 layout = "single" 
 categories = ["travelogue"]
-summary = ""
+tags = ["Camino", "朝聖之路", "日記"]
+summary = "Camino日記 part 1：旅程前期見聞與心境"
 +++
 從此開始是一段2萬多字的流水日記，每則以日期和當天抵達地點作為標題
 真實地紀錄所經歷的一切，輔以超過200張精選相片

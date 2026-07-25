@@ -804,7 +804,7 @@ def find_markdown_files(content_dir: str = "content") -> list[Path]:
 
 
 def update_markdown_file(
-    file_path: Path, url_mapping: dict[str, str], backup: bool = True
+    file_path: Path, url_mapping: dict[str, str], backup: bool = False
 ) -> int:
     """
     Update markdown file with Cloudinary URLs.
@@ -866,7 +866,7 @@ def update_markdown_file(
     return 0
 
 
-def cmd_update_markdown(backup: bool = True):
+def cmd_update_markdown(backup: bool = False):
     """更新 Markdown 檔案中的連結為 Cloudinary URL"""
     print("Loading Cloudinary URL mapping...")
     url_mapping = load_markdown_mapping()
@@ -945,9 +945,9 @@ def main():
         "update-markdown", help="更新 Markdown 檔案中的連結為 Cloudinary URL"
     )
     parser_update.add_argument(
-        "--no-backup",
+        "--backup",
         action="store_true",
-        help="不建立備份檔案",
+        help="更新前建立 .backup 備份檔案（預設不備份）",
     )
 
     # 重複檢測命令
@@ -977,7 +977,7 @@ def main():
     if args.command == "upload":
         cmd_upload()
     elif args.command == "update-markdown":
-        cmd_update_markdown(backup=not args.no_backup)
+        cmd_update_markdown(backup=args.backup)
     elif args.command == "check-duplicates":
         cmd_check_duplicates(auto_delete=args.auto)
     elif args.command == "compress":

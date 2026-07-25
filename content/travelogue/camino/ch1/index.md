@@ -4,7 +4,8 @@ draft = false
 title = 'Camino Ch1 所有的顧慮'
 layout = "single" 
 categories = ["travelogue"]                                 
-summary = ""
+tags = ["Camino", "朝聖之路", "西班牙"]
+summary = "出發前的種種顧慮，以及正式決定踏上Camino的心路歷程"
 +++
 ![庇里牛斯山](https://res.cloudinary.com/dt6lrjaov/image/upload/v1769921302/myblog/travelogue/camino/ch1/IMG_20250616_132941.jpg)
 

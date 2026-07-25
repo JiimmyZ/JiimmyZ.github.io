@@ -4,7 +4,8 @@ draft = false
 title = 'Camino Ch5 行李寄送、腳踏車租用與預算'
 layout = "single" 
 categories = ["travelogue"]
-summary = ""
+tags = ["Camino", "朝聖之路", "預算"]
+summary = "行李寄送、腳踏車租用與預算規劃"
 +++
 # 行李寄送與腳踏車租用服務
 因為這兩個服務我並沒有實際使用，所以只能做簡單介紹

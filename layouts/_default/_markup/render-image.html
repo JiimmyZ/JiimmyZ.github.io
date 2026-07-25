@@ -158,35 +158,42 @@
              style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 100%; height: auto; transition: transform 0.3s ease;">
       </a>
     {{- else -}}
-      {{- /* 無法處理的圖片（static 文件或外部鏈接，如 Cloudinary），使用原圖 */ -}}
-      {{- /* Enhanced alt text handling for SEO */ -}}
+      {{- /* External / static images (e.g. Cloudinary). Inject CDN transforms when possible. */ -}}
       {{- $altText := .Text -}}
       {{- if not $altText -}}
-        {{- /* Fallback: Generate alt text from filename or URL path */ -}}
         {{- $filename := "" -}}
         {{- if $u.IsAbs -}}
-          {{- /* For absolute URLs (Cloudinary), extract filename from path */ -}}
           {{- $filename = path.Base $u.Path -}}
         {{- else -}}
           {{- $filename = path.Base $src -}}
         {{- end -}}
         {{- $filenameWithoutExt := strings.TrimSuffix (path.Ext $filename) $filename -}}
-        {{- /* Remove common prefixes and clean up */ -}}
         {{- $filenameWithoutExt = replace $filenameWithoutExt "IMG_" "" -}}
         {{- $filenameWithoutExt = replace $filenameWithoutExt "VID_" "" -}}
         {{- $filenameWithoutExt = replace $filenameWithoutExt "_" " " -}}
         {{- $altText = $filenameWithoutExt -}}
       {{- end -}}
-      {{- $titleText := .Title -}}
-      {{- if not $titleText -}}
-        {{- $titleText = $altText -}}
+      {{- $titleText := .Title | default $altText -}}
+      {{- $displaySrc := $src -}}
+      {{- $srcset := "" -}}
+      {{- $isCloudinaryImg := and $u.IsAbs (strings.Contains $src "res.cloudinary.com") (strings.Contains $src "/image/upload/") -}}
+      {{- if and $isCloudinaryImg (not (strings.Contains $src "/upload/f_auto")) -}}
+        {{- $displaySrc = replace $src "/upload/" "/upload/f_auto,q_auto,w_1200/" -}}
+        {{- $s480 := replace $src "/upload/" "/upload/f_auto,q_auto,w_480/" -}}
+        {{- $s720 := replace $src "/upload/" "/upload/f_auto,q_auto,w_720/" -}}
+        {{- $s1080 := replace $src "/upload/" "/upload/f_auto,q_auto,w_1080/" -}}
+        {{- $srcset = printf "%s 480w, %s 720w, %s 1080w, %s 1200w" $s480 $s720 $s1080 $displaySrc -}}
       {{- end -}}
-      <a href="{{ $src }}" target="_blank"> {{/* 點擊圖片可看大圖 */}}
-        <img src="{{ $src }}" 
-             alt="{{ $altText }}" 
+      <a href="{{ $src }}" target="_blank"> {{/* 點擊圖片可看大圖（原圖） */}}
+        <img src="{{ $displaySrc }}"
+             {{- if $srcset }}
+             srcset="{{ $srcset }}"
+             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+             {{- end }}
+             alt="{{ $altText }}"
              {{- if $titleText }} title="{{ $titleText }}" {{ end }}
              loading="lazy"
-             decoding="async" {{/* 異步解碼，進一步提升滑動流暢度 */}}
+             decoding="async"
              style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 100%; height: auto; transition: transform 0.3s ease;">
       </a>
     {{- end -}}
