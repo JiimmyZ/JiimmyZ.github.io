@@ -3,7 +3,6 @@ Shared pytest fixtures for myblog project tests.
 """
 
 import json
-import shutil
 from pathlib import Path
 from unittest.mock import Mock
 
@@ -173,36 +172,3 @@ def mock_ffmpeg_not_found(mocker):
     mock_run = mocker.patch("subprocess.run")
     mock_run.side_effect = FileNotFoundError("ffmpeg not found")
     return mock_run
-
-
-@pytest.fixture
-def mock_env_vars(monkeypatch):
-    """Mock environment variables for Cloudinary settings."""
-    monkeypatch.setenv("CLOUDINARY_CLOUD_NAME", "test_cloud")
-    monkeypatch.setenv("CLOUDINARY_API_KEY", "test_key")
-    monkeypatch.setenv("CLOUDINARY_API_SECRET", "test_secret")
-    return {
-        "CLOUDINARY_CLOUD_NAME": "test_cloud",
-        "CLOUDINARY_API_KEY": "test_key",
-        "CLOUDINARY_API_SECRET": "test_secret",
-    }
-
-
-@pytest.fixture
-def cleanup_temp_files():
-    """Fixture to ensure temporary files are cleaned up."""
-    created_files = []
-
-    def _track_file(path: Path):
-        created_files.append(path)
-        return path
-
-    yield _track_file
-
-    # Cleanup
-    for file_path in created_files:
-        if file_path.exists():
-            if file_path.is_dir():
-                shutil.rmtree(file_path)
-            else:
-                file_path.unlink()

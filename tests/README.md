@@ -10,11 +10,7 @@ tests/
 ├── conftest.py              # Shared pytest fixtures
 ├── test_media_processor.py  # Tests for media_processor.py
 ├── test_check_status.py     # Tests for check_status.py
-├── test_integration.py       # Integration tests for workflows
-├── fixtures/
-│   ├── sample_mapping.json  # Sample Cloudinary mapping file
-│   └── sample_markdown.md   # Sample markdown file
-└── utils.py                 # Test utility functions
+└── test_integration.py      # Integration tests for workflows
 ```
 
 ## Running Tests
@@ -73,7 +69,7 @@ Common fixtures available in `conftest.py`:
 - `mock_cloudinary_upload_response` - Mock Cloudinary upload response
 - `mock_cloudinary_resources_response` - Mock Cloudinary resources list
 - `mock_ffmpeg_success` - Mock successful FFmpeg execution
-- `mock_env_vars` - Mock environment variables
+- `mock_ffmpeg_not_found` - Mock FFmpeg missing from PATH
 
 ## CI/CD Integration
 

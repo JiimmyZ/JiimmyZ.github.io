@@ -133,6 +133,7 @@
 - Created `EbookConfig` and `EpubMetadata` models
 - Added type hints and validation for all configuration values
 - Maintained backward compatibility with old constant names
+- *(2026-07-25: `ebook-generator/` moved out of this repo.)*
 
 **Phase 3: Cloudinary Data Models**
 - Created `CloudinaryResource` model with validated fields
@@ -144,6 +145,8 @@
 - `requirements.txt` - Added Pydantic dependencies
 - `media_processor.py` - Added models and updated all functions
 - `ebook-generator/config.py` - Complete rewrite using Pydantic
+
+> **Note (2026-07-25)**: `ebook-generator/` was moved out of this repo; see that separate project for the config rewrite.
 
 **Status**: **COMPLETED** - All high and medium priority phases implemented.
 

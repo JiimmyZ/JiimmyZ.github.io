@@ -427,7 +427,10 @@ def cmd_upload():
     print(f"  Skipped: {skipped_count} (already in mapping)")
     print(f"  Total in mapping: {len(mapping)}")
     if uploaded_count > 0:
-        print("\nNext step: Run update_markdown.py to update your markdown files")
+        print(
+            "\nNext step: Run `python media_processor.py update-markdown` "
+            "to update your markdown files"
+        )
 
 
 # ============================================================================

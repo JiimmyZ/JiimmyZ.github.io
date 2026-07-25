@@ -37,6 +37,23 @@ myblog/
 
 ## Recent Session Logs
 
+### Session Log 2026-07-25 - Dead-code cleanup after ebook move-out
+
+**Summary**: Removed unused test helpers/fixtures, dropped unused dev dependencies, fixed a stale CLI hint, and annotated historical ebook-generator references. Deleted the obsolete in-repo Camino ebook creation plan.
+
+**Deleted**:
+- `tests/utils.py` (never imported; duplicated conftest fixtures)
+- `tests/fixtures/*`, `tests/.gitkeep`
+- Unused conftest fixtures `mock_env_vars`, `cleanup_temp_files`
+- `.cursor/plans/camino_ebook_creation_39cac52e.plan.md`
+
+**Updated**:
+- `requirements-dev.txt` — removed `pytest-asyncio`, `responses`
+- `media_processor.py` — post-upload hint now says `python media_processor.py update-markdown`
+- `tests/README.md`, `context.md`, `LEGACY.md` — current docs + historical move-out notes
+
+**Status**: **COMPLETED**
+
 ### Session Log 2026-07-25 - Fix CI: deployment blocked since 2026-02-01
 
 **Summary**: Every push since `2a1f71d` (the commit that introduced pytest) failed the
@@ -239,6 +256,8 @@ were dead config anyway — coverage.py does not read `pytest.ini`.
 - `tests/test_media_processor.py`, `tests/test_check_status.py`, `tests/test_integration.py`
 - `tests/ebook_generator/__init__.py`, `tests/ebook_generator/test_config.py`
 - `tests/fixtures/sample_mapping.json`, `tests/fixtures/sample_markdown.md`
+
+> **Note (2026-07-25)**: `ebook-generator/` (and its tests / dead `tests/utils.py` / static fixtures) were later removed from this repo; the EPUB tool lives as a separate project.
 - `tests/README.md` - Test documentation
 - `pytest.ini` - Pytest configuration
 
@@ -293,6 +312,8 @@ were dead config anyway — coverage.py does not read `pytest.ini`.
 - `requirements.txt` - Added Pydantic dependencies
 - `media_processor.py` - Added CloudinarySettings, CloudinaryResource models, updated all functions
 - `ebook-generator/config.py` - Complete rewrite using Pydantic models
+
+> **Note (2026-07-25)**: `ebook-generator/` was moved out of this repo; the Pydantic config work above lives with that separate project.
 
 **Status**: **COMPLETED** - Phase 1, 2, and 3 successfully implemented and tested.
 
@@ -418,9 +439,9 @@ were dead config anyway — coverage.py does not read `pytest.ini`.
 ### Key Improvements Identified
 
 - ✅ **Testing**: Comprehensive pytest test suite implemented (completed)
-  - Unit tests for `media_processor.py`, `check_status.py`, and `ebook-generator/config.py`
+  - Unit tests for `media_processor.py` and `check_status.py` helpers (ebook-generator tests removed when that subproject moved out on 2026-07-25)
   - Integration tests for complete workflows
-  - Coverage reporting with targets: core functions ≥80%, utilities ≥70%, config ≥90%
+  - Coverage reporting with a ratchet gate in `pytest.ini` (raise as coverage improves)
   - All tests use mocking for external dependencies (Cloudinary, FFmpeg)
 - ✅ **Linting**: Ruff integrated for code formatting and style checking (completed)
   - Added to `requirements-dev.txt`
@@ -648,7 +669,7 @@ python check_status.py
 1. Compress video: `python media_processor.py compress path/to/video.mp4`
 2. Verify compressed size <100MB
 3. Upload compressed file: `python media_processor.py upload`
-4. Update markdown: `python update_markdown.py`
+4. Update markdown: `python media_processor.py update-markdown`
 
 ## Environment Setup
 
