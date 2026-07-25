@@ -37,6 +37,45 @@ myblog/
 
 ## Recent Session Logs
 
+### Session Log 2026-07-25 - Revert appearance to stock PaperMod (diagnostic)
+
+**Summary**: The nav flash on page switches persisted after the critical-CSS patches, so all project-level appearance overrides were removed to observe the theme's unmodified baseline.
+
+**Reverted**:
+- `layouts/partials/extend_head.html` — dropped the inline critical CSS block (background / `color-scheme` / header flex); only SEO + schema partials remain
+- `assets/css/extended/root-bg.css` — deleted (the now-empty `assets/` tree was removed too)
+
+**Current state**: site styling comes solely from the PaperMod bundle (`themes/PaperMod/assets/css/**` plus the theme's `extended/blank.css`). Theme core is still unmodified. Non-appearance features (SEO, Giscus, Busuanzi, donation partials) untouched.
+
+**Next step if the flash remains**: it originates in PaperMod itself — `head.html` ships the bundle as `rel="preload stylesheet"`, which permits a first paint before the layout rules apply. Fix by making the stylesheet render-blocking rather than stacking more critical CSS.
+
+**Status**: **COMPLETED**
+
+### Session Log 2026-07-25 - Fix nav enlarge flash on page switches (REVERTED)
+
+**Summary**: Switching sections (home / poetry / novel / …) briefly showed an enlarged top bar flash.
+
+**Cause**: PaperMod loads CSS with `rel="preload stylesheet"`, so first paint can happen before layout rules. Without flex, `.logo` and `#menu` stack vertically → header looks much taller, then snaps to the normal 60px row.
+
+**Fix**: Extended critical CSS in `layouts/partials/extend_head.html` with header/nav flex sizing (matching PaperMod `--nav-width` / `--header-height` / `--gap`).
+
+**Status**: **REVERTED** — flash persisted; see the diagnostic revert session above.
+
+### Session Log 2026-07-25 - Fix dark-mode pure-black → gray-black flash (REVERTED)
+
+**Summary**: On dark-mode first paint, the page briefly showed pure black (`#000`) then settled to PaperMod gray-black `rgb(29, 30, 32)`. Felt like slow load; actually FOUC from `color-scheme: dark` canvas + transparent `html` + delayed external stylesheet.
+
+**Cause**:
+- PaperMod sets `background: var(--theme)` only on `body`; `html` had no background
+- `color-scheme: dark` paints the browser root canvas `#000` until body paints
+- Dark CSS vars in theme `head.html` live inside `<noscript>`, so they do not apply with JS on
+
+**Fix** (project overrides only; theme core untouched):
+- `layouts/partials/extend_head.html` — inline critical CSS after theme script sets `data-theme`
+- `assets/css/extended/root-bg.css` — `html { background: var(--theme); }`
+
+**Status**: **REVERTED** — rolled back with the nav-flash patch; see the diagnostic revert session above.
+
 ### Session Log 2026-07-25 - Dead-code cleanup after ebook move-out
 
 **Summary**: Removed unused test helpers/fixtures, dropped unused dev dependencies, fixed a stale CLI hint, and annotated historical ebook-generator references. Deleted the obsolete in-repo Camino ebook creation plan.
