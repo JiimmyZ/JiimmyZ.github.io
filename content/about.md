@@ -12,7 +12,6 @@ showSiteStats = true
 
 詩詞寫作、小說連載
 
-歡迎歌曲填詞邀約
-
+歌曲填詞邀約
 oceanjimmy2023@gmail.com
 
