@@ -20,6 +20,10 @@ Hugo static site blog with extensive media content (travelogue with photos and v
   - `pydantic-settings` (v2.12.0) - Settings management
 - **Deployment**: GitHub Actions → GitHub Pages
 
+### Git / Push 規則
+- **內容 md 新設或刪減**（如詩詞、遊記正文）：做完後 **commit + push**
+- **功能開發**（例如刪留言區、加瀏覽人數）：**不必立刻 push**，等明確指示再推
+
 ### Project Structure
 ```
 myblog/
@@ -36,6 +40,21 @@ myblog/
 `ebook-generator/` (Camino EPUB tool) was moved out of this repo on 2026-07-25.
 
 ## Recent Session Logs
+
+### Session Log 2026-07-26 - IG 詩詞圖片補缺匯入
+
+**Summary**: 從 Instagram 詩詞圖 OCR 後與 `content/poetry/` 比對（本批 42 張：約 26 首已存在、16 首缺漏）。新增缺漏 md，寫入 push 規則；不改已有詩詞正文、不改 README。
+
+**新增**（16 首）:
+- `一部分壞人.md`、`寫成歌.md`、`想清楚.md`、`成長.md`、`一生所求.md`、`陌生人.md`、`明天會更好.md`、`此刻.md`
+- `倖存者偏差.md`、`天險.md`、`無論.md`、`枯葉.md`、`願你.md`、`Dream.md`（英文，沿用原檔名）、`快樂.md`、`過程.md`
+
+**Notes**:
+- 格式對齊 `archetypes/poetry.md`：行末雙空格換行、結尾 `自註:`（本批無自註則留空）
+- 《願你》與既有短版《雲淡風輕》為不同篇；本批未見但 blog 已有者（如《因妳》《雙子》）不動
+- 本次屬內容 md 新設 → commit + push
+
+**Status**: **COMPLETED**
 
 ### Session Log 2026-07-25 - Revert appearance to stock PaperMod (diagnostic)
 
