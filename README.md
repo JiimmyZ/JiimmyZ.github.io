@@ -24,7 +24,135 @@ Hugo 靜態部落格（PaperMod），內容含詩詞、小說、雜感、賞析�
 
 請勿擅自加第二套評論系統、協作流程或「貢獻指南」。改行為後更新 `context.md`，較大決策再記 `LEGACY.md`。
 
+## 幾個月後回來怎麼用
+
+### 先記住這站怎麼跑
+
+你寫的是 `content/` 裡的 Markdown。Hugo 把它編成靜態 HTML 放進 `public/`，但 `public/` 是建置產物，不需要手動編輯或提交。
+
+本站**沒有自架伺服器**。部署流程是：
+
+```text
+git push origin main
+  → .github/workflows/deploy.yml
+  → test → lint → hugo --minify → deploy
+  → GitHub Pages（https://jiimmyz.github.io/）
+```
+
+任一測試或 lint 失敗，後面的建置與部署就不會執行。進 GitHub repo 的 **Actions** 頁可以看成功或失敗原因。
+
+### 寫好的內容要放哪
+
+| 類型 | 放置位置 |
+|------|----------|
+| 詩詞 | `content/poetry/題名.md`（檔名通常就是標題） |
+| 小說 | `content/novel/` |
+| 雜感 | `content/essay/` |
+| 賞析 | `content/review/` |
+| 遊記（常有媒體） | `content/travelogue/...` |
+| 關於頁 | `content/about.md` |
+
+可用 `hugo new poetry/題名.md` 依 archetype 建立骨架。詩詞正文每行末尾留兩個空格以強制換行，最後保留 `自註:`。
+
+純文字更新：
+
+```text
+把 .md 放到 content/ 正確分類
+  → hugo server
+  → 瀏覽 http://localhost:1313
+  → git add / commit / push
+```
+
+有圖或影片時，先看下方「Cloudinary CDN」與「媒體檔案」，不要直接把大量原始媒體提交進 git。
+
+### 想改網站或部署時去哪裡
+
+| 想改什麼 | 去哪裡改 |
+|----------|----------|
+| 站名、選單、首頁區塊、Giscus、不蒜子 | [`hugo.toml`](hugo.toml) |
+| GitHub Actions 觸發分支、測試、建置與部署步驟 | [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) |
+| Pages 發布來源 | GitHub repo → **Settings → Pages**；目前 Source 是 **GitHub Actions** |
+| 自訂版型、評論、頁首頁尾腳本 | `layouts/`；盡量不要直接改 `themes/PaperMod/` 核心 |
+| 近期現況與決策 | [`context.md`](context.md) |
+| 歷史遷移與架構理由 | [`LEGACY.md`](LEGACY.md) |
+
+若將來改用別的部署平台，通常要同時調整平台設定、`baseURL`（在 `hugo.toml`）及 `.github/workflows/deploy.yml`；不要只改 GitHub Pages 的畫面設定。
+
+### 容易忘的規則
+
+- 內容 md 新設或刪減：完成後 commit + push。
+- 功能開發：可以先留在本機，等明確決定後再 push。
+- 不要提交 `.env` 或 `public/`；Cloudinary 憑證只放本機 `.env`。
+- 本機資料夾可能叫 `myblog`，遠端 repo 叫 `JiimmyZ.github.io`；以 `git remote -v` 顯示為準。
+
+### Cloudinary CDN 是什麼
+
+**Cloudinary** 是專門儲存及傳送圖片、影片的雲端服務。上傳後會得到 `res.cloudinary.com/...` 網址，Markdown 直接引用該網址。
+
+**CDN（Content Delivery Network）** 會把媒體快取在不同地區的節點。讀者開網站時，文字與 HTML 由 GitHub Pages 提供，大檔則由 Cloudinary 較近的節點傳送，不經你的電腦，也不把所有原圖塞進 GitHub Pages。
+
+當初 repo 約有 659 個媒體、合計 500MB 以上，造成 git 操作很慢，因此把媒體移到 Cloudinary（詳見 `LEGACY.md` 的 ADR-001）。
+
+免費並非無限：專案導入時記錄的方案約有 25GB 儲存空間及月流量額度，單檔上限 100MB；方案可能調整，實際額度以 Cloudinary Dashboard 為準。個人部落格通常用量較低，所以免費額度暫時夠用；超額後需清理或升級。
+
+### 大影片怎麼處理
+
+Cloudinary 單檔上限是 100MB，本站工具以 **95MB** 為目標保留餘量。先安裝 FFmpeg：
+
+```bash
+choco install ffmpeg -y
+ffmpeg -version
+```
+
+壓縮並上傳：
+
+```bash
+python media_processor.py compress content/.../影片.mp4
+# 預設輸出同目錄的 影片_compressed.mp4，不覆蓋原檔
+
+python media_processor.py upload
+python media_processor.py update-markdown
+hugo server
+```
+
+壓縮工具的實際策略：
+
+- 第一輪：H.264、CRF 28、slow、最大 1080p、AAC 96k、`+faststart`（利於網頁播放）。
+- 若仍超過 95MB：自動再用 CRF 30、最大 720p、AAC 64k。
+- 影片超過 20MB 時，上傳改用 Cloudinary SDK `upload_large()`，並避免同步格式轉換。
+- 歷史案例：115.63MB 壓成 29.46MB。
+
+確認壓縮檔可播放、文章已換成正確 Cloudinary URL 後，才刪除原始大檔。不要把原始大影片提交進 git。
+
+### 照片為什麼不會拖慢網站
+
+照片原圖保存在 Cloudinary；頁面顯示時由 [`render-image.html`](layouts/_default/_markup/render-image.html) 自動產生較輕的版本：
+
+- `f_auto`：依瀏覽器能力選 WebP、AVIF 等適合格式。
+- `q_auto`：自動平衡畫質與檔案大小。
+- `w_480 / 720 / 1080 / 1200`：建立 `srcset`，手機不必下載桌機尺寸原圖。
+- `loading="lazy"`：圖片快進入畫面時才下載。
+- `decoding="async"`：圖片解碼不阻塞頁面。
+- 頁首會 preconnect / DNS prefetch Cloudinary，提早建立連線。
+
+頁面顯示寬度上限 1200px，但點圖仍連回原始 URL，所以顯示最佳化不等於刪掉高畫質原圖。
+
+新增照片的固定流程：
+
+```text
+照片放進 content/...（文章附近）
+  → python media_processor.py upload
+  → python media_processor.py update-markdown
+  → 確認 Markdown 已換成 res.cloudinary.com URL
+  → hugo server（桌機、窄視窗都抽查）
+  → commit / push
+```
+
+不要手動把 `/upload/f_auto.../` 寫進 Markdown；render hook 會在建置時自動加轉換參數。
+
 ## 日常速查
+
+細節見上一節；平常只需要記這份最短流程：
 
 ```text
 純文字發文：
@@ -126,13 +254,15 @@ hugo           # 輸出到 public/
 
 ### 部署
 
+部署原理與設定位置見「幾個月後回來怎麼用」。一般內容更新只需：
+
 ```bash
 git add .
 git commit -m "更新內容"
 git push origin main
 ```
 
-GitHub Actions 會建置並部署到 GitHub Pages。
+GitHub Actions 會依序測試、lint、建置，再部署到 GitHub Pages。
 
 ### 代碼檢查（改 Python 時）
 
@@ -144,7 +274,7 @@ ruff format .
 
 ## 媒體檔案
 
-統一工具：`media_processor.py`。限制：Cloudinary 免費單檔 **最大 100MB**（建議圖 <10MB）。
+統一工具：`media_processor.py`。Cloudinary 原理、圖片效能與大影片細節見上方教學。限制：單檔 **最大 100MB**（建議圖 <10MB）。
 
 ### 標準流程
 
@@ -164,7 +294,7 @@ python check_status.py                          # 驗證上傳狀態
 
 ### 大影片（>100MB）
 
-先裝 FFmpeg，再壓縮後上傳：
+完整壓縮策略與注意事項見上方「大影片怎麼處理」。最短操作：
 
 ```bash
 choco install ffmpeg -y   # Windows（可能需管理員）
@@ -172,6 +302,7 @@ brew install ffmpeg       # macOS
 
 python media_processor.py compress content/travelogue/camino/ch8/VID_xxx.mp4
 python media_processor.py upload
+python media_processor.py update-markdown
 ```
 
 初次大量遷移（約 659 檔等）細節見 [`LEGACY.md`](LEGACY.md)，不當現況統計。

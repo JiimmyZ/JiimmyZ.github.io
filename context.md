@@ -41,6 +41,18 @@ myblog/
 
 ## Recent Session Logs
 
+### Session Log 2026-07-26 - README「幾個月後回來怎麼用」
+
+**Summary**: 擴充 README，讓低頻維護時能快速找回 Hugo 使用方式：內容目錄、本機預覽、GitHub Actions → GitHub Pages 部署流程與設定位置。
+
+**Media notes**:
+- 白話解釋 Cloudinary CDN、採用原因、免費額度並非無限
+- 記錄大影片的 FFmpeg 兩階段壓縮、95MB 目標、`upload_large()` 與歷史案例
+- 記錄 Cloudinary 圖片 `f_auto` / `q_auto` / responsive `srcset`、lazy loading、async decoding 與 preconnect
+- 保留既有日常速查與媒體指令，改以交叉引用避免重複矛盾
+
+**Status**: **COMPLETED**
+
 ### Session Log 2026-07-26 - 刪除《過程》
 
 **Summary**: 依指示刪除本批 IG 補缺匯入中的 `content/poetry/過程.md`（正文「過程即是目的」）。本批留下 15 首。內容 md 刪減 → commit + push。
