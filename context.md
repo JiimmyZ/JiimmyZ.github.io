@@ -41,6 +41,12 @@ myblog/
 
 ## Recent Session Logs
 
+### Session Log 2026-07-26 - 刪除《過程》
+
+**Summary**: 依指示刪除本批 IG 補缺匯入中的 `content/poetry/過程.md`（正文「過程即是目的」）。本批留下 15 首。內容 md 刪減 → commit + push。
+
+**Status**: **COMPLETED**
+
 ### Session Log 2026-07-26 - IG 詩詞圖片補缺匯入
 
 **Summary**: 從 Instagram 詩詞圖 OCR 後與 `content/poetry/` 比對（本批 42 張：約 26 首已存在、16 首缺漏）。新增缺漏 md，寫入 push 規則；不改已有詩詞正文、不改 README。
