@@ -52,7 +52,7 @@ git push origin main
 | 遊記（常有媒體） | `content/travelogue/...` |
 | 關於頁 | `content/about.md` |
 
-可用 `hugo new poetry/題名.md` 依 archetype 建立骨架。詩詞正文每行末尾留兩個空格以強制換行，最後保留 `自註:`。
+可用 `hugo new poetry/題名.md` 依 archetype 建立骨架。詩詞正文每行末尾留兩個空格以強制換行。不放自註（作者已死，文本一出不附作者註解）。
 
 純文字更新：
 

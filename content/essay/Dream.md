@@ -10,5 +10,3 @@ tags = ["哲思", "新詩"]
 
 Life is tough, even tougher  
 when you have a dream  
-
-自註:
